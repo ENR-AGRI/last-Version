@@ -1,0 +1,212 @@
+<h3 style="color: #00AE81;">Liste Clients</h3>
+
+
+
+
+
+
+<!-- travail takwa with controler des champs
+   <div class="row">
+  <div class="col-md-12">
+    <div class="main-card mb-3 card">
+      <div class="card-header color">
+        <div class="btn-actions-pane-right">
+          <div role="group" class="btn-group-sm btn-group">
+
+            <button  style="font-family: open Sans;"
+              [routerLink]="['/addClient']">Ajouter Nouveau</button>
+
+
+
+            <input class="form-control" type="text" #query (keyup)="filterClient(query.value)" style="margin-left: 200px;">
+          </div>
+        </div>
+      </div>
+      <div class="table table-bordered table-striped datatable">
+        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">matricule</th>
+              <th>Prénom</th>
+              <th>Nom</th>
+              <th class="text-center">Pays</th>
+              <th class="text-center">Etat</th>
+              <th class="text-center">Email</th>
+              <th class="text-center">Tel</th>
+              <th class="text-center">Fonction</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of clientFilter">
+              <td class="text-center text-muted">#{{c?.matricule}}</td>
+              <td>
+                <div class="widget-content p-0">
+                  <div class="widget-content-wrapper">
+
+                    <div class="widget-content-left flex2">
+                      <div class="widget-heading">{{c?.prenom}}</div>
+                      <div class="widget-subheading opacity-7"></div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="widget-content p-0">
+                  <div class="widget-content-wrapper">
+
+                    <div class="widget-content-left flex2">
+                      <div class="widget-heading">{{c?.nom}}</div>
+                      <div class="widget-subheading opacity-7"></div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center">{{c?.pays}}</td>
+              <td class="text-center">
+                <div class="badge badge-warning">{{c?.etat.nom}}</div>
+              </td>
+              <td>
+                <div class="widget-content p-0">
+                  <div class="widget-content-wrapper">
+
+                    <div class="widget-content-left flex2">
+                      <div class="widget-heading">{{c?.email}}</div>
+                      <div class="widget-subheading opacity-7"></div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="widget-content p-0">
+                  <div class="widget-content-wrapper">
+
+                    <div class="widget-content-left flex2">
+                      <div class="widget-heading">{{c?.tel}}</div>
+                      <div class="widget-subheading opacity-7"></div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+
+              <td>
+                <div class="widget-content p-0">
+                  <div class="widget-content-wrapper">
+
+                    <div class="widget-content-left flex2">
+                      <div class="widget-heading">{{c?.fonction}}</div>
+                      <div class="widget-subheading opacity-7"></div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <a href="#" class="btn btn-default btn-sm btn-icon icon-left">
+                  <i class="entypo-pencil"></i>
+                  Edit
+                </a>
+
+                <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                  <i class="entypo-cancel"></i>
+                  Delete
+                </a>
+
+                <a href="#" class="btn btn-info btn-sm btn-icon icon-left">
+                  <i class="entypo-info"></i>
+                  Profile
+                </a>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="d-block text-center card-footer">
+        <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"> Annuler
+          <i class="pe-7s-trash btn-icon-wrapper"> </i>
+        </button>
+        <button class="mr-2 btn-wide btn btn-success">Save</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+  <div class="container">
+
+    <div class="staff-tab mb-3">
+      <div class="buttons mb-2">
+        <button class="add-btn">
+          <span class="btn-txt">Ajouter</span>
+          <span class="btn-icon"></span>
+        </button>
+        <button class="edt-btn">
+          <span class="btn-txt">Modifier</span>
+          <span class="btn-icon"><i class="fi fi-rr-pencil"></i></span>
+        </button>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Ref Client</th>
+
+              <th scope="col">Prénom</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Fonction</th>
+              <th scope="col">Activité</th>
+              <th scope="col">Email</th>
+              <th scope="col">Tel</th>
+              <th scope="col">Rue</th>
+              <th scope="col">CP</th>
+              <th scope="col">Ville</th>
+              <th scope="col">Pays</th>
+              <th scope="col">REP</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of clientFilter">
+              <th scope="row">{{c?.matricule}}</th>
+
+              <td>{{c?.Src_Client}}</td>
+              <td>{{c?.Src_Client}}</td>
+              <td>{{c?.Src_Client}}</td>
+              <td>{{c?.Src_Client}}</td>
+              <td>{{c?.Src_Client}}</td>
+              <td>{{c?.Src_Client}}</td>
+              <td>{{c?.Src_Client}}</td>
+              <td>{{c?.Src_Client}}</td>
+              <td>{{c?.Src_Client}}</td>
+              <td>{{c?.Src_Client}}</td>
+              <td>{{c?.Src_Client}}</td>
+              <td>{{c?.Src_Client}}</td>
+            </tr>
+
+            <tr>
+              <th scope="row">3</th>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+              <td>Text</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

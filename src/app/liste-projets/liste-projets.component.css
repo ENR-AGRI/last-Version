@@ -1,0 +1,121 @@
+
+/***** Table responsive ****/
+
+.project-list {
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  min-height: 250px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 15px;
+}
+
+.add-btn {
+  background-color: #00ae81;
+  padding: 8px 15px 8px 15px;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+  border-radius: 6px;
+  margin-top: 15px;
+  border: none;
+}
+
+
+.cncl-btn {
+  background-color: #ffffff;
+  padding: 6px 10px 6px 10px;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #018a65;
+  border-radius: 6px;
+  margin-top: 15px;
+  margin-left: 17px;
+  border: 2px solid #018a65;
+  float: right;
+}
+
+.add-btn:hover {
+  background-color: #018a65;
+}
+.main>h2{
+  text-align: center;
+  color: blue
+}
+
+.table,
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px 10px;
+}
+
+th {
+  background-color: #f1f1f1;
+}
+
+input {
+  margin: 0px;
+  padding: 4px 0px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+  border-color: #ddd;
+  outline: none;
+  width: 90%;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+@media(max-width: 500px) {
+  .table thead {
+    display: none !important;
+  }
+
+  .table tbody,
+  tr,
+  td {
+    display: block;
+    width: 100%;
+    float: right;
+  }
+
+  .table tr {
+    margin-bottom: 15px;
+  }
+
+  .table td {
+    text-align: right;
+    padding-left: 40%;
+  }
+
+  .table tr:nth-child(:first-child) {
+    text-align: center;
+  }
+
+  .table td::before {
+    content: attr(data-name);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    text-align: left;
+    padding-left: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+
+  }
+}
+
+
+
+
+
+
+
+
