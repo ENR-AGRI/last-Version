@@ -93,3 +93,20 @@ li {
 .is-active {
   background-color: #373e4a;
 }
+.nav-link.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu {
+  right: 30px;
+}
+
+.nav-item .dropdown-menu {
+  display: none;
+}
+.nav-item:hover .dropdown-menu {
+  display: block;
+}
+.nav-item .dropdown-menu {
+  margin-top: 0;
+}
