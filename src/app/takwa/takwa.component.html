@@ -7,21 +7,23 @@
       <div class="col-12 col-lg-8 left">
         <div class="row d-flex justify-content-center mb-3">
           <div class="col-8">
-            <div class="row line mb-3">
-              <div class="col-4 stepText1 actve" >Catégorie d'intrant</div>
-              <div class="col-4 stepText2">Intrant Total</div>
-              <div class="col-4 stepText3">Puissance</div>
+            <div class="row line mb-3 nav nav-pills"  role="tablist">
+              <div class="col-4 stepText1 actve"  id="home-tab"  type="button" data-bs-toggle="tab" data-bs-target="#categorieIntrant" role="tab" aria-controls="categorieIntrant" (click)="openTab(1)" >Catégorie d'intrant</div>
+              <div class="col-4 stepText2"  id="profile-tab"   type="button" data-bs-toggle="tab" data-bs-target="#total"  role="tab" aria-controls="total"  (click)="openTab(2)" >Intrant Total</div>
+              <div class="col-4 stepText3"  id="contact-tab"  type="button" data-bs-toggle="tab" data-bs-target="#Puissance" role="tab" aria-controls="Puissance" (click)="openTab(3)">Puissance</div>
             </div>
             <div class="row">
               <div class="col-4">
-                <div class="step step1 activated"></div>
+                <div class="step step1 " [ngClass]="{ activated: isActiveTab(1) }" ></div>
               </div>
-              <div class="col-4"><div class="step step2"></div></div>
-              <div class="col-4"><div class="step step3"></div></div>
+              <div class="col-4"><div class="step step2" [ngClass]="{ activated: isActiveTab(2) }"></div></div>
+              <div class="col-4"><div class="step step3" [ngClass]="{ activated: isActiveTab(3) }" ></div></div>
             </div>
           </div>
         </div>
-        <div class="row d-flex justify-content-center mb-3" id="tab1">
+        <div class="tab-content" >
+
+        <div class="row d-flex justify-content-center mb-3" class="tab-pane  active" id="categorieIntrant">
           <div class="col-8 content">
             <div class="form-floating mb-3">
               <select
@@ -113,7 +115,7 @@
             </div>
           </div>
         </div>
-        <div class="row d-flex justify-content-center mb-3">
+        <div class="row d-flex justify-content-center mb-3" class="tab-pane" id="total">
           <div class="col-8 content">
             <table class="table">
               <thead>
@@ -142,7 +144,7 @@
 
           </div>
         </div>
-        <div class="row d-flex justify-content-center mb-3">
+        <div class="row d-flex justify-content-center mb-3" class="tab-pane" id="Puissance">
           <div class="col-8 content">
             <table class="table">
               <thead>
@@ -166,6 +168,7 @@
               </tbody>
             </table>
           </div>
+        </div>
         </div>
 
         <div class="row d-flex justify-content-center">

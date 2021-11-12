@@ -1,107 +1,75 @@
 
-<body class="page-body login-page boxed-layout">
-  <div class="login-container" style="background-color: #2d7574">
-    <div class="login-content">
-      <div class="logo">
-        <a>
-          <img src="assets/images/logo-enragri.png" width="85" alt="" />
-        </a>
-      </div>
-      <p class="description" style="color: white; margin-top: 15px">
-        Bienvenu,connecter pour acceder à votre espace dans ENRagri
-      </p>
-      <div class="alert alert-danger " role="alert" *ngIf="msgError">
-        {{msgError}}
-
-        </div>
+<div class="row h-100">
+  <div class="col-12 content">
+    <div class="nav mb-1 col-12">
+      <img src="assets/images/logo-enragri.png" alt="enragri-logo" />
     </div>
+    <div>
+    <p class="title text-center">
+      Bienvenue,<br />Connectez-vous à votre espace ENRagri
+    </p>
+    <div class="alert alert-danger " role="alert" *ngIf="msgError">
+      {{msgError}}
 
-    <!-- <div class="login-progressbar">
-      <div></div>
-        <div class="progress" *ngIf="showSpinner">
-      <div class="indeterminate"></div>
-  </div>
-    </div>-->
+      </div>
+    </div>
+    <form
+    method="post"
+    role="form"
+    id="form_login"
+    [formGroup]="formLogin"
+    (ngSubmit)="login()"
+  >
+    <div class="row justify-content-center">
+      <div class="col-8 col-md-4 col-lg-4">
 
-
-
-    <div class="login-form">
-      <div class="login-content">
-        <form
-          method="post"
-          role="form"
-          id="form_login"
-          [formGroup]="formLogin"
-          (ngSubmit)="login()"
+        <div class="mb-3 col-12">
+          <input
+          formControlName="email"
+            type="email"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Email"
+          />
+          <p
+          *ngIf="submitted && !fnEmail.valid"
+          class="alert alert-danger "
         >
-          <div class="form-group">
-            <div class="input-group" style="background-color: white">
-              <div class="input-group-addon">
-                <i class="entypo-user"></i>
-              </div>
+          <span *ngIf="fnEmail.errors.email">is not an email</span>
 
-              <input
-                formControlName="email"
-                style="color: #000"
-                type="text"
-                class="form-control"
-                id="username"
-                placeholder="Email"
-
-              />
-
-            </div>
-            <div class="alert alert-danger "  *ngIf="fnEmail.touched && !fnEmail.valid" >
-              <p *ngIf="fnEmail.errors.email">is not an email</p>
-              <p *ngIf="fnEmail.errors.required">Email is required</p>
-            </div>
+          <span *ngIf="fnEmail.errors.required">email is required</span>
+        </p>
+          <div class="alert alert-danger "  *ngIf="fnEmail.touched && !fnEmail.valid" >
+            <p *ngIf="fnEmail.errors.email">is not an email</p>
+            <p *ngIf="fnEmail.errors.required">Email is required</p>
           </div>
-
-          <div class="form-group">
-            <div class="input-group" style="background-color: white">
-              <div class="input-group-addon">
-                <i class="entypo-key"></i>
-              </div>
-
-              <input
-                formControlName="password"
-                style="color: #000"
-                type="password"
-                class="form-control"
-                name="password"
-                id="password"
-                placeholder="Password"
-                autocomplete="off"
-              />
-
-            </div>
-            <div class="alert alert-danger " *ngIf="fnPwd.touched && !fnPwd.valid" >
-                <span *ngIf="fnPwd.errors.required">password is required</span>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <button
-              type="submit"
-              class="btn btn-primary btn-block btn-login"
-              style="background-color: #00ae81; text-align: center"
-            >
-              <i class="entypo-login"></i>
-              Login In
-            </button>
-          </div>
-        </form>
-
-        <div class="login-bottom-links">
-          <a [routerLink]="['/forgotPassword']" class="link"
-            >Mot de passe oublié</a
-          >
-          <br />
-          <a [routerLink]="['/register']" class="link">s'inscrire </a>
         </div>
+
+        <div class="mb-3 col-12">
+          <input
+          formControlName="password"
+            type="password"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Mot de passe"
+          />
+          <div class="alert alert-danger " *ngIf="fnPwd.touched && !fnPwd.valid" >
+            <span *ngIf="fnPwd.errors.required">password is required</span>
+        </div>
+        </div>
+
       </div>
     </div>
+    <div class="signup mt-2"><button  type="submit">Connexion</button></div>
+   </form>
+    <div class="signin">
+      <a [routerLink]="['/forgotPassword']" class="link">Mot de passe oublié</a>
+      <br />
+      <p>Je n'ai pas de compte, <a [routerLink]="['/register']" class="link">inscrivez-vous</a></p>
+    </div>
   </div>
+</div>
 
-  <!-- Bottom scripts (common) -->
-</body>
+
+
+

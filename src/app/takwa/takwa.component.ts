@@ -16,12 +16,22 @@ export class TakwaComponent implements OnInit {
    * see: https://marco.dev/enums-angular and https://stackoverflow.com/questions/35923744/pass-enums-in-angular2-view-templates
    */
   readonly Steps = Steps;
+  tab = 1;
   constructor() { }
 
 
 
   ngOnInit() {
     this.currentStep = Steps.STEP_1;
+  }
+
+
+  isActiveTab(id): boolean {
+    return this.tab === id;
+  }
+
+  openTab(id): void {
+    this.tab = id;
   }
 
   setActive(nextStep: Steps): void {

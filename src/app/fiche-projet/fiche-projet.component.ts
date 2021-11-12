@@ -1,6 +1,9 @@
 import { ThrowStmt } from "@angular/compiler";
+
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
   EventEmitter,
   OnInit,
   Output,
@@ -8,6 +11,8 @@ import {
 } from "@angular/core";
 import { NgForm, FormGroup, FormBuilder } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
+import Stepper from "bs-stepper";
+
 
 import { ToastrService } from "ngx-toastr";
 import { parse } from "querystring";
@@ -19,8 +24,16 @@ declare var $: any;
   templateUrl: "./fiche-projet.component.html",
   styleUrls: ["./fiche-projet.component.css"],
 })
-export class FicheProjetComponent implements OnInit {
-  @ViewChild("f", { static: false }) form: NgForm;
+export class FicheProjetComponent implements OnInit,AfterViewInit {
+  @ViewChild("f", { static: false }) form: NgForm
+;
+@ViewChild("exampleModal", { static: false }) exampleModal: ElementRef
+@ViewChild('bsStepper', { static: false }) stepperElement!: ElementRef<any>;
+
+public stepper!: Stepper;
+
+
+
   conceptions;
   constructions;
   clients;
@@ -227,6 +240,7 @@ CA_Annuel_Digestat;
 //Feuille BP INJECTION
 
 total_invest=0;
+open = false;
 grdf;
 
 opexF72
@@ -412,6 +426,7 @@ Redevance_traitement_dechets;
 
 
 
+
   //
   isNanFunction(val) {
     return isNaN(val) ? 0 : parseFloat(val);
@@ -427,6 +442,12 @@ Redevance_traitement_dechets;
   ) {}
 
   ngOnInit() {
+    this.stepper = new Stepper(this.stepperElement.nativeElement, {
+      linear: false,
+      animation: true
+    });
+    this.currentStep = Steps.STEP_1;
+
     this.getDataConstruction();
     this.getData();
     this.getDataExploitation();
@@ -540,6 +561,20 @@ this.LOCATION_VENTE_CONSTRUCTEUR=0
     // this.Indice_n3=this.produit2(())
 
   }
+  next() {
+    this.stepper.next();
+  }
+
+  onSubmit() {
+    return false;
+  }
+
+  ngAfterViewInit() {
+    this.stepper = new Stepper(this.stepperElement.nativeElement, {
+      linear: false,
+      animation: true
+    });
+  }
 
   setvalue(value) {
     this.InputValue = value.replace('%','')+"%";
@@ -574,6 +609,7 @@ this.LOCATION_VENTE_CONSTRUCTEUR=0
     this.bases = this.base_prix.find((x) => x.data == event);
     console.log("bases1", this.bases);
   }
+
 
   listenType(event) {
     console.log("eveeeeeeeeeeeeent", event);
@@ -695,6 +731,7 @@ this.LOCATION_VENTE_CONSTRUCTEUR=0
   }
   formValue;
   arrayForm = [];
+  IC1;
   saveContent(value) {
     console.log("edit mod 2 ..POSITION", this.editMode, this.position);
     console.log("val val saveContent", value);
@@ -702,6 +739,12 @@ this.LOCATION_VENTE_CONSTRUCTEUR=0
     let v = value;
     this.valuesaveContent = value;
     console.log("valuesaveContent", this.valuesaveContent);
+    this.IC1=v.IC1=this.infos
+    .map((x) => x.IC1==this.eventType)
+    console.log("info",this.infos
+    .filter((x) => x.IC1));
+
+console.log("IC1***",v.IC1);
 
     v.unite = this.infotrie5.unite;
     this.Effluent_Delevage = v.Effluent_Delevage =
@@ -714,6 +757,7 @@ this.LOCATION_VENTE_CONSTRUCTEUR=0
     v.Type = this.infotrie5.Type;
 
     this.MS = v.MS = this.infotrie5.MS;
+
 
     console.log("aaaa", this.infofilter);
     // this.t_MB = v.t_MB;
@@ -1077,6 +1121,9 @@ this.LOCATION_VENTE_CONSTRUCTEUR=0
     console.log("arraaayForm", this.formValue);
 
     this.arrayForm.push(this.formValue);
+    this.form.reset();
+    this.currentStep = Steps.STEP_1;
+    this.eventType=""
 
     //somme Nm3Ch4
   console.log("this.arrayForm",this.arrayForm);
@@ -1628,6 +1675,7 @@ this.calaculPrixDeBase(500);
 
     this.getFichesInfo();
   }
+
   listen_total_Quantite_NPK(event){
     console.log("eve",event);
     this.percent_rapport_NPK=this.quotion(this.formValue.quantite, event)
@@ -1890,26 +1938,31 @@ this.Digestat_Brut_K=this.quotion(this.total_K,this.Digestat_Brut_quantite).toFi
   produit3(x, y, z, t) {
     return x * y * z * t;
   }
+
   msg = "";
+  ModifierUMB(val){
+    console.log("val*******",val);
+
+    let a = this.infotrie5.uMB_an;
+    console.log("a**********",a);
+
+    a=val
+    console.log("a apres modifier",a);
+    this.exampleModal.nativeElement.click();
+    this.valuesaveContent.t_MB_an=val
+
+  }
+
   readFormModal(value, abc) {
     console.log("abc", abc);
     this.valuesaveContent = abc;
-    const a = this.infos.find((x) => x.Description == value.Description);
-    if (a != undefined) {
-      this.msg = "Description biblio existe déja ";
-    } else {
+    const a = this.infos.find((x) => x.uMB_an == value.uMB_an);
+
       // this.infos.push();
       console.log("valuesaveContent", this.valuesaveContent);
-      this.valuesaveContent.Description = value.Description;
 
-      this.valuesaveContent.MS = value.MS;
-      this.valuesaveContent.Taux_de_Presence_Rendement_par_ha =
-        value.Taux_de_Presence_Rendement_par_ha;
-      this.valuesaveContent.effluent_elevage = value.effluent_elevage;
       this.valuesaveContent.uMB_an = value.uMB_an;
-      this.valuesaveContent.MO_MS = value.MO_MS;
 
-      this.valuesaveContent.Nm3_CH4_t_MO = value.Nm3_CH4_t_MO;
       console.log("this.valueSave", this.valuesaveContent);
       // this.newFiche.push(this.valuesaveContent);
       this.agriSrv.addFicheClient(this.valuesaveContent).subscribe(
@@ -1927,7 +1980,7 @@ this.Digestat_Brut_K=this.quotion(this.total_K,this.Digestat_Brut_quantite).toFi
       );
 
       $("#change_password").modal("hide");
-    }
+
   }
 
 
@@ -2153,6 +2206,67 @@ for(i=0;i<tabY.length;i++){
 console.log(this.prixLineaire+this.prixpercent+this.prixtrim);
 return this.prixLineaire+this.prixpercent+this.prixtrim
 }
+private currentStep: Steps;
+
+
+/*
+ * The enum values cannot be used directly in the template. They have to declared in the Component again.
+ * see: https://marco.dev/enums-angular and https://stackoverflow.com/questions/35923744/pass-enums-in-angular2-view-templates
+ */
+readonly Steps = Steps;
+
+tab = 1;
+
+
+
+
+isActiveTab(id): boolean {
+  return this.tab === id;
 }
+
+openTab(id): void {
+  this.tab = id;
+}
+
+setActive(nextStep: Steps): void {
+  this.currentStep = nextStep;
+}
+
+isActive(step: Steps): boolean {
+  return this.currentStep === step;
+}
+
+
+
+
+  close() {
+    this.open = false;
+  }
+  showGreenColor=false;
+  showNext(){
+    this.showGreenColor=true
+
+  }
+
+}
+
+enum Steps {
+STEP_1 = 'step 1',
+STEP_2 = 'step 2',
+STEP_3 = 'step 3',
+STEP_4 = 'step 4',
+}
+enum Tabs {
+  STEP_1 = 'step 1',
+  STEP_2 = 'step 2',
+  STEP_3 = 'step 3',
+  STEP_4 = 'step 4',
+  STEP_5 = 'step 5',
+  STEP_6 = 'step 6',
+  STEP_7 = 'step 7',
+  STEP_8 = 'step 8',
+  }
+
+
 
 
