@@ -66,7 +66,7 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     let user = this.formClient.value;
 
-    user.role = "User";
+    user.role = "Client";
 
     user.activatedMail = false;
     user.activationToken = new Date().getTime().toString();

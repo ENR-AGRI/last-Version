@@ -1,27 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+
+ @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
 body {
   font-size: 0.875rem;
   font-family: "Open Sans", sans-serif;
   background-color: #f7f7f7;
 }
 
-header a {
-  text-decoration: none;
-  color: #00ae81;
-}
 
-header i {
-  font-size: 16px;
-}
 
-.search {
-  border-radius: 5px;
-  width: 192px;
-  height: 30px;
-  margin-top: 10px;
-}
-
-/* Main */
 
 .title {
   font-family: "Open Sans", sans-serif;
@@ -55,14 +42,58 @@ header i {
 
 .save {
   background-color: #00ae81;
-  padding: 8px 15px 8px 15px;
+  padding:8px ;
   text-decoration: none;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
+  font-size: 12px;
   color: #ffffff;
   border-radius: 6px;
   margin-top: 15px;
   border: none;
+  margin: 5px;
+  width: 100%;
+
+}
+
+.add {
+  background-color: #fff;
+  background-color: #00ae81;
+  padding:8px ;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: #ffffff;
+  border-radius: 6px;
+  margin-top: 15px;
+  border: none;
+  margin: 5px;
+  width: 100%;
+}
+
+.abc{
+  background-color: #ffffff;
+  padding: 25px;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #00ae81;
+  border-radius: 6px;
+  margin-top: 15px;
+  border: 1px solid #00ae81;
+  outline: none;
+  width: 100%;
+}
+.abc:hover{
+  background-color: #00ae81;
+  color: white;
+}
+
+
+.add:hover {
+  background-color: #018a65;
+  color: white;
 }
 
 .save:hover {
@@ -146,7 +177,6 @@ input[type="email"],
   color: #018a65;
 }
 
-
 .left {
   padding: 24px;
 }
@@ -206,6 +236,66 @@ input[type="email"],
   padding: 5px 9px;
   border-radius: 5px;
 }
+.price {
+  margin-right: 20px;
+}
+
+li {
+  list-style: none;
+}
+
+li a {
+  border: 1px solid #6e6e6e;
+  border-radius: 5px;
+  color: #666666;
+}
+
+.nav-item .nav-link {
+  color: #666666;
+}
+
+.nav-item .nav-link:focus {
+  color: #666666;
+}
+
+.nav-item .nav-link:hover {
+  color: #666666;
+}
+
+.cpx-list {
+  margin-bottom: 5px;
+  color: #018a65;
+  font-weight: 600;
+}
+
+.btn-cpx {
+  background-color: #ffffff;
+  padding: 25px;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #00ae81;
+  border-radius: 6px;
+  margin-top: 15px;
+  border: 1px solid #00ae81;
+  outline: none;
+}
+.abc {
+  background-color: #ffffff;
+  padding: 25px;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #00ae81;
+  border-radius: 6px;
+  margin-top: 15px;
+  border: 1px solid #00ae81;
+  outline: none;
+}
+.abc:hover {
+  background-color: #00ae81;
+  color: white;
+}
 
 /* // Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
@@ -226,6 +316,9 @@ input[type="email"],
     text-align: center;
     padding: 24px;
     color: #018a65;
+  }
+  .email p{
+    display: inline;
   }
 }
 
@@ -249,6 +342,10 @@ input[type="email"],
     padding: 24px;
     color: #018a65;
   }
+  .email p{
+    display: inline;
+  }
+
 }
 
 /* `lg` applies to medium devices (tablets, less than 992px) */
@@ -313,6 +410,7 @@ input[type="email"],
 .progressbar li.active {
   color: #00ae81;
 }
+
 .progressbar li.active:before {
   border-color: #018a65;
   background: #00ae81;
@@ -321,14 +419,17 @@ input[type="email"],
 .progressbar li.active + li:after {
   background-color: #018a65;
 }
-
-
-
+.btn-fwd button {
+  outline: none;
+  background-color: #ffffff;
+  border: 1px solid #00ae81;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
 
 #login {
   width: 5px;
 }
-
 
 .btn-form2 {
   border: none;
@@ -342,183 +443,3 @@ input[type="email"],
 /* button:hover{
   background-color: #666666;
 } */
-
-
-
-/*!
- * bsStepper v{version} (https://github.com/Johann-S/bs-stepper)
- * Copyright 2018 - {year} Johann-S <johann.servoire@gmail.com>
- * Licensed under MIT (https://github.com/Johann-S/bs-stepper/blob/master/LICENSE)
- */
-
- .bs-stepper .step-trigger {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.5;
-  color: #6c757d;
-  text-align: center;
-  text-decoration: none;
-  white-space: nowrap;
-  vertical-align: middle;
-  user-select: none;
-  background-color: transparent;
-  border: none;
-  border-radius: .25rem;
-  transition: background-color .15s ease-out, color .15s ease-out;
-}
-
-.bs-stepper .step-trigger:not(:disabled):not(.disabled) {
-  cursor: pointer;
-}
-
-.bs-stepper .step-trigger:disabled,
-.bs-stepper .step-trigger.disabled {
-  pointer-events: none;
-  opacity: .65;
-}
-
-.bs-stepper .step-trigger:focus {
-  color: #007bff;
-  outline: none;
-}
-
-.bs-stepper .step-trigger:hover {
-  text-decoration: none;
-  background-color: rgba(0, 0, 0, .06);
-}
-
-@media (max-width: 520px) {
-  .bs-stepper .step-trigger {
-    flex-direction: column;
-    padding: 10px;
-  }
-}
-
-.bs-stepper-label {
-  display: inline-block;
-  margin: .25rem;
-}
-
-.bs-stepper-header {
-  display: flex;
-  align-items: center;
-}
-
-@media (max-width: 520px) {
-  .bs-stepper-header {
-    margin: 0 -10px;
-    text-align: center;
-  }
-}
-
-.bs-stepper-line,
-.bs-stepper .line {
-  flex: 1 0 32px;
-  min-width: 1px;
-  min-height: 1px;
-  margin: auto;
-  background-color: rgba(0, 0, 0, .12);
-}
-
-@media (max-width: 400px) {
-  .bs-stepper-line,
-  .bs-stepper .line {
-    flex-basis: 20px;
-  }
-}
-
-.bs-stepper-circle {
-  display: inline-flex;
-  align-content: center;
-  justify-content: center;
-  width: 2em;
-  height: 2em;
-  padding: .5em 0;
-  margin: .25rem;
-  line-height: 1em;
-  color: #fff;
-  background-color: #6c757d;
-  border-radius: 1em;
-}
-
-.active .bs-stepper-circle {
-  background-color: #007bff;
-}
-
-.bs-stepper-content {
-  padding: 0 20px 20px;
-}
-
-@media (max-width: 520px) {
-  .bs-stepper-content {
-    padding: 0;
-  }
-}
-
-.bs-stepper.vertical {
-  display: flex;
-}
-
-.bs-stepper.vertical .bs-stepper-header {
-  flex-direction: column;
-  align-items: stretch;
-  margin: 0;
-}
-
-.bs-stepper.vertical .bs-stepper-pane,
-.bs-stepper.vertical .content {
-  display: block;
-}
-
-.bs-stepper.vertical .bs-stepper-pane:not(.fade),
-.bs-stepper.vertical .content:not(.fade) {
-  display: block;
-  visibility: hidden;
-}
-
-.bs-stepper-pane:not(.fade),
-.bs-stepper .content:not(.fade) {
-  display: none;
-}
-
-.bs-stepper .content.fade,
-.bs-stepper-pane.fade {
-  visibility: hidden;
-  transition-duration: .3s;
-  transition-property: opacity;
-}
-
-.bs-stepper-pane.fade.active,
-.bs-stepper .content.fade.active {
-  visibility: visible;
-  opacity: 1;
-}
-
-.bs-stepper-pane.active:not(.fade),
-.bs-stepper .content.active:not(.fade) {
-  display: block;
-  visibility: visible;
-}
-
-.bs-stepper-pane.dstepper-block,
-.bs-stepper .content.dstepper-block {
-  display: block;
-}
-
-.bs-stepper:not(.vertical) .bs-stepper-pane.dstepper-none,
-.bs-stepper:not(.vertical) .content.dstepper-none {
-  display: none;
-}
-
-.vertical .bs-stepper-pane.fade.dstepper-none,
-.vertical .content.fade.dstepper-none {
-  visibility: hidden;
-}
-
-
-

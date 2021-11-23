@@ -246,12 +246,12 @@ header i {
   background-color: #f7f7f7;
   border-radius: 15px 15px 0 0;
   padding: 20px 10px 10px 10px;
-  line-height: 20px;
+  line-height: 16px;
 
 }
 
 .name {
-  line-height: 9px;
+  line-height: 30px;
 }
 
 .save {

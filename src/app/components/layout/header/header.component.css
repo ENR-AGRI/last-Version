@@ -198,6 +198,9 @@ label {
 
 .dropdown-menu {
   right: 30px;
+  width: 350px;
+  padding: 15px;
+  box-sizing: border-box;
 }
 
 .nav-item .dropdown-menu {
@@ -208,4 +211,15 @@ label {
 }
 .nav-item .dropdown-menu {
   margin-top: 0;
+}
+.notif-info p{
+  color: rgb(136, 136, 136);
+  font-size: 0.875rem;
+
+}
+.list-group{
+  max-height: 300px;
+  margin-bottom: 10px;
+  overflow-y:auto;
+  -webkit-overflow-scrolling: touch;
 }

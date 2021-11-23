@@ -30,6 +30,25 @@ export class AgriService {
   deleteProjet(id: any) {
     return this.http.delete(this.config.baseURL + "/projets/" + id);
   }
+  //CLIENT
+
+  addClient(client){
+
+    return this.http.post(this.config.baseURL + "/clients", client);
+
+  }
+
+
+
+  updateClient(id,client){
+
+    console.log("id",id);
+
+
+
+    return this.http.put(this.config.baseURL + "/clients/"+id, client);
+
+  }
 
   //REAL TIME WITH SUBJECT
   private resultSubject = new Subject<string>();

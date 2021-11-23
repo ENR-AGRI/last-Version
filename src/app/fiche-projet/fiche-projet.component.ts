@@ -9,22 +9,24 @@ import {
   Output,
   ViewChild,
 } from "@angular/core";
-import { NgForm, FormGroup, FormBuilder } from "@angular/forms";
+import { NgForm, FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import Stepper from "bs-stepper";
+import * as moment from "moment";
 
 
 import { ToastrService } from "ngx-toastr";
 import { parse } from "querystring";
 import Swal from "sweetalert2";
 import { AgriService } from "../services/agri.service";
+import { AuthService } from "../services/auth.service";
 declare var $: any;
 @Component({
   selector: "app-fiche-projet",
   templateUrl: "./fiche-projet.component.html",
   styleUrls: ["./fiche-projet.component.css"],
 })
-export class FicheProjetComponent implements OnInit,AfterViewInit {
+export class FicheProjetComponent implements OnInit {
   @ViewChild("f", { static: false }) form: NgForm
 ;
 @ViewChild("exampleModal", { static: false }) exampleModal: ElementRef
@@ -433,21 +435,65 @@ Redevance_traitement_dechets;
   }
   //**
   @Output() scenarioEmetteur = new EventEmitter<string>();
+  formClient: FormGroup;
+  show = true;
 
+  roles
+
+
+  current_User;
   constructor(
     private agriSrv: AgriService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private authSrv:AuthService
   ) {}
 
   ngOnInit() {
-    this.stepper = new Stepper(this.stepperElement.nativeElement, {
-      linear: false,
-      animation: true
-    });
-    this.currentStep = Steps.STEP_1;
+    this.authSrv.profile().subscribe((data:any)=>{
+      this.current_User=data
+      console.log("current_User",this.current_User);
+    }
+    )
 
+
+
+    this.formClient = this.fb.group({
+      prenom: [
+        "",
+        [
+          Validators.minLength(3),
+          Validators.maxLength(50),
+          Validators.required,
+        ],
+      ],
+      nom: [
+        "",
+        [
+          Validators.minLength(3),
+          Validators.maxLength(50),
+          Validators.required,
+        ],
+      ],
+
+      email: ["", [Validators.email, Validators.required]],
+
+      tel: ["", [Validators.required]],
+      tel_Domicile: "",
+      fonction: ["", [Validators.required]],
+      adresse: ["", Validators.required],
+      codePostal: ["", Validators.required],
+      ville: ["", Validators.required],
+      pays: ["France", Validators.required],
+      complement:"",
+      societe:"",
+      nom_societe:"",
+    });
+
+
+
+    this.currentStep = Steps.STEP_1;
     this.getDataConstruction();
     this.getData();
     this.getDataExploitation();
@@ -561,20 +607,135 @@ this.LOCATION_VENTE_CONSTRUCTEUR=0
     // this.Indice_n3=this.produit2(())
 
   }
-  next() {
-    this.stepper.next();
-  }
+  borderVille=false
+  borderFonction=false
+  borderSociete=false
+  borderCodePostal=false
+  borderTel_Domicile=false
+  borderNomSociete=false
 
-  onSubmit() {
-    return false;
-  }
+   signUpClient() {
+ let form=this.formClient.value
+ console.log("form",form);
+ if(this.current_User.fonction==""){
+   this.borderFonction=true
+ }
+ if(this.current_User.societe==""){
+   this.borderSociete=true
+ }
+ if(this.current_User.nom_societe==""){
+   this.borderVille=true
+ }
+ if(this.current_User.ville==""){
+   this.borderVille=true
+ }
+ if(this.current_User.codePostal==""){
+   this.borderCodePostal=true
+ }
+ if(this.current_User.tel_Domicile==""){
+   this.borderTel_Domicile=true
+ }
+ if(this.current_User.nom_societe==""){
+   this.borderNomSociete=true
+ }
+ form.nom=this.current_User.nom
+ form.prenom=this.current_User.prenom
+ form.email=this.current_User.email
+ form.tel=this.current_User.tel
+ form.fonction=this.formClient.value.fonction
+ form.societe=this.formClient.value.societe
+ form.nom_societe=this.formClient.value.nom_societe
+ form.ville=this.formClient.value.ville
+ form.codePostal=this.formClient.value.codePostal
+ form.tel_Domicile=this.formClient.value.tel_Domicile
+ form.role=this.current_User.role
+ form.user_id=this.current_User._id
 
-  ngAfterViewInit() {
-    this.stepper = new Stepper(this.stepperElement.nativeElement, {
-      linear: false,
-      animation: true
-    });
-  }
+ console.log("form",form);
+     this.authSrv.updateProfile(form).subscribe(
+       (data: any) => {
+
+
+         // if (data) this.toastr.success(data.msgsrv);
+         // console.log("data error", data.msgsrv);
+         // this.formClient.reset();
+       },
+       // (err:any) => {
+       //   let msg = "verifier les champs saisie";
+       //   // this.toastr.warning(err.error.msgsrv);
+       //   this.toastr.warning(msg);
+       // }
+     );
+   }
+
+   getAllRoles() {
+     this.authSrv.getAllRole().subscribe((data: any) => {
+       this.roles = data;
+
+       console.log("roles", this.roles);
+     });
+   }
+
+   get fnNom() {
+     return this.formClient.get("nom");
+   }
+   get fnPrenom() {
+     return this.formClient.get("prenom");
+   }
+
+   get fnEmail() {
+     return this.formClient.get("email");
+   }
+   get fnTel() {
+     return this.formClient.get("tel");
+   }
+
+   get fnFonction() {
+     return this.formClient.get("fonction");
+   }
+
+   get fnCodePostal() {
+     return this.formClient.get("codePostal");
+   }
+
+   get fnVille() {
+     return this.formClient.get("ville");
+   }
+
+   get fnPays() {
+     return this.formClient.get("pays");
+   }
+   toggleshow() {
+     this.show = !this.show;
+   }
+
+   listenEtat(value:any) {
+     console.log("event.target.value : ",  value);
+     let d = Date.now();
+     let date = moment(d).format("lll");
+     enum DateTypes {
+       Date_StatQ = "Client En Quotation",
+       Date_StatCC = "Contrat Cadre",
+       Date_StatCp = "Client En Conception",
+
+       Date_StatCs = "Client En Construction",
+       Date_StatEs = "Client En service",
+     }
+
+     //this.formClient.reset();
+     this.formClient.get("Date_StatQ").setValue("");
+     this.formClient.get("Date_StatEs").setValue("");
+     this.formClient.get("Date_StatCp").setValue("");
+     this.formClient.get("Date_StatCs").setValue("");
+     this.formClient.get("Date_StatCC").setValue("");
+     const formControlName = Object.keys(DateTypes).find(
+       (key) => DateTypes[key] === value
+     );
+     this.formClient.get(formControlName).setValue(date);
+   }
+
+
+
 
   setvalue(value) {
     this.InputValue = value.replace('%','')+"%";
@@ -653,6 +814,17 @@ this.LOCATION_VENTE_CONSTRUCTEUR=0
 
     this.infotrie5 = this.infos.find((x) => x.Description == this.desc);
     console.log("ingo5", this.infotrie5);
+
+
+    //somme MS
+this.somme_MS = this.newFiche
+.filter((x) => x.t_MS_an)
+.reduce(
+  (accumulator, current) => accumulator + parseFloat(current.t_MS_an),
+  0
+);
+
+console.log("somme_MB****************************************", this.somme_MS);
 
     this.prod = this.produit(
       parseFloat(this.infotrie5.uMB_an.replace(",", ".")),
@@ -1307,15 +1479,15 @@ this.Vente_Biomethane_n4=this.produit2(this.Vente_digestat_solide_n3,(1+0.01))
   );
 
 console.log("som_KWH", this.somme_KWH);
-//somme MS
-this.somme_MS = this.newFiche
-  .filter((x) => x.t_MS_an)
-  .reduce(
-    (accumulator, current) => accumulator + parseFloat(current.t_MS_an),
-    0
-  );
+// //somme MS
+// this.somme_MS = this.newFiche
+//   .filter((x) => x.t_MS_an)
+//   .reduce(
+//     (accumulator, current) => accumulator + parseFloat(current.t_MS_an),
+//     0
+//   );
 
-console.log("somme_MB", this.somme_MS);
+// console.log("somme_MB****************************************", this.somme_MS);
  //Somme MB
  this.somme_MB = this.newFiche
  .filter((x) => x.t_MB_an)
@@ -2209,6 +2381,7 @@ return this.prixLineaire+this.prixpercent+this.prixtrim
 private currentStep: Steps;
 
 
+
 /*
  * The enum values cannot be used directly in the template. They have to declared in the Component again.
  * see: https://marco.dev/enums-angular and https://stackoverflow.com/questions/35923744/pass-enums-in-angular2-view-templates
@@ -2229,6 +2402,8 @@ openTab(id): void {
 }
 
 setActive(nextStep: Steps): void {
+  console.log("currentStep",this.currentStep);
+
   this.currentStep = nextStep;
 }
 
@@ -2243,8 +2418,214 @@ isActive(step: Steps): boolean {
     this.open = false;
   }
   showGreenColor=false;
+  ha=false;
+  hb=false;
+  hc=false;
+  hd=false;
+  he=false;
+  hf=false;
+  hg=false
   showNext(){
     this.showGreenColor=true
+    this.ha=true
+    this.hb=false
+    this.hc=false
+  this.hd=false
+  this.he=false
+  this.hf=false
+  this.hg=false
+
+  }
+  greenCapex=false
+  click1(){
+    this.ha=false
+    this.hb=true
+    this.hc=false
+    this.hd=false
+    this.he=false
+    this.hf=false
+    this.hg=false
+
+    this.greenCapex=true
+  }
+  click2(){
+    this.ha=false
+    this.hb=false
+    this.hc=true
+    this.hd=false
+    this.he=false
+    this.hf=false
+    this.hg=false
+  }
+  greenOpex=false
+  click3(){
+this.greenOpex=true
+ this.ha=false
+    this.hb=false
+    this.hc=false
+    this.hd=true
+    this.he=false
+    this.hf=false
+    this.hg=false
+  }
+  click4(){
+
+     this.ha=false
+        this.hb=false
+        this.hc=false
+        this.hd=false
+        this.he=true
+        this.hf=false
+        this.hg=false
+      }
+      click5(){
+
+        this.ha=false
+           this.hb=false
+           this.hc=false
+           this.hd=false
+           this.he=false
+           this.hf=true
+           this.hg=false
+         }
+         click6(){
+
+          this.ha=false
+             this.hb=false
+             this.hc=false
+             this.hd=false
+             this.he=false
+             this.hf=false
+             this.hg=true
+           }
+
+  clickprecedent1(){
+
+    this.ha=false
+    this.hb=false
+    this.hc=false
+    this.hd=false
+    this.he=false
+    this.hf=false
+    this.hg=false
+    this.showGreenColor=false
+
+  }
+  clickprecedent2(){
+    this.ha=true
+    this.hb=false
+    this.hc=false
+    this.hd=false
+    this.he=false
+    this.hf=false
+    this.hg=false
+    this.greenCapex=false
+
+
+  }
+  clickprecedent3(){
+    this.ha=false
+    this.hb=true
+    this.hc=false
+    this.hd=false
+    this.he=false
+    this.hf=false
+    this.hg=false
+    this.greenCapex=false
+  }
+  clickprecedent4(){
+    this.ha=false
+    this.hb=false
+    this.hc=true
+    this.hd=false
+    this.he=false
+    this.hf=false
+    this.hg=false
+    this.greenCapex=false
+  }
+  clickprecedent5(){
+    this.ha=false
+    this.hb=false
+    this.hc=false
+    this.hd=true
+    this.he=false
+    this.hf=false
+    this.hg=false
+    this.greenCapex=false
+  }
+  clickprecedent6(){
+    this.ha=false
+    this.hb=false
+    this.hc=false
+    this.hd=false
+    this.he=true
+    this.hf=false
+    this.hg=false
+    this.greenCapex=false
+  }
+  clickprecedent7(){
+    this.ha=false
+    this.hb=false
+    this.hc=false
+    this.hd=false
+    this.he=false
+    this.hf=true
+    this.hg=false
+    this.greenCapex=false
+  }
+  btnConstruction=false
+  btnRaccordement=false
+  btnInvesstissement=false
+  listBtnConception=false
+  btnConception=false
+  conceptionClick(){
+this.listBtnConception=true
+this.btnConception=false
+  }
+  closeConception(){
+this.listBtnConception=false
+  }
+  constructionClick(){
+    this.btnConstruction=true
+    this.btnRaccordement=false
+    this.btnInvesstissement=false
+    this.listBtnConception=false
+  }
+
+
+
+
+  goToProfile(){
+   this.showGreenColor=false
+   this.greenCapex=false
+   this.clickprecedent1()
+  }
+  goToGisement(){
+   this.showGreenColor=true
+
+    if(!this.greenCapex)
+    this.showNext()
+
+    this.clickprecedent2()
+  }
+  goToCapex(){
+
+    if(this.showGreenColor){
+      this.greenCapex=true
+      this.click1()
+    }
+    else if(!this.showGreenColor) {
+
+      this.greenCapex=false
+      this.clickprecedent1()
+    }
+    if(!this.greenCapex && !this.showGreenColor){
+      this.greenCapex=true
+      this.showGreenColor=true
+      this.click1()
+    }
+
+
 
   }
 
@@ -2256,16 +2637,7 @@ STEP_2 = 'step 2',
 STEP_3 = 'step 3',
 STEP_4 = 'step 4',
 }
-enum Tabs {
-  STEP_1 = 'step 1',
-  STEP_2 = 'step 2',
-  STEP_3 = 'step 3',
-  STEP_4 = 'step 4',
-  STEP_5 = 'step 5',
-  STEP_6 = 'step 6',
-  STEP_7 = 'step 7',
-  STEP_8 = 'step 8',
-  }
+
 
 
 

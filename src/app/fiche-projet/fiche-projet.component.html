@@ -1,954 +1,1832 @@
-<div class="container">
-  <div #bsStepper id="stepper1" class="bs-stepper">
-    <div class="bs-stepper-header">
-      <div class="step" data-target="#test-l-1">
-        <button class="step-trigger">
-          <span class="bs-stepper-circle">1</span>
-          <span class="bs-stepper-label">Profil</span>
-        </button>
+<main class="container">
+  <form  #f="ngForm">
+    <main class="container">
+     <!--
+       <div class="title mb-3 mt-3">
+        <p>Gisement</p>
       </div>
-      <div class="line"></div>
-      <div class="step" data-target="#test-l-2">
-        <button class="step-trigger">
-          <span class="bs-stepper-circle">2</span>
-          <span class="bs-stepper-label">Gisement</span>
-        </button>
-      </div>
-      <div class="line"></div>
-      <div class="step" data-target="#test-l-3">
-        <button class="step-trigger">
-          <span class="bs-stepper-circle">3</span>
-          <span class="bs-stepper-label">Capex</span>
-        </button>
-      </div>
-    </div>
-    <div class="bs-stepper-content">
-      <form (ngSubmit)="onSubmit()">
-        <div id="test-l-1" class="content">
-          <app-profile-client></app-profile-client>
-          <button (click)="next()" class="btn btn-primary">Suivant</button>
-        </div>
-        <div id="test-l-2" class="content">
-          <main class="container">
-          <form  #f="ngForm">
-            <main class="container">
-              <div class="title mb-3 mt-3">
-                <p>Gisement</p>
-              </div>
-              <div class="container client-tab mb-3 g-0">
-                <div class="row client-form">
-                  <div class="col-12 col-lg-8 left">
-                    <div class="row d-flex justify-content-center mb-3">
-                      <div class="col-8">
-                        <div class="row line mb-3 nav nav-pills" role="tablist">
-                          <div
-                            class="col-4 stepText1 actve"
-                            id="home-tab"
-                            type="button"
-                            data-bs-toggle="tab"
-                            data-bs-target="#categorieIntrant"
-                            role="tab"
-                            aria-controls="categorieIntrant"
-                            (click)="openTab(1)"
-                          >
-                            Catégorie d'intrant
-                          </div>
+    -->
+      <div class="container client-tab mb-3 g-0">
+        <div class="row client-form">
+          <div class="col-12  "  *ngIf="!ha && !hb && !hc && !hd && !he && !hf && !hg ">
+            <div class=" g-0">
+              <div class="row g-0">
 
-                          <div
-                            class="col-4 stepText2"
-                            id="profile-tab"
-                            type="button"
-                            data-bs-toggle="tab"
-                            data-bs-target="#total"
-                            role="tab"
-                            aria-controls="total"
-                            (click)="openTab(2)"
-                          >
-                            Intrant Total
-                          </div>
+                    <form  class=" col-12 p-0" [formGroup]="formClient" (ngSubmit)="signUpClient()">
+                      <div class="row g-0 pt-5 px-2 pb-0 client-info d-flex align-items-center">
 
-                          <div
-                            class="col-4 stepText3"
-                            id="contact-tab"
-                            type="button"
-                            data-bs-toggle="tab"
-                            data-bs-target="#Puissance"
-                            role="tab"
-                            aria-controls="Puissance"
-                            (click)="openTab(3)"
-                          >
-                            Puissance
+                        <div class="row justify-content-between">
+                           <div class="col-12 col-lg-3">
+                          <p  style="font-size: 2rem; font-weight:600">{{current_User?.nom}}</p>
+
+                          <p  style="font-size: 2rem; font-weight: 600">{{current_User?.prenom}}</p>
+                        </div>
+                          <div class="col-12 col-lg-3 email">
+                            <p >
+                              Email:  <br class="d-sm-block d-lg-none">{{current_User?.email}}
+                            </p>
+
+                          </div>
+                          <div class="col-12 col-lg-3">
+                            <p>
+                              Tel portable:
+                            </p>
+                              <p style="font-weight: 150; font-weight: 600;">
+                                {{current_User?.tel}}
+                            </p>
+                          </div>
+                          <div class="col-12 col-lg-3">
+                            <p>
+                              Tel Domicile:
+                            </p>
+                              <p style="font-weight: 150; font-weight: 600;">
+                              +33 00 00 00 00 00
+                            </p>
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col-4">
-                            <div class="step step1 " [ngClass]="{ activated: isActiveTab(1) }" ></div>
-                          </div>
-                          <div class="col-4"><div class="step step2" [ngClass]="{ activated: isActiveTab(2) }"></div></div>
-                          <div class="col-4"><div class="step step3" [ngClass]="{ activated: isActiveTab(3) }" ></div></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tab-content" >
 
-                      <div class="row d-flex justify-content-center mb-3" class="tab-pane  active" id="categorieIntrant">
-                        <div class="col-8 content">
-                          <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_1)">
-                            <select #refIC1
-                              class="form-select shadow-none"
-                              id="floatingSelect"
-                              aria-label="Floating label select example"
-                              [value]="ic1"
-                              (change)="listenType($event.target.value)"
-                              [(ngModel)]="infos.IC1"
-                              name="infos.IC1"
-                            >
-                              <option selected class="w-100" *ngFor="let item of infotrie"
-                              [value]="item" >
-                                {{ item }}
-                              </option>
-                            </select>
-
-
-                            <label for="floatingSelect">Type d'intrant </label>
-                            <div
-                              class="
-                                d-flex
-                                justify-content-between
-                                align-items-center
-                                mt-2"
-                            >
-                              <p
-                                style="
-                                  margin-left: 12px;
-                                  font-weight: 600;
-                                  color: #00ae81;
-                                "
-                              >
-                             <span > {{ eventType }}</span>
-                              </p>
-                              <button class="btn-form mt-2" (click)="setActive(Steps.STEP_2)">
-                                <span>Continuer</span>
-                                <span><i class="fi fi-rr-Angle-right"></i></span>
-                              </button>
-                            </div>
-                          </div>
-                          <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_2)">
-                            <select
-                              class="form-select shadow-none"
-                              id="floatingSelect"
-                              aria-label="Floating label select example"
-                              (change)="listenIc1($event.target.value)"
-                                [(ngModel)]="infos.IC2"
-                                name="IC2"
-                                type="text"
-
-                                [value]="ic2"
-                            >
-                              <option selected class="w-100" *ngFor="let item of infotrie2" [value]="item">
-                                {{ item }}
-                            </select>
-                            <label for="floatingSelect">Type d'intrant </label>
-                            <div
-                              class="
-                                d-flex
-                                justify-content-between
-                                align-items-center
-                                mt-2"
-                            >
-                              <p
-                                style="
-                                  margin-left: 12px;
-                                  font-weight: 600;
-                                  color: #00ae81;
-                                "
-                              >
-                              {{ ic2 }}
-                              </p>
-                              <button class="btn-form mt-2"(click)="setActive(Steps.STEP_3)">
-                                <span>Continuer</span>
-                                <span><i class="fi fi-rr-Angle-right"></i></span>
-                              </button>
-                            </div>
-                          </div>
-                          <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_3)">
-                            <select
-                              class="form-select shadow-none"
-                              id="floatingSelect"
-                              aria-label="Floating label select example"
-                              (change)="listenIc2($event.target.value)"
-                              [(ngModel)]="infos.IC3"
-                              name="IC3"
-
-                              [value]="ic3"
-                            >
-                              <option selected class="w-100" *ngFor="let item of infotrie3" [value]="item">
-                                {{ item }}
-                            </select>
-                            <label for="floatingSelect">Type d'intrant </label>
-                            <div
-                              class="
-                                d-flex
-                                justify-content-between
-                                align-items-center
-                                mt-2"
-                            >
-                              <p
-                                style="
-                                  margin-left: 12px;
-                                  font-weight: 600;
-                                  color: #00ae81;
-                                "
-                              >
-                              {{ ic3 }}
-                              </p>
-                              <button class="btn-form mt-2" (click)="setActive(Steps.STEP_4)">
-                                <span>Continuer</span>
-                                <span><i class="fi fi-rr-Angle-right"></i></span>
-                              </button>
-                            </div>
-                          </div>
-                          <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_4)">
-                            <select
-                              class="form-select shadow-none"
-                              id="floatingSelect"
-                              aria-label="Floating label select example"
-                              (change)="listenDesc($event.target.value)"
-                                  [(ngModel)]="infos.Description"
-                                  name="Description"
-                                  type="text"
-
-                                  [value]="desc_biblio"
-                                  required
-                            >
-                              <option selected class="w-100" *ngFor="let item of infotrie4" [value]="item">
-                                {{ item }}
-                            </select>
-                            <label for="floatingSelect">Type d'intrant </label>
-                            <div
-                              class="
-                                d-flex
-                                justify-content-between
-                                align-items-center
-                                mt-2"
-                            >
-                              <p
-                                style="
-                                  margin-left: 12px;
-                                  font-weight: 600;
-                                  color: #00ae81;
-                                "
-                              >
-                              {{ desc_biblio }}
-                              </p>
-                              <button class="btn-form mt-2" (click)="setActive(Steps.STEP_2)">
-                                <span>Continuer</span>
-                                <span><i class="fi fi-rr-Angle-right"></i></span>
-                              </button>
-                            </div>
-                          </div>
-                          <div class="form-floating mb-3">
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="floatingInput"
-                              placeholder="Quantité"
-                              (change)="listenQuantute($event.target.value)"
-                                  [(ngModel)]="quantite"
-                                  name="quantite"
-
-                                  [value]="q"
-                            />
-                            <label for="floatingInput">Quantité</label>
-                          </div>
-                          <div class="row">
-                            <div class="col-4">
-                              <div class="form-floating mb-3">
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="floatingInput"
-                                  placeholder="MB"
-                                  *ngIf="infos"
-                                  [(ngModel)]="infos.uMB_an"
-                                  name="infos.uMB_an"
-                                  required
-                                  value="{{ infotrie5?.uMB_an }}"
-
-                                />
-
-                                <label for="floatingInput">MB</label>
-                              </div>
-                            </div>
-                            <div class="col-4 d-block justify-content-center align-items-center">
-                              <label for="">Selectionnez:</label>
-
-
-                              <button class="btn-form2 mt-3"  data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</button>
-
-                              <!-- <div class="form-floating">
-                                <select
-                                  class="form-select shadow-none"
-                                  id="floatingSelect"
-                                  aria-label="Floating label select example"
-                                >
-                                  <option selected class="w-100">Sélectionner</option>
-                                  <option value="1">Oui</option>
-                                  <option value="2">Modifier</option>
-                                </select>
-                                <label for="floatingSelect"
-                                  >Votre catégorie d'intrant?
-                                </label>
-                              </div> -->
-                            </div>
-                            <div class="col-4">
-                              <div class="form-floating mb-3">
-                                <input
-                                  type="email"
-                                  class="form-control"
-                                  id="floatingInput"
-
-                                  [(ngModel)]="t_MB_an"
-                                  name="t_MB_an"
-                                  [value]="mb_an"
-                                  id="formGroupExampleInput"
-                                  value="{{ prod }}"
-                                />
-                                <label for="floatingInput">Total</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row d-flex justify-content-center mb-3" class="tab-pane" id="total">
-                        <div class="col-8 content">
-                          <table class="table">
-                            <thead>
-                              <tr class="table-success">
-                                <th scope="col">Type</th>
-                                <th scope="col">Quantité</th>
-
-                                <th scope="col">Total MB</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-
-                              <tr  *ngFor="let newFiche of arrayForm ; let i = index">
-
-                                <td scope="row"></td>
-                                <td>{{newFiche?.quantite}}</td>
-                                <td>{{newFiche?.t_MB_an}}</td>
-
-                              </tr>
-
-                            </tbody>
-                          </table>
-
-                        </div>
-                      </div>
-                      <div class="row d-flex justify-content-center mb-3" class="tab-pane" id="Puissance">
-                        <div class="col-8 content">
-                          <table class="table">
-                            <thead>
-                              <tr class="table-success">
-                                <th scope="col">Total MS</th>
-                                <th scope="col">Total MB</th>
-                                <th scope="col">Total Nm3CH4/h</th>
-                                <th scope="col">Total KWH/h</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>{{ somme_MS }}</td>
-                                  <td>{{ somme_MB }}</td>
-                                  <td>{{ volume_Nm3_CH4_an }}</td>
-                                  <td>{{ somme_KWH }}</td>
-                              </tr>
-
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
+                        <hr style="margin-bottom: 0px;"/>
                       </div>
 
-
-
-                    <div class="row d-flex justify-content-center">
-                      <div class="col-8 d-flex justify-content-between align-items-center">
-                        <div>
-                          <button class="btn-form">
-                            <span class="btn-txt">+</span>
-                          </button>
-                        </div>
-                        <div class="next-btn">
-                          <button class="save" (click)="showNext()">
-                            <span class="btn-txt">Suivant</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 col-lg-4 right">
-                    <div>
-                      <h5>Catégorie des intrants</h5>
-                      <p>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                        nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                        erat, sed diam voluptua. At.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Step Bar start -->
-
-              <div class="container">
-                <ul class="progressbar">
-                  <li   [ngClass]="showGreenColor ? 'active': ''">
-                    <img width="60px" src="assets/images/ficheClient.png" />
-                    <p>Profil</p>
-                  </li>
-                  <li >
-                    <img width="60px" src="assets/images/gisement.png" />
-                    <p>Gisement</p>
-                  </li>
-                  <li>
-                    <img width="60px" src="assets/images/capex.png" />
-                    <p>CAPEX</p>
-                  </li>
-
-                </ul>
-              </div>
-
-              <!-- Step Bar end -->
-            </main>
-            </form>
-            <div class="modal fade" id="exampleModal" #exampleModal tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-
-                <div class="modal-content" >
-
-                  <div class="modal-header" >
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-
-
-
-                  <div class="modal-body">
-                <div class="container-fluid">
-
-                    <div class="row">
-                      <div class="row">
-                        <div class="col-12">
-                          <div class="row">
-                            <div class="col-12 col-sm-6 col-lg-4">
-                              <div class="form-group">
-
-                              <label class="form-label">Ajouter vote MB/u</label>
-                              <input
-                                type="text"
-                                class="form-control form-control-sm me-1"
-                                placeholder="00000"
-                                required
-                                #i
-                                [(ngModel)]="infos.uMB_an"
-                                name="infos.uMB_an"
-                                value="{{ infotrie5?.uMB_an }}"
-
-                              />
-                            </div>
-                            </div>
-
-                        </div>
-
-                      </div>
-                    </div>
-
-
-
-                </div>
-                </div>
-                </div>
-                <div class="modal-footer">
-                  <div class="buttons">
-                    <button class="btn-form"   (click)="ModifierUMB(i.value)" >
-                      <span >Modifier</span>
-                    </button>
-                    <button  class="btn-form" data-bs-dismiss="modal">
-                      <span >Annuler</span>
-                    </button>
-                  </div>
-                </div>
-
-
-
-              </div>
-            </div>
-            </div>
-          </main>
-          <button (click)="next()" class="btn btn-primary">Next</button>
-        </div>
-        <div id="test-l-3" class="content text-center">
-          <main class="container">
-            <div class="title mb-3 mt-3">
-              <p>CAPEX</p>
-            </div>
-            <div class="container client-tab mb-3 g-0">
-              <div class="row client-form g-0">
-                <div class="col-12 col-lg-8 left">
-                  <div class="row d-flex justify-content-center">
-                    <div class="col-8">
-                      <div class="btn-cpx">
-                        <button class="col-12">
-                          <span>CAPEX Conception</span
-                          ><span
-                            ><i
-                              style="
-                                float: right;
-                                vertical-align: middle;
-                                color: #018a65;
-                                margin-top: 5px; ;
-                              "
-                              class="fas fa-chevron-right"
-                            ></i
-                          ></span>
-                        </button>
-                      </div>
-                      <div class="btn-cpx">
-                        <button class="col-12">
-                          <span>CAPEX Construction</span
-                          ><span
-                            ><i
-                              style="
-                                float: right;
-                                vertical-align: middle;
-                                color: #018a65;
-                                margin-top: 5px; ;
-                              "
-                              class="fas fa-chevron-right"
-                            ></i
-                          ></span>
-                        </button>
-                      </div>
-                      <div class="btn-cpx">
-                        <button class="col-12">
-                          <span>CAPEX Raccordement</span
-                          ><span
-                            ><i
-                              style="
-                                float: right;
-                                vertical-align: middle;
-                                color: #018a65;
-                                margin-top: 5px; ;
-                              "
-                              class="fas fa-chevron-right"
-                            ></i
-                          ></span>
-                        </button>
-                      </div>
-                      <div class="btn-cpx">
-                        <button class="col-12">
-                          <span>CAPEX Autres invesstissement</span
-                          ><span
-                            ><i
-                              style="
-                                float: right;
-                                vertical-align: middle;
-                                color: #018a65;
-                                margin-top: 5px; ;
-                              "
-                              class="fas fa-chevron-right"
-                            ></i
-                          ></span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row d-flex justify-content-center pt-2">
-                    <div class="col-8">
-                      <div class="col d-flex justify-content-center">
-                        <div><p style="font-size: 1.25rem">CAPEX Conception</p></div>
-                      </div>
-                      <li class="nav-item mb-2">
-                        <a
-                          class="nav-link"
-                          data-bs-toggle="collapse"
-                          href="#multiCollapseExample1"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="multiCollapseExample1"
-                        >
-                          <span>1/ Intérêt du porteur de projet</span>
-                          <i
-                            style="
-                              float: right;
-                              vertical-align: middle;
-                              color: #018a65;
-                              margin-top: 5px;
-                            "
-                            class="fas fa-chevron-down"
-                          ></i>
-                        </a>
-                        <ul class="collapse multi-collapse" id="multiCollapseExample1">
-                          <li
-                            class="list-item cpx-list d-flex justify-content-between mt-3"
-                          >
-                            <p>1.1. Etude préléminaire de la biomasse</p>
-                            <p class="price">00€</p>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="nav-item mb-2">
-                        <a
-                          class="nav-link"
-                          data-bs-toggle="collapse"
-                          href="#multiCollapseExample2"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="multiCollapseExample2"
-                        >
-                          <span>2/ Etude de la biomasse du projet</span>
-                          <i
-                            style="
-                              float: right;
-                              vertical-align: middle;
-                              color: #018a65;
-                              margin-top: 5px;
-                            "
-                            class="fas fa-chevron-down"
-                          ></i>
-                        </a>
-                        <ul class="collapse multi-collapse" id="multiCollapseExample2">
-                          <li
-                            class="list-item cpx-list d-flex justify-content-between mt-3"
-                          >
-                            <p>1.1. Etude préléminaire de la biomasse</p>
-                            <p class="price">00€</p>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="nav-item mb-2">
-                        <a
-                          class="nav-link"
-                          data-bs-toggle="collapse"
-                          href="#multiCollapseExample3"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="multiCollapseExample3"
-                        >
-                          <span> 3/ Étude foncière du projet</span>
-                          <i
-                            style="
-                              float: right;
-                              vertical-align: middle;
-                              color: #018a65;
-                              margin-top: 5px;
-                            "
-                            class="fas fa-chevron-down"
-                          ></i>
-                        </a>
-                        <ul class="collapse multi-collapse" id="multiCollapseExample3">
-                          <li
-                            class="list-item cpx-list d-flex justify-content-between mt-3"
-                          >
-                            <p>1.1. Etude préléminaire de la biomasse</p>
-                            <p class="price">00€</p>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="nav-item mb-2">
-                        <a
-                          class="nav-link"
-                          data-bs-toggle="collapse"
-                          href="#multiCollapseExample4"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="multiCollapseExample4"
-                        >
-                          <span>4/ La sécurisation des droits gaziers </span>
-                          <i
-                            style="
-                              float: right;
-                              vertical-align: middle;
-                              color: #018a65;
-                              margin-top: 5px;
-                            "
-                            class="fas fa-chevron-down"
-                          ></i>
-                        </a>
-                        <ul class="collapse multi-collapse" id="multiCollapseExample4">
-                          <li
-                            class="list-item cpx-list d-flex justify-content-between mt-3"
-                          >
-                            <p>1.1. Etude préléminaire de la biomasse</p>
-                            <p class="price">00€</p>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="nav-item mb-2">
-                        <a
-                          class="nav-link"
-                          data-bs-toggle="collapse"
-                          href="#multiCollapseExample5"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="multiCollapseExample5"
-                        >
-                          <span>5/ La valorisation du digestat </span>
-                          <i
-                            style="
-                              float: right;
-                              vertical-align: middle;
-                              color: #018a65;
-                              margin-top: 5px;
-                            "
-                            class="fas fa-chevron-down"
-                          ></i>
-                        </a>
-                        <ul class="collapse multi-collapse" id="multiCollapseExample5">
-                          <li
-                            class="list-item cpx-list d-flex justify-content-between mt-3"
-                          >
-                            <p>1.1. Etude préléminaire de la biomasse</p>
-                            <p class="price">00€</p>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="nav-item mb-2">
-                        <a
-                          class="nav-link"
-                          data-bs-toggle="collapse"
-                          href="#multiCollapseExample6"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="multiCollapseExample6"
-                        >
-                          <span>6/ Réalisation des supports Marketing </span>
-                          <i
-                            style="
-                              float: right;
-                              vertical-align: middle;
-                              color: #018a65;
-                              margin-top: 5px;
-                            "
-                            class="fas fa-chevron-down"
-                          ></i>
-                        </a>
-                        <ul class="collapse multi-collapse" id="multiCollapseExample6">
-                          <li
-                            class="list-item cpx-list d-flex justify-content-between mt-3"
-                          >
-                            <p>1.1. Etude préléminaire de la biomasse</p>
-                            <p class="price">00€</p>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="nav-item mb-2">
-                        <a
-                          class="nav-link"
-                          data-bs-toggle="collapse"
-                          href="#multiCollapseExample7"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="multiCollapseExample7"
-                        >
-                          <span> 7/ L’acceptabilité locale du Projet </span>
-                          <i
-                            style="
-                              float: right;
-                              vertical-align: middle;
-                              color: #018a65;
-                              margin-top: 5px;
-                            "
-                            class="fas fa-chevron-down"
-                          ></i>
-                        </a>
-                        <ul class="collapse multi-collapse" id="multiCollapseExample7">
-                          <li
-                            class="list-item cpx-list d-flex justify-content-between mt-3"
-                          >
-                            <p>1.1. Etude préléminaire de la biomasse</p>
-                            <p class="price">00€</p>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="nav-item mb-2">
-                        <a
-                          class="nav-link"
-                          data-bs-toggle="collapse"
-                          href="#multiCollapseExample8"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="multiCollapseExample8"
-                        >
-                          <span> 8/ La réalisation de l’ingénierie du Projet </span>
-                          <i
-                            style="
-                              float: right;
-                              vertical-align: middle;
-                              color: #018a65;
-                              margin-top: 5px;
-                            "
-                            class="fas fa-chevron-down"
-                          ></i>
-                        </a>
-                        <ul class="collapse multi-collapse" id="multiCollapseExample8">
-                          <li
-                            class="list-item cpx-list d-flex justify-content-between mt-3"
-                          >
-                            <p>1.1. Etude préléminaire de la biomasse</p>
-                            <p class="price">00€</p>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="nav-item mb-2">
-                        <a
-                          class="nav-link"
-                          data-bs-toggle="collapse"
-                          href="#multiCollapseExample9"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="multiCollapseExample9"
-                        >
-                          <span>
-                            9/ L’obtention des autorisations d’urbanisme et d’exploitation
-                            du Projet
-                          </span>
-                          <i
-                            style="
-                              float: right;
-                              vertical-align: middle;
-                              color: #018a65;
-                              margin-top: 5px;
-                            "
-                            class="fas fa-chevron-down"
-                          ></i>
-                        </a>
-                        <ul class="collapse multi-collapse" id="multiCollapseExample9">
-                          <li
-                            class="list-item cpx-list d-flex justify-content-between mt-3"
-                          >
-                            <p>1.1. Etude préléminaire de la biomasse</p>
-                            <p class="price">00€</p>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="nav-item mb-2">
-                        <a
-                          class="nav-link"
-                          data-bs-toggle="collapse"
-                          href="#multiCollapseExample10"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="multiCollapseExample10"
-                        >
-                          <span>10/ L’obtention des subventions du Projet </span>
-                          <i
-                            style="
-                              float: right;
-                              vertical-align: middle;
-                              color: #018a65;
-                              margin-top: 5px;
-                            "
-                            class="fas fa-chevron-down"
-                          ></i>
-                        </a>
-                        <ul class="collapse multi-collapse" id="multiCollapseExample10">
-                          <li
-                            class="list-item cpx-list d-flex justify-content-between mt-3"
-                          >
-                            <p>1.1. Etude préléminaire de la biomasse</p>
-                            <p class="price">00€</p>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="nav-item mb-2">
-                        <a
-                          class="nav-link"
-                          data-bs-toggle="collapse"
-                          href="#multiCollapseExample11"
-                          role="button"
-                          aria-expanded="false"
-                          aria-controls="multiCollapseExample11"
-                        >
-                          <span>11/ L’obtention du financement du Projet </span>
-                          <i
-                            style="
-                              float: right;
-                              vertical-align: middle;
-                              color: #018a65;
-                              margin-top: 5px;
-                            "
-                            class="fas fa-chevron-down"
-                          ></i>
-                        </a>
-                        <ul class="collapse multi-collapse" id="multiCollapseExample11">
-                          <li
-                            class="list-item cpx-list d-flex justify-content-between mt-3"
-                          >
-                            <p>1.1. Etude préléminaire de la biomasse</p>
-                            <p class="price">00€</p>
-                          </li>
-                        </ul>
-                      </li>
-                    </div>
-                  </div>
-                  <!-- <div class="row d-flex justify-content-center mt-3">
-                    <div
-                      class="col-8 d-flex justify-content-between align-items-center"
-                    >
                       <div>
-                        <button class="btn-form">
-                          <span class="btn-txt">+</span>
-                        </button>
+                        <div class="row client-form">
+                          <div class="col p-5">
+                            <div class="mt-3 mb-3" style="text-align: center">
+                              <p style="color: #868d96">Renseigner votre profil</p>
+                            </div>
+                            <div class="row gy-3 mb-3">
+                              <div class="col-xs-12 col-sm-12 col-lg-6">
+                                <div class="form-floating mb-3">
+                                  <input
+                                    type="text"
+                                    formControlName="fonction"
+                                    value="{{current_User?.fonction}}"
+                                    class="form-control shadow-none"
+                                    id="floatingInput"
+                                    required
+                                  />
+                                  <label for="floatingInput">Fonction</label>
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-12 col-lg-6">
+                                <div class="form-floating">
+                                  <select
+                                    formControlName="societe"
+                                    value="{{current_User?.societe}}"
+                                    class="form-select shadow-none"
+                                    id="floatingSelect"
+                                    aria-label="Floating label select example"
+                                  >
+                                    <option selected class="w-100"></option>
+                                    <option value="1">Oui</option>
+                                    <option value="2">Non</option>
+                                  </select>
+                                  <label for="floatingSelect">Société</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row gy-3 mb-3">
+                              <div class="col-xs-12 col-sm-12 col-lg-6">
+                                <div class="form-floating mb-3" >
+                                  <input
+                                    formControlName="nom_societe"
+                                    placeholder="Nom de la société"
+                                    required
+                                    value="{{current_User?.nom_societe}}"
+                                    type="text"
+                                    class="form-control shadow-none"
+                                    id="floatingInput"
+                                  />
+                                  <label for="floatingInput">Nom de la société</label>
+                                </div>
+                              </div>
+                              <div class="col col-sm-6 col-lg-3">
+                                <div class="form-floating mb-3">
+                                  <input
+                                    formControlName="ville"
+                                    required
+                                    value="{{current_User?.ville}}"
+                                    type="text"
+                                    class="form-control shadow-none"
+                                    id="floatingInput"
+                                    placeholder="Ville"
+                                  />
+                                  <label for="floatingInput">Ville</label>
+                                </div>
+                              </div>
+                              <div class="col col-sm-6 col-lg-3">
+                                <div class="form-floating mb-3">
+                                  <input
+                                    formControlName="codePostal"
+                                    required
+                                    value="{{current_User?.codePostal}}"
+                                    type="text"
+                                    class="form-control shadow-none"
+                                    id="floatingInput"
+                                  />
+                                  <label for="floatingInput">Code Postale</label>
+                                </div>
+                              </div>
+                            </div>
+
+                              <div class="col-12 d-flex justify-content align-items">
+                                <div class=" col-2 next-btn">
+                                  <button class="add">
+
+                                    <span>Sauvegarder</span>
+
+                                    <span class="btn-icon"
+
+                                      ><i class="fi fi-rr-download"></i
+
+                                    ></span>
+
+                                  </button>
+                                </div>
+                                <div class=" col-8 next-btn"></div>
+                                <div class=" col-2 next-btn">
+
+                                  <button class="add" (click)="showNext()">
+
+                                    <span class="btn-txt">Suivant</span>
+
+                                  </button>
+                                </div>
+                              </div>
+
+
+
+
+
+
+
+                          </div>
+                        </div>
                       </div>
-                      <div class="next-btn">
-                        <button class="save" onClick="showNext()">
-                          <span class="btn-txt">Suivant</span>
-                        </button>
+                    </form>
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+          <div  class="col-12 col-lg-8 left" *ngIf="ha">
+            <div class="row d-flex justify-content-center mb-3">
+              <div class="col-8">
+                <div class="row line mb-3 nav nav-pills" role="tablist">
+                  <div
+                    class="col-4 stepText1 actve"
+                    id="home-tab"
+                    type="button"
+                    data-bs-toggle="tab"
+                    data-bs-target="#categorieIntrant"
+                    role="tab"
+                    aria-controls="categorieIntrant"
+                    (click)="openTab(1)"
+                  >
+                    Catégorie d'intrant
+                  </div>
+
+                  <div
+                    class="col-4 stepText2"
+                    id="profile-tab"
+                    type="button"
+                    data-bs-toggle="tab"
+                    data-bs-target="#total"
+                    role="tab"
+                    aria-controls="total"
+                    (click)="openTab(2)"
+                  >
+                    Intrant Total
+                  </div>
+
+                  <div
+                    class="col-4 stepText3"
+                    id="contact-tab"
+                    type="button"
+                    data-bs-toggle="tab"
+                    data-bs-target="#Puissance"
+                    role="tab"
+                    aria-controls="Puissance"
+                    (click)="openTab(3)"
+                  >
+                    Puissance
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <div class="step step1 " [ngClass]="{ activated: isActiveTab(1) }" ></div>
+                  </div>
+                  <div class="col-4"><div class="step step2" [ngClass]="{ activated: isActiveTab(2) }"></div></div>
+                  <div class="col-4"><div class="step step3" [ngClass]="{ activated: isActiveTab(3) }" ></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-content" >
+
+              <div class="row d-flex justify-content-center mb-3" class="tab-pane  active" id="categorieIntrant">
+
+                <div class="col-8 " class="align-self-center p-2">
+                  <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_1)">
+                    <label for="floatingSelect">Type d'intrant </label>
+                    <select #refIC1
+                      class="form-select shadow-none"
+                      id="floatingSelect"
+                      aria-label="Floating label select example"
+                      [value]="ic1"
+                      (change)="listenType($event.target.value)"
+                      [(ngModel)]="infos.IC1"
+                      name="infos.IC1"
+                    >
+                      <option selected class="w-100" *ngFor="let item of infotrie"
+                      [value]="item" >
+                        {{ item }}
+                      </option>
+                    </select>
+                    <div
+                      class="
+                        d-flex
+                        justify-content-between
+                        align-items-center
+                        mt-2">
+                      <p
+                        style=" margin-left: 12px; font-weight: 600;color: #00ae81; ">
+                     <span > {{ eventType }}</span>
+                      </p>
+                      <button class="btn-form mt-2" (click)="setActive(Steps.STEP_2)">
+                        <span>Continuer</span>
+                        <span><i class="fi fi-rr-Angle-right"></i></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_2)">
+                    <select #refIC2
+                      class="form-select shadow-none"
+                      id="floatingSelect"
+                      aria-label="Floating label select example"
+                      (change)="listenIc1($event.target.value)"
+                        [(ngModel)]="infos.IC2"
+                        name="IC2"
+                        type="text"
+
+                        [value]="ic2"
+                    >
+                      <option selected class="w-100" *ngFor="let item of infotrie2" [value]="item">
+                        {{ item }}
+                    </select>
+                    <label for="floatingSelect">Type d'intrant </label>
+                    <div
+                      class="
+                        d-flex
+                        justify-content-between
+                        align-items-center
+                        mt-2"
+                    >
+                      <p
+                        style="
+                          margin-left: 12px;
+                          font-weight: 600;
+                          color: #00ae81;
+                        "
+                      >
+                      {{ ic2 }}
+                      </p>
+                      <button class="btn-form mt-2"(click)="setActive(Steps.STEP_3)">
+                        <span>Continuer</span>
+                        <span><i class="fi fi-rr-Angle-right"></i></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_3)">
+                    <select
+                      class="form-select shadow-none"
+                      id="floatingSelect"
+                      aria-label="Floating label select example"
+                      (change)="listenIc2($event.target.value)"
+                      [(ngModel)]="infos.IC3"
+                      name="IC3"
+
+                      [value]="ic3"
+                    >
+                      <option selected class="w-100" *ngFor="let item of infotrie3" [value]="item">
+                        {{ item }}
+                    </select>
+                    <label for="floatingSelect">Type d'intrant </label>
+                    <div
+                      class="
+                        d-flex
+                        justify-content-between
+                        align-items-center
+                        mt-2"
+                    >
+                      <p
+                        style="
+                          margin-left: 12px;
+                          font-weight: 600;
+                          color: #00ae81;
+                        "
+                      >
+                      {{ ic3 }}
+                      </p>
+                      <button class="btn-form mt-2" (click)="setActive(Steps.STEP_4)">
+                        <span>Continuer</span>
+                        <span><i class="fi fi-rr-Angle-right"></i></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_4)">
+                    <select
+                      class="form-select shadow-none"
+                      id="floatingSelect"
+                      aria-label="Floating label select example"
+                      (change)="listenDesc($event.target.value)"
+                          [(ngModel)]="infos.Description"
+                          name="Description"
+                          type="text"
+
+                          [value]="desc_biblio"
+                          required
+                    >
+                      <option selected class="w-100" *ngFor="let item of infotrie4" [value]="item">
+                        {{ item }}
+                    </select>
+                    <label for="floatingSelect">Type d'intrant </label>
+                    <div
+                      class="
+                        d-flex
+                        justify-content-between
+                        align-items-center
+                        mt-2"
+                    >
+                      <p
+                        style="
+                          margin-left: 12px;
+                          font-weight: 600;
+                          color: #00ae81;
+                        "
+                      >
+                      {{ desc_biblio }}
+                      </p>
+                      <button class="btn-form mt-2" (click)="setActive(Steps.STEP_2)">
+                        <span>Continuer</span>
+                        <span><i class="fi fi-rr-Angle-right"></i></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder="Quantité"
+                      (change)="listenQuantute($event.target.value)"
+                          [(ngModel)]="quantite"
+                          name="quantite"
+
+                          [value]="q"
+                    />
+                    <label for="floatingInput">Quantité</label>
+                  </div>
+                  <div class="row">
+                    <div class="col-4">
+                      <div class="form-floating mb-3">
+                        <input
+
+                          type="text"
+                          class="form-control"
+                          id="floatingInput"
+                          placeholder="MB"
+                          *ngIf="infos"
+                          [(ngModel)]="infos.uMB_an"
+                          name="infos.uMB_an"
+                          required
+                          value="{{ infotrie5?.uMB_an }}"
+
+                        />
+
+                        <label for="floatingInput">MB</label>
+                        <button class="btn btn-light mt-2 text-info" *ngIf="infotrie5 && infotrie5.uMB_an"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                     Modifier MB
+                      </button>
+
                       </div>
                     </div>
-                  </div> -->
+                    <div class="col-4 d-block justify-content-center align-items-center">
+                     <!--
+                        <label for="">Selectionnez:</label>
+                          <button class="btn btn-light mt-3"
+                       data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier MB</button>
+
+                     -->
+
+
+
+                      <!-- <div class="form-floating">
+                        <select
+                          class="form-select shadow-none"
+                          id="floatingSelect"
+                          aria-label="Floating label select example"
+                        >
+                          <option selected class="w-100">Sélectionner</option>
+                          <option value="1">Oui</option>
+                          <option value="2">Modifier</option>
+                        </select>
+                        <label for="floatingSelect"
+                          >Votre catégorie d'intrant?
+                        </label>
+                      </div> -->
+                    </div>
+                    <div class="col-4">
+                      <div class="form-floating mb-3">
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="floatingInput"
+
+                          [(ngModel)]="t_MB_an"
+                          name="t_MB_an"
+                          [value]="mb_an"
+                          id="formGroupExampleInput"
+                          value="{{ prod }}"
+                        />
+                        <label for="floatingInput">Total</label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-12 col-lg-4 right g-0">
-                  <div>
-                    <h5>CAPEX</h5>
-                    <p>
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                      nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                      erat, sed diam voluptua. At.
+
+              </div>
+              <div class="row d-flex justify-content-center mb-3" class="tab-pane" id="total">
+                <div class="col-8 " class="align-self-center p-2">
+                  <table class="table">
+                    <thead>
+                      <tr class="table-success">
+                        <th scope="col">Type</th>
+                        <th scope="col">Quantité</th>
+
+                        <th scope="col">Total MB</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr  *ngFor="let newFiche of arrayForm ; let i = index">
+
+                        <td scope="row"></td>
+                        <td>{{newFiche?.quantite}}</td>
+                        <td>{{newFiche?.t_MB_an}}</td>
+
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+              <div class="row d-flex justify-content-center mb-3" class="tab-pane" id="Puissance">
+                <div class="col-8 " class="align-self-center p-2">
+                  <table class="table">
+                    <thead>
+                      <tr class="table-success">
+                        <th scope="col">Total MS</th>
+                        <th scope="col">Total MB</th>
+                        <th scope="col">Total Nm3CH4/h</th>
+                        <th scope="col">Total KWH/h</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{ somme_MS }}</td>
+                          <td>{{ somme_MB }}</td>
+                          <td>{{ volume_Nm3_CH4_an }}</td>
+                          <td>{{ somme_KWH }}</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              </div>
+
+
+
+            <div class="row d-flex justify-content">
+              <div class="col-12 d-flex justify-content align-items">
+                <div class=" col-2 next-btn" *ngIf="ha">
+                  <button class="add" (click)="clickprecedent1()" >
+                    <span class="btn-txt">Precedent</span>
+                  </button>
+                </div>
+                <div class=" col-1">
+                  </div>
+                  <div class=" d-grid gap-2 col-6 mx-auto next-btn">
+                    <button class="add">Ajouter
+                      <span class="btn-txt">+</span>
+                    </button>
+                  </div>
+                  <div class=" col-1">
+                  </div>
+                <div class="col-2 next-btn" *ngIf="ha">
+                  <button class="add" (click)="click1()" >
+                    <span class="btn-txt">Suivant</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div >
+          <div class="col-12 col-lg-8 left" *ngIf="hb">
+            <div class="row d-flex justify-content-center">
+              <div class="col-8" >
+                <div *ngIf="!listBtnConception">
+                  <button class="col-12 abc" (click)="conceptionClick()">
+                  CAPEX Conception
+                  <i
+                  style="margin-right: 20px;"
+                  class="fas fa-chevron-right"></i></button>
+                </div>
+                <div *ngIf="!listBtnConception">
+                  <button class="col-12 abc" (click)="constructionClick()" >
+                   <span>
+                    CAPEX Construction
+                    <i
+                    style="margin-right: 20px;"
+                    class="fas fa-chevron-right"></i>
+                   </span>
+
+                  </button>
+                </div>
+                <div *ngIf="!listBtnConception">
+                  <button class="col-12 abc">CAPEX Raccordement
+                    <i
+                    style="margin-right: 20px;"
+                    class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+                <div *ngIf="!listBtnConception">
+                  <button class="col-12 abc">CAPEX Autres invesstissement
+                    <i
+                    style="margin-right: 20px;"
+                    class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex justify-content-center pt-2" *ngIf="listBtnConception" >
+              <div class="col-8">
+                <div class="row justify-content-between align-items-center mb-2" >
+                  <span class="col-1 btn-fwd">
+                    <button>
+                      <i
+                        style="vertical-align: middle; color: #018a65"
+                        class="fas fa-chevron-left" (click)="closeConception()"
+                      ></i>
+                    </button>
+                  </span>
+                  <div class="col-10" style="padding-left: 50px;">
+                    <p class="m-0" style="font-size: 1.25rem">
+                      CAPEX Conception
                     </p>
                   </div>
                 </div>
+
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample1"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample1"
+>
+                    <span>1/ Intérêt du porteur de projet</span>
+                    <i
+                      style="
+                        float: right;
+                        vertical-align: middle;
+                        color: #018a65;
+                        margin-top: 5px;
+                      "
+                      class="fas fa-chevron-down"
+                    ></i>
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample1"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample2"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample2"
+                  >
+                  <span>2/ Etude de la biomasse du projet</span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample2"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample3"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample3"
+                  >
+                  <span> 3/ Étude foncière du projet</span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample3"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample4"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample4"
+                  >
+                  <span>4/ La sécurisation des droits gaziers
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample4"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample5"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample5"
+                  >
+                  <span>5/ La valorisation du digestat
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample5"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample6"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample6"
+                  >
+                  <span>6/ Réalisation des supports Marketing
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample6"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample7"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample7"
+                  >
+                  <span> 7/ L’acceptabilité locale du Projet
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample7"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample8"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample8"
+                  >
+                  <span> 8/ La réalisation de l’ingénierie du Projet
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample8"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample9"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample9"
+                  >
+                  <span> 9/ L’obtention des autorisations d’urbanisme et
+                    d’exploitation du Projet
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample9"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample10"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample10"
+                  >
+                  <span>10/ L’obtention des subventions du Projet
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample10"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample11"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample11"
+                  >
+                  <span>11/ L’obtention du financement du Projet
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample11"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
               </div>
             </div>
 
-            <!-- Step Bar start -->
 
-            <div class="container">
-              <ul class="progressbar">
-                <li class="active">
-                  <img width="60px" src="assets/images/gisement.png" />
-                  <p>Gisement</p>
-                </li>
-                <li class="active">
-                  <img class="active" width="60px" src="assets/images/capex.png" />
-                  <p>CAPEX</p>
-                </li>
-                <li>
-                  <img width="60px" src="assets/images/recettes.png" />
-                  <p>Recette</p>
-                </li>
-              </ul>
+            <div class="row d-flex justify-content">
+              <div class="col-12 d-flex justify-content align-items">
+                <div class=" col-2 next-btn" *ngIf="hb">
+                  <button class="add" (click)="clickprecedent2()" >
+                    <span class="btn-txt">Precedent</span>
+                  </button>
+                </div>
+
+                  <div class=" d-grid gap-2 col-8 mx-auto next-btn">
+
+                  </div>
+
+                <div class="col-2 next-btn" *ngIf="hb">
+                  <button class="add" (click)="click2()"  >
+                    <span class="btn-txt">Suivant</span>
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <!-- Step Bar end -->
-          </main>
+
+
+
+
+
+
+          </div>
+          <div class="col-12 col-lg-8 left" *ngIf="hc ">
+            <div class="row d-flex justify-content-center">
+              <div class="col-8" >
+                <div *ngIf="!listBtnConception">
+                  <button class="col-12 abc" (click)="conceptionClick()">
+                  OPEX Conception
+                  <i
+                  style="margin-right: 20px;"
+                  class="fas fa-chevron-right"></i></button>
+                </div>
+                <div *ngIf="!listBtnConception">
+                  <button class="col-12 abc" (click)="constructionClick()" >
+                   <span>
+                    OPEX Construction
+                    <i
+                    style="margin-right: 20px;"
+                    class="fas fa-chevron-right"></i>
+                   </span>
+
+                  </button>
+                </div>
+                <div *ngIf="!listBtnConception">
+                  <button class="col-12 abc">OPEX Raccordement
+                    <i
+                    style="margin-right: 20px;"
+                    class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+                <div *ngIf="!listBtnConception">
+                  <button class="col-12 abc">OPEX Autres invesstissement
+                    <i
+                    style="margin-right: 20px;"
+                    class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row d-flex justify-content-center pt-2" *ngIf="listBtnConception" >
+              <div class="col-8">
+                <div class="row justify-content-between align-items-center mb-2" >
+                  <span class="col-1 btn-fwd">
+                    <button>
+                      <i
+                        style="vertical-align: middle; color: #018a65"
+                        class="fas fa-chevron-left" (click)="closeConception()"
+                      ></i>
+                    </button>
+                  </span>
+                  <div class="col-10" style="padding-left: 50px;">
+                    <p class="m-0" style="font-size: 1.25rem">
+                      CAPEX Conception
+                    </p>
+                  </div>
+                </div>
+
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample1"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample1"
+>
+                    <span>1/ Intérêt du porteur de projet</span>
+                    <i
+                      style="
+                        float: right;
+                        vertical-align: middle;
+                        color: #018a65;
+                        margin-top: 5px;
+                      "
+                      class="fas fa-chevron-down"
+                    ></i>
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample1"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample2"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample2"
+                  >
+                  <span>2/ Etude de la biomasse du projet</span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample2"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample3"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample3"
+                  >
+                  <span> 3/ Étude foncière du projet</span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample3"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample4"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample4"
+                  >
+                  <span>4/ La sécurisation des droits gaziers
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample4"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample5"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample5"
+                  >
+                  <span>5/ La valorisation du digestat
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample5"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample6"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample6"
+                  >
+                  <span>6/ Réalisation des supports Marketing
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample6"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample7"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample7"
+                  >
+                  <span> 7/ L’acceptabilité locale du Projet
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample7"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample8"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample8"
+                  >
+                  <span> 8/ La réalisation de l’ingénierie du Projet
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample8"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample9"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample9"
+                  >
+                  <span> 9/ L’obtention des autorisations d’urbanisme et
+                    d’exploitation du Projet
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample9"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample10"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample10"
+                  >
+                  <span>10/ L’obtention des subventions du Projet
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample10"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#multiCollapseExample11"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="multiCollapseExample11"
+                  >
+                  <span>11/ L’obtention du financement du Projet
+                  </span>
+                  <i
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                    "
+                    class="fas fa-chevron-down"
+                  ></i>
+                  </a>
+                  <ul
+                    class="collapse multi-collapse"
+                    id="multiCollapseExample11"
+                  >
+                    <li
+                      class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      "
+                    >
+                      <p>1.1. Etude préléminaire de la biomasse</p>
+                      <p class="price">00€</p>
+                    </li>
+                  </ul>
+                </li>
+              </div>
+            </div>
+
+
+            <div class="row d-flex justify-content">
+              <div class="col-12 d-flex justify-content align-items">
+                <div class=" col-2 next-btn" *ngIf="hc">
+                  <button class="add" (click)="clickprecedent3()" >
+                    <span class="btn-txt">Precedent</span>
+                  </button>
+                </div>
+
+                  <div class=" d-grid gap-2 col-8 mx-auto next-btn">
+
+                  </div>
+
+                <div class="col-2 next-btn" *ngIf="hc">
+                  <button class="add" (click)="click3()"  >
+                    <span class="btn-txt">Suivant</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        <!--Recette hd-->
+        <div class="col-12 col-lg-8 left" *ngIf="hd ">
+          <div class="row d-flex justify-content-center">
+            <div class="col-8" >
+
+            </div>
+          </div>
+
+          <div class="row d-flex justify-content">
+            <div class="col-12 d-flex justify-content align-items">
+              <div class=" col-2 next-btn" *ngIf="hd">
+                <button class="add" (click)="clickprecedent4()" >
+                  <span class="btn-txt">Precedent</span>
+                </button>
+              </div>
+
+                <div class=" d-grid gap-2 col-8 mx-auto next-btn">
+
+                </div>
+
+              <div class="col-2 next-btn" *ngIf="hd">
+                <button class="add" (click)="click4()"  >
+                  <span class="btn-txt">Suivant</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
         </div>
-      </form>
+           <!--BP he-->
+           <div class="col-12 col-lg-8 left" *ngIf="he ">
+            <div class="row d-flex justify-content-center">
+              <div class="col-8" >
+
+              </div>
+            </div>
+
+            <div class="row d-flex justify-content">
+              <div class="col-12 d-flex justify-content align-items">
+                <div class=" col-2 next-btn" *ngIf="he">
+                  <button class="add" (click)="clickprecedent5()" >
+                    <span class="btn-txt">Precedent</span>
+                  </button>
+                </div>
+
+                  <div class=" d-grid gap-2 col-8 mx-auto next-btn">
+
+                  </div>
+
+                <div class="col-2 next-btn" *ngIf="he">
+                  <button class="add" (click)="click5()"  >
+                    <span class="btn-txt">Suivant</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+              <!--Recette hf-->
+              <div class="col-12 col-lg-8 left" *ngIf="hf">
+                <div class="row d-flex justify-content-center">
+                  <div class="col-8" >
+
+                  </div>
+                </div>
+
+                <div class="row d-flex justify-content">
+                  <div class="col-12 d-flex justify-content align-items">
+                    <div class=" col-2 next-btn" *ngIf="hf">
+                      <button class="add" (click)="clickprecedent6()" >
+                        <span class="btn-txt">Precedent</span>
+                      </button>
+                    </div>
+
+                      <div class=" d-grid gap-2 col-8 mx-auto next-btn">
+
+                      </div>
+
+                    <div class="col-2 next-btn" *ngIf="hf">
+                      <button class="add" (click)="click6()"  >
+                        <span class="btn-txt">Suivant</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+               <!--Recette hg-->
+               <div class="col-12 col-lg-8 left" *ngIf="hg">
+                <div class="row d-flex justify-content-center">
+                  <div class="col-8" >
+
+                  </div>
+                </div>
+
+                <div class="row d-flex justify-content">
+                  <div class="col-12 d-flex justify-content align-items">
+                    <div class=" col-2 next-btn" *ngIf="hg">
+                      <button class="add" (click)="clickprecedent7()" >
+                        <span class="btn-txt">Precedent</span>
+                      </button>
+                    </div>
+
+                      <div class=" d-grid gap-2 col-8 mx-auto next-btn">
+
+                      </div>
+
+
+                  </div>
+                </div>
+
+              </div>
+
+          <div class="col-12 col-lg-4 right" *ngIf="ha || hb || hc || hd || he || hf || hg  " >
+            <div>
+              <h5>Catégorie des intrants</h5>
+              <p>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                erat, sed diam voluptua. At.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step Bar start -->
+
+      <div class="container" *ngIf="!hc && !hd &&!he && !hf && !hg ">
+        <ul class="progressbar">
+          <li   [ngClass]="showGreenColor ? 'active': ''" (click)="goToProfile()">
+            <img width="60px" src="assets/images/ficheClient.png" />
+            <p>Profil</p>
+          </li>
+          <li  [ngClass]="greenCapex ? 'active': ''" (click)="goToGisement()">
+            <img width="60px" src="assets/images/gisement.png" />
+            <p>Gisement</p>
+          </li>
+          <li (click)="goToCapex()">
+            <img width="60px" src="assets/images/capex.png" />
+            <p>CAPEX</p>
+          </li>
+
+        </ul>
+      </div>
+      <div class="container" *ngIf="hc || hd || he ">
+        <ul class="progressbar">
+          <li  [ngClass]="greenOpex ? 'active': ''" >
+            <img width="60px" src="assets/icon/opex.png" />
+            <p>Opex</p>
+          </li>
+          <li >
+            <img width="60px" src="assets/icon/recette.png" />
+            <p>Recette</p>
+          </li>
+          <li>
+            <img width="60px" src="assets/icon/bp.png" />
+            <p>BP</p>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="container" *ngIf=" hf ||  hg  ">
+        <ul class="progressbar">
+          <li  >
+            <img width="60px" src="assets/icon/financement.png" />
+            <p>Financement</p>
+          </li>
+          <li >
+            <img width="60px" src="assets/icon/28011.png" />
+            <p>Scenario</p>
+          </li>
+        </ul>
+      </div>
+      <!-- Step Bar end -->
+    </main>
+
+
+
+    </form>
+    <div class="modal fade" id="exampleModal" #exampleModal tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+
+        <div class="modal-content" >
+
+          <div class="modal-header" >
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+
+
+          <div class="modal-body">
+        <div class="container-fluid">
+
+            <div class="row">
+              <div class="row">
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-4">
+                      <div class="form-group">
+
+                      <label class="form-label">Ajouter vote MB/u</label>
+                      <input
+                        type="text"
+                        class="form-control form-control-sm me-1"
+                        placeholder="00000"
+                        required
+                        #i
+                        [(ngModel)]="infos.uMB_an"
+                        name="infos.uMB_an"
+                        value="{{ infotrie5?.uMB_an }}"
+
+                      />
+                    </div>
+                    </div>
+
+                </div>
+
+              </div>
+            </div>
+
+
+
+        </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <div class="buttons">
+            <button class="btn-form"   (click)="ModifierUMB(i.value)" >
+              <span >Modifier</span>
+            </button>
+            <button  class="btn-form" data-bs-dismiss="modal">
+              <span >Annuler</span>
+            </button>
+          </div>
+        </div>
+
+
+
+      </div>
     </div>
-  </div>
-</div>
+    </div>
+  </main>
+
+
+
+
+
+
+
+
+
+
+
 

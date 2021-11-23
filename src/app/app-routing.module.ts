@@ -34,7 +34,9 @@ import { ForgotPasswordComponent } from "./forgot-password/forgot-password.compo
 import { ListeFournisseursComponent } from "./liste-fournisseurs/liste-fournisseurs.component";
 import { ListeProjetsComponent } from "./liste-projets/liste-projets.component";
 import { LoginComponent } from "./login/login.component";
-import { MessageComponent } from "./message/message.component";
+import { ClientcommercialComponent } from "./message/clientcommercial/clientcommercial.component";
+import { CommercialClientComponent } from "./message/commercial-client/commercial-client.component";
+
 import { NewTestComponent } from "./new-test/new-test.component";
 import { OpexComponent } from "./opex/opex.component";
 import { ProfileClientComponent } from "./profile-client/profile-client.component";
@@ -43,6 +45,8 @@ import { ResetPasswordComponent } from "./reset-password/reset-password.componen
 import { ScenarioComponent } from "./scenario/scenario.component";
 import { AdminGuard } from "./services/guard/admin.service";
 import { AuthGuard } from "./services/guard/auth.service";
+import { ClientGuard } from "./services/guard/client.guard";
+import { CommercialGuard } from "./services/guard/commercial.guard";
 import { TakwaComponent } from "./takwa/takwa.component";
 import { VerifMailComponent } from "./verif-mail/verif-mail.component";
 
@@ -59,7 +63,8 @@ const routes: Routes = [
       { path: "add-staff", component: AddStaffComponent ,canActivate:[AuthGuard,AdminGuard]},
       { path: "add-client", component: AddClientComponent ,canActivate:[AuthGuard]},
       { path: "liste-staff", component: ListaStaffComponent ,canActivate:[AuthGuard,AdminGuard]},
-      { path: "liste-client", component: ListeClientComponent ,canActivate:[AuthGuard,AdminGuard]},
+      { path: "liste-client", component: ListeClientComponent ,
+      canActivate:[AuthGuard,CommercialGuard]},
       { path: "fiche", component: FicheClientComponent,canActivate:[AuthGuard] },
       { path: "Conception-data", component: DonnesConstructionComponent ,canActivate:[AuthGuard,AdminGuard]},
       { path: "Exploitation-data", component: ExploitationComponent ,canActivate:[AuthGuard,AdminGuard]},
@@ -90,7 +95,11 @@ const routes: Routes = [
       { path: "liste-projets", component: ListeProjetsComponent},
       { path: "liste-Fournisseurs", component: ListeFournisseursComponent},
       { path: "profile", component: ProfileClientComponent },
-      { path: "message", component: MessageComponent },
+
+      { path: "commercialmessage", component: ClientcommercialComponent ,
+      canActivate:[AuthGuard,CommercialGuard]},
+      { path: "clientmessage", component: CommercialClientComponent ,
+      canActivate:[AuthGuard,ClientGuard]},
 
     ],
   },
@@ -100,13 +109,16 @@ const routes: Routes = [
   { path: "forgotPassword", component: ForgotPasswordComponent },
   { path: "reset-password", component: ResetPasswordComponent },
   { path: "verify-email/:tokenForMailVerif", component: VerifMailComponent },
-  { path: "takwa", component: TakwaComponent }
+  { path: "takwa", component: TakwaComponent },
+
+
+
 
 
 ];
-
+//,{useHash:true}
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash:true})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

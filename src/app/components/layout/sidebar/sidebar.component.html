@@ -243,7 +243,7 @@ class="
           </a>
         </li>
         <li class="nav-item" (click)="hide()">
-          <a class="nav-link" routerLink="message"
+          <a class="nav-link" [routerLink]="['/clientmessage']"
           routerLinkActive="is-active">
             <i class="fi fi-rr-envelope"></i>
             Message
@@ -286,7 +286,7 @@ class="
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" href="#">
+      <a class="nav-link " [routerLink]="['/liste-client']"  routerLinkActive="is-active">
         <i class="fi fi-rr-address-book"></i>
         Liste clients
       </a>
@@ -298,7 +298,7 @@ class="
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">
+      <a class="nav-link" [routerLink]="['/commercialmessage']"  routerLinkActive="is-active">
         <i class="fi fi-rr-envelope"></i>
         Message
       </a>

@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import _ from 'lodash';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,10 +13,24 @@ export class SidebarComponent implements OnInit {
   isAdmin:boolean=false
   isUser:Boolean=false
   isCommercial:Boolean=false
+  current_User;
+
+  notifications = [];
+  count = [];
   constructor(private auth:AuthService) { }
 
   ngOnInit(): void {
+    this.auth.profile().subscribe((data:any)=>{
+      this.current_User=data
+      this.notifications = data.notifications.reverse();
 
+     this.count = _.filter(this.notifications, ['read', false]);
+
+      console.log("current_User",this.current_User);
+    }
+
+
+    )
 
     let user=this.auth.getDecodedToken()
     console.log("Currrentuseeer",user);
@@ -29,7 +45,7 @@ this.isAdmin=false
 
   }
 
-  if(user.role==="User"){
+  if(user.role==="Client"){
     this.isUser=true;
 
   }
@@ -39,7 +55,7 @@ this.isAdmin=false
 
     }
 
-    if(user.role==="Commercial"){
+    if(user.role==="REP"){
       this.isCommercial=true;
 
     }
@@ -57,6 +73,11 @@ this.isAdmin=false
 
 
 }
+TimeFromNow(time) {
+  return moment(time).fromNow();
+}
+
+
 hide(){
   this.sidebar.nativeElement.style.display="none"
 }

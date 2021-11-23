@@ -131,10 +131,34 @@ export class AuthService {
   }
 
 
-  //send message from contact 
+  //send message from contact
   sendMessage(msg){
     console.log("msg",msg);
-    
+
     return this.http.post(this.config.baseURL + "/message", msg);
+  }
+
+
+
+  //// send message from client to rep
+  messageToRepOrToClient(body){
+   console.log("body",body);
+
+
+    return this.http.post(this.config.baseURL + "/messageToRepOrToClient", body);
+  }
+
+  MarkAllNotifications(id, deleteValue?){
+    return this.http.post(this.config.baseURL + "/MarkAllNotifications/"+id, {
+      id,
+      deleteValue
+    });
+  }
+
+  MarkNotification(id, deleteValue?){
+    return this.http.post(this.config.baseURL + "/MarkOrDeleteNotification/"+id, {
+      id,
+      deleteValue
+    });
   }
 }

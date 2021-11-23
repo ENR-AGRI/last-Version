@@ -1,5 +1,5 @@
 
-  
+
 <div class=" container main shadow">
   <div class="row " >
     <div class="col-12 d-flex mb-3">
@@ -16,6 +16,9 @@
         {{msgSuccess}}
 
         </div>
+
+
+
     <table class="table">
       <thead>
         <tr>
@@ -33,40 +36,38 @@
         </tr>
       </thead>
       <tbody>
-      
-        <tr  *ngFor="let p of projets ">
-          <td data-name="">{{p?.ref}}</td>
-          <td data-name="Statut :">{{p?.status}}</td>
-          <td data-name="Accès :">{{p?.acces}}</td>
-          <td data-name="Date Quotation :">{{p?.dateQuotation |date}}</td>
-          <td data-name="	Date Contrat :">{{p?.dateContrat |date}}</td>
-          <td data-name="	Date De conception :">{{p?.dateDeConception|date}}</td>
-          <td data-name="	Date Construction :">{{p?.dateConstruction |date}}</td>
-          <td data-name="	Date En Service :">{{p?.dateEnService |date}}</td>
-          <td data-name="	Date Abandon :">{{p?.dateAbandon |date}}</td>
-          <td data-name="	Commentaire :">{{p?.commentaire}}</td>
-          <td data-name="Action :">   <i class="entypo-trash"
+        <tr *ngFor="let p of projets ">
+          <td data-label="">{{p?.ref}}</td>
+          <td data-label="Statut :">{{p?.status}}</td>
+          <td data-label="Accès :">{{p?.acces}}</td>
+          <td data-label="Date Quotation :">{{p?.dateQuotation |date}}</td>
+          <td data-label="Date Contrat :">{{p?.dateContrat |date}}</td>
+          <td data-label="Date De conception :">{{p?.dateDeConception|date}}</td>
+          <td data-label="Date Construction :">{{p?.dateConstruction |date}}</td>
+          <td data-label="Date En Service :">{{p?.dateEnService |date}}</td>
+          <td data-label="Date Abandon :">{{p?.dateAbandon |date}}</td>
+          <td data-label="Commentaire :">{{p?.commentaire}}</td>
+          <td data-label="Action :">   <i class="entypo-trash"
           style="font-size: 15px; margin-left: 15px; color: red"
           (click)="deleteProjet(p._id)" title="Delete"
           ></i></td>
+
         </tr>
-    
 
       </tbody>
-
     </table>
   </div>
     </div>
-  
+
 <!--Modal ajouter projet-->
 <div class="spinner-border" role="status" *ngIf="showSpinner" style="position: absolute;display: block;top: 50%;left: 50%;">
   <span class="visually-hidden">Loading...</span>
 </div>
 <div class="modal fade" id="exampleModal" #exampleModal tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-   
+
     <div class="modal-content" >
-      
+
       <div class="modal-header" >
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -83,7 +84,7 @@
               <div class="row">
                 <div class="col-12 col-sm-6 col-lg-4">
                   <div class="form-group">
-                
+
                   <label class="form-label">Réf Projet</label>
                   <input
                     type="text"
@@ -96,10 +97,10 @@
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4">
                   <label class="form-label">Statut</label>
-            
-                  <select #s (change)="listenEtat(s.value)" 
-                  formControlName="status" 
-                  class="form-control form-control-sm" 
+
+                  <select #s (change)="listenEtat(s.value)"
+                  formControlName="status"
+                  class="form-control form-control-sm"
                   aria-label="Default select example">
 
                     <option [value]="status[0]" >
@@ -215,8 +216,8 @@
 
           </div>
         </div>
-      
-      
+
+
 
     </div>
     </div>
@@ -232,7 +233,7 @@
     </div>
   </form>
 
-  
+
   </div>
 </div>
 </div>

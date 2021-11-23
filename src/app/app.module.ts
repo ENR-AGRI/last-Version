@@ -60,6 +60,8 @@ import { ProfileClientComponent } from './profile-client/profile-client.componen
 import { BienvenuComponent } from './bienvenu/bienvenu.component';
 import { MessageComponent } from './message/message.component';
 import { TakwaComponent } from './takwa/takwa.component';
+import { ClientcommercialComponent } from './message/clientcommercial/clientcommercial.component';
+import { CommercialClientComponent } from './message/commercial-client/commercial-client.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -111,6 +113,8 @@ import { TakwaComponent } from './takwa/takwa.component';
     BienvenuComponent,
     MessageComponent,
     TakwaComponent,
+    ClientcommercialComponent,
+    CommercialClientComponent,
   ],
   imports: [
     BrowserModule,
