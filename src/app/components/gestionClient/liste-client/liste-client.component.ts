@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AgriService } from 'src/app/services/agri.service';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
@@ -17,7 +18,8 @@ export class ListeClientComponent implements OnInit {
 
 
 
-  constructor(private agriSrv:AgriService,private auth:AuthService,private fb:FormBuilder) { }
+  constructor(private agriSrv:AgriService,private auth:AuthService,private fb:FormBuilder,
+    private router:Router) { }
 
   ngOnInit(): void {
 
@@ -83,7 +85,7 @@ export class ListeClientComponent implements OnInit {
     this.agriSrv.dispatchPostCreated(data);
 })
   }
-  
+
 
 showEdit
 showEditInput(c,i){
@@ -138,5 +140,8 @@ this.showEdit=null
     console.log("clientFilter", this.clientFilter);
     console.log("value", value);
   }
+  sendMsgToClient(idClient){
+    this.router.navigate(['/commercialmessage',idClient])
 
+  }
 }

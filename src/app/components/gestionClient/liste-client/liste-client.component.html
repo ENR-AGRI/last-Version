@@ -258,7 +258,7 @@
                       <th>Date De Creation</th>
                       <th>Email</th>
                       <th>Telephone</th>
-                      <th>Action</th>
+                      <th span="3">Action</th>
                   </tr>
               </thead>
               <tbody>
@@ -291,8 +291,11 @@
               </tr>
 
                   <tr *ngFor="let c of clients;let i=index">
+
+
+
                     <ng-container *ngIf="showEdit!=i">
-                      <td style="font-weight: bold;">{{c.matricule}}</td>
+                      <td style="font-weight: bold;">{{c.rep}}</td>
                       <td><a> {{c.nom}}</a></td>
                       <td><a> {{c.prenom}}</a></td>
                       <td>{{c.createdOn | date:'short'}}</td>
@@ -349,6 +352,12 @@
                            class="delete" title="FERMER" data-toggle="tooltip">
                             <i class="material-icons">&#xE5C9;</i>
                           </a>
+
+
+                          <a  type="button" (click)="sendMsgToClient(c._id)" style="color: #00ae81;"
+                          class="delete" title="envoyer message" data-toggle="tooltip">
+                          <i class="fas fa-envelope" ></i>
+                         </a>
                       </td>
                   </tr>
 

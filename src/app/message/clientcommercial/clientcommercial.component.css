@@ -11,21 +11,8 @@
   /* ========================================================================
    * MESSAGES
    * ======================================================================== */
-   .message form {
-    padding: 6px 15px;
-    background-color: #FAFAFA;
-    border-bottom: 1px solid #E6EBED;
-  }
-  .message form .has-icon .form-control-icon {
-    position: absolute;
-    z-index: 5;
-    top: 0;
-    right: 0;
-    width: 34px;
-    line-height: 33px;
-    text-align: center;
-    color: #777;
-  }
+
+
   .message > a {
     position: relative;
   }
@@ -108,7 +95,9 @@
   .list-message .list-group-item.active p {
     color: #999999 !important;
   }
-  .list-message .list-group-item.active:hover, .list-message .list-group-item.active:focus, .list-message .list-group-item.active:active {
+  .list-message .list-group-item.active:hover,
+
+  .list-message .list-group-item.active:focus, .list-message .list-group-item.active:active {
     background-color: #EEEEEE;
   }
   .list-message .list-group-item small {
@@ -197,3 +186,89 @@
     overflow-y:auto;
     -webkit-overflow-scrolling: touch;
   }
+
+
+  /* ========================================================================
+     * MESSAGES
+     * ======================================================================== */
+
+  .btn-msg {
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 8px 10px;
+    color: #aaaaaa;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+  }
+
+  .btn-msg.active {
+    background-color: #d7faf1;
+    border-radius: 5px;
+    padding: 7px 8px;
+    color: #00ae81;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+  }
+  .message form {
+    padding: 6px 15px;
+    background-color: #fafafa;
+    border-bottom: 1px solid #e6ebed;
+  }
+  .message form .has-icon .form-control-icon {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    width: 34px;
+    line-height: 33px;
+    text-align: center;
+    color: #777;
+  }
+
+
+  .message textarea {
+    border: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+  .message input {
+    border: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  .avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+
+
+
+
+  /* formulaire */
+
+
+  .list-scroll {
+    max-height: 1000px;
+    margin-bottom: 10px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #f5f5f5;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    background-color: #f5f5f5;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #91ecd4;
+  }
+

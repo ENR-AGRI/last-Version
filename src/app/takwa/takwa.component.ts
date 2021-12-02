@@ -41,6 +41,7 @@ export class TakwaComponent implements OnInit {
   isActive(step: Steps): boolean {
     return this.currentStep === step;
   }
+  
 }
 
 enum Steps {

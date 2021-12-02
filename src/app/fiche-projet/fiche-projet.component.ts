@@ -62,6 +62,8 @@ ss;
   division;
 
   eventType = "";
+  eventIC2 = "";
+  eventIC3 = "";
   formFiche: FormGroup;
   base_prix;
   options: any = [
@@ -782,12 +784,14 @@ this.LOCATION_VENTE_CONSTRUCTEUR=0
       .filter((value, index, self) => self.indexOf(value) === index);
   }
   listenIc1(event) {
+    this.eventIC2=event
     this.infotrie3 = this.infos
       .filter((x) => x.IC2 == event)
       .map((item) => item.IC3)
       .filter((value, index, self) => self.indexOf(value) === index);
   }
   listenIc2(event) {
+    this.eventIC3=event
     this.infotrie4 = this.infos
       .filter((x) => x.IC3 == event)
       .map((item) => item.Description)
@@ -911,12 +915,16 @@ console.log("somme_MB****************************************", this.somme_MS);
     let v = value;
     this.valuesaveContent = value;
     console.log("valuesaveContent", this.valuesaveContent);
-    this.IC1=v.IC1=this.infos
-    .map((x) => x.IC1==this.eventType)
-    console.log("info",this.infos
-    .filter((x) => x.IC1));
 
-console.log("IC1***",v.IC1);
+    v.IC1=this.eventType
+    v.IC2=this.eventIC2
+    v.IC3=this.eventIC3
+    v.Description=this.desc
+
+
+
+
+console.log("IC1*****************",v.IC1);
 
     v.unite = this.infotrie5.unite;
     this.Effluent_Delevage = v.Effluent_Delevage =
@@ -1913,7 +1921,9 @@ this.Digestat_Brut_K=this.quotion(this.total_K,this.Digestat_Brut_quantite).toFi
 
     if (index !== -1) {
       this.newFiche.splice(index, 1);
+
     }
+    this.arrayForm=this.newFiche
 
     console.log("contentBeforeDelete", this.newFiche);
   }
@@ -2112,16 +2122,19 @@ this.Digestat_Brut_K=this.quotion(this.total_K,this.Digestat_Brut_quantite).toFi
   }
 
   msg = "";
+
   ModifierUMB(val){
-    console.log("val*******",val);
-
     let a = this.infotrie5.uMB_an;
-    console.log("a**********",a);
+    a=parseFloat(val)
 
-    a=val
+    this.t_MB_an=this.produit2(a,parseFloat(this.quantite))
+
+
+    console.log("t_MB****",this.t_MB_an);
+
     console.log("a apres modifier",a);
     this.exampleModal.nativeElement.click();
-    this.valuesaveContent.t_MB_an=val
+    // this.valuesaveContent.t_MB_an=val
 
   }
 
@@ -2399,6 +2412,8 @@ isActiveTab(id): boolean {
 
 openTab(id): void {
   this.tab = id;
+  console.log("iiiiiiiiiiiiiiiiii",id,this.tab);
+
 }
 
 setActive(nextStep: Steps): void {
@@ -2594,13 +2609,22 @@ this.listBtnConception=false
 
 
 
-
+  photoTextProfile=true
   goToProfile(){
+    this.photoTextProfile=true
+    this.photoTextGisement=false
+    this.photoTextCapex=false
+
    this.showGreenColor=false
    this.greenCapex=false
    this.clickprecedent1()
   }
+  photoTextGisement=false
   goToGisement(){
+    this.photoTextGisement=true
+    this.photoTextProfile=false
+    this.photoTextCapex=false
+
    this.showGreenColor=true
 
     if(!this.greenCapex)
@@ -2608,7 +2632,11 @@ this.listBtnConception=false
 
     this.clickprecedent2()
   }
+  photoTextCapex=false
   goToCapex(){
+    this.photoTextCapex=true
+    this.photoTextGisement=false
+    this.photoTextProfile=false
 
     if(this.showGreenColor){
       this.greenCapex=true
@@ -2627,6 +2655,10 @@ this.listBtnConception=false
 
 
 
+  }
+  collapse=false
+  collapseUpDown(){
+this.collapse=!this.collapse
   }
 
 }

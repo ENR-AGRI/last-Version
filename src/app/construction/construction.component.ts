@@ -10,6 +10,7 @@ export class ConstructionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

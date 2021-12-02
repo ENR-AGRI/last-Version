@@ -96,11 +96,12 @@ const routes: Routes = [
       { path: "liste-Fournisseurs", component: ListeFournisseursComponent},
       { path: "profile", component: ProfileClientComponent },
 
+      { path: "commercialmessage/:id", component: ClientcommercialComponent ,
+      canActivate:[AuthGuard,CommercialGuard]},
       { path: "commercialmessage", component: ClientcommercialComponent ,
       canActivate:[AuthGuard,CommercialGuard]},
       { path: "clientmessage", component: CommercialClientComponent ,
       canActivate:[AuthGuard,ClientGuard]},
-
     ],
   },
   { path: '', component: LoginComponent, pathMatch: 'full' },

@@ -3,6 +3,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import _ from 'lodash';
 import * as moment from 'moment';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ToastrService } from "ngx-toastr";
+import { ActivatedRoute } from '@angular/router';
+import { AgriService } from 'src/app/services/agri.service';
 @Component({
   selector: 'app-clientcommercial',
   templateUrl: './clientcommercial.component.html',
@@ -16,11 +19,15 @@ export class ClientcommercialComponent implements OnInit {
   count = [];
 
   selectedUser//hetha li ana bech na7ki m3eh
-
+id;
 
 
   formSendMessageToClient:FormGroup
-    constructor(private auth:AuthService,private fb:FormBuilder) { }
+    constructor(private auth:AuthService,
+      private fb:FormBuilder,
+      private toastr:ToastrService,
+      private route:ActivatedRoute,
+      private agriSrv:AgriService) { }
 
     ngOnInit(): void {
       this.auth.profile().subscribe((data:any)=>{
@@ -30,16 +37,19 @@ export class ClientcommercialComponent implements OnInit {
        this.count = _.filter(this.notifications, ['read', false]);
 
         console.log("current_User",this.current_User);
+
       }
 
 
       )
 
-
+      this.getSentmsgbyCommercial()
       this.formSendMessageToClient=this.fb.group({
 
         message:""
       })
+      this.id=this.route.snapshot.paramMap.get('id')
+
     }
 
     TimeFromNow(time) {
@@ -83,10 +93,11 @@ export class ClientcommercialComponent implements OnInit {
     }
 
 
-
-
     sendMessageToClient(){
 
+if(this.id){
+  this.selectedUser=this.id
+}
 
       let body={
         message:this.formSendMessageToClient.value.message,
@@ -97,7 +108,32 @@ export class ClientcommercialComponent implements OnInit {
 
       this.auth.messageToRepOrToClient(body).subscribe((data)=>{
 
+            if (data) this.toastr.success("Votre mssage est envoyé avec succés");
+            console.log("data error", data);
+            this.formSendMessageToClient.reset();
+
       })
     }
+
+getReception(){
+  //GET ALL CLIENT IDCOMMERCIAL
+
+}
+
+
+notifs
+msg
+notif
+getSentmsgbyCommercial(){
+  this.agriSrv.getAllCients().subscribe((data: any) => {
+
+    this.notifs=data.map((x)=>{
+      return x.notifications
+    })
+
+
+}
+
+  )}
 
 }

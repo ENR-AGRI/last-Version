@@ -7,7 +7,35 @@ body {
   background-color: #f7f7f7;
 }
 
+.main-title{
+  font-size: 12px;
+}
 
+.btn-cpx button {
+
+  background-color: #ffffff;
+
+  padding: 10px;
+
+  text-decoration: none;
+
+  font-family: "Open Sans", sans-serif;
+
+  font-weight: 600;
+
+  color: #00ae81;
+
+  border-radius: 6px;
+
+  margin-top: 15px;
+
+  border: 1px solid #00ae81;
+
+  outline: none;
+
+  text-align: left;
+
+}
 
 
 .title {
@@ -56,7 +84,7 @@ body {
 
 }
 
-.add {
+.add, #id_ {
   background-color: #fff;
   background-color: #00ae81;
   padding:8px ;
@@ -70,6 +98,7 @@ body {
   border: none;
   margin: 5px;
   width: 100%;
+
 }
 
 .abc{
@@ -188,6 +217,7 @@ input[type="email"],
 .line {
   font-size: 0.75rem;
 }
+
 .stepText1 {
   text-align: center;
   left: -15px;
@@ -213,14 +243,18 @@ input[type="email"],
   transition: 0.4s;
 }
 .step1 {
+  width: 100%;
   margin-top: -10px;
   float: left;
 }
 .step2 {
-  margin: 0 auto;
+  width: 100%;
+  float: left;
   margin-top: -10px;
+
 }
 .step3 {
+  width: 100%;
   float: right;
   margin-top: -10px;
 }
@@ -267,8 +301,15 @@ li a {
   color: #018a65;
   font-weight: 600;
 }
+.centre-align {
+  padding: 10px;
 
-.btn-cpx {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* .btn-cpx {
   background-color: #ffffff;
   padding: 25px;
   text-decoration: none;
@@ -279,7 +320,7 @@ li a {
   margin-top: 15px;
   border: 1px solid #00ae81;
   outline: none;
-}
+} */
 .abc {
   background-color: #ffffff;
   padding: 25px;
@@ -317,9 +358,9 @@ li a {
     padding: 24px;
     color: #018a65;
   }
-  .email p{
+  /* .email p{
     display: inline;
-  }
+  } */
 }
 
 /* `sm` applies to x-small devices (portrait phones, less than 576px) */

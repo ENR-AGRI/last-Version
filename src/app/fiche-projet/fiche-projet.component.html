@@ -1,3 +1,4 @@
+
 <main class="container">
   <form  #f="ngForm">
     <main class="container">
@@ -17,16 +18,19 @@
 
                         <div class="row justify-content-between">
                            <div class="col-12 col-lg-3">
-                          <p  style="font-size: 2rem; font-weight:600">{{current_User?.nom}}</p>
+                          <p  style="font-size: 2rem; font-weight:600">{{current_User?.prenom}}</p>
 
-                          <p  style="font-size: 2rem; font-weight: 600">{{current_User?.prenom}}</p>
+                          <!-- <p  style="font-size: 2rem; font-weight: 600">{{current_User?.prenom}}</p> -->
                         </div>
-                          <div class="col-12 col-lg-3 email">
-                            <p >
-                              Email:  <br class="d-sm-block d-lg-none">{{current_User?.email}}
+                          <div class="col-12 col-lg-3">
+                            <p>
+                              Email:
                             </p>
-
+                              <p style="font-weight: 150; font-weight: 600;">
+                                {{current_User?.email}}
+                            </p>
                           </div>
+
                           <div class="col-12 col-lg-3">
                             <p>
                               Tel portable:
@@ -50,34 +54,34 @@
 
                       <div>
                         <div class="row client-form">
+                          <div class="mt-3 mb-3 ms-5">
+                            <p style="color:black">Renseigner votre profil</p>
+                          </div>
                           <div class="col p-5">
-                            <div class="mt-3 mb-3" style="text-align: center">
-                              <p style="color: #868d96">Renseigner votre profil</p>
-                            </div>
+
                             <div class="row gy-3 mb-3">
                               <div class="col-xs-12 col-sm-12 col-lg-6">
                                 <div class="form-floating mb-3">
                                   <input
                                     type="text"
-                                    formControlName="fonction"
-                                    value="{{current_User?.fonction}}"
                                     class="form-control shadow-none"
+                                    formControlName="fonction"
+                                    value="{{ current_User?.fonction }}"
                                     id="floatingInput"
-                                    required
+                                    placeholder="Fonction"
                                   />
                                   <label for="floatingInput">Fonction</label>
                                 </div>
                               </div>
                               <div class="col-xs-12 col-sm-12 col-lg-6">
+
                                 <div class="form-floating">
                                   <select
-                                    formControlName="societe"
-                                    value="{{current_User?.societe}}"
-                                    class="form-select shadow-none"
+                                  formControlName="societe"
+                                    value="{{ current_User?.societe }}"class="form-select shadow-none"
                                     id="floatingSelect"
-                                    aria-label="Floating label select example"
-                                  >
-                                    <option selected class="w-100"></option>
+                                    aria-label="Floating label select example">
+                                    <option selected class="w-100">Selectionnez</option>
                                     <option value="1">Oui</option>
                                     <option value="2">Non</option>
                                   </select>
@@ -87,15 +91,15 @@
                             </div>
                             <div class="row gy-3 mb-3">
                               <div class="col-xs-12 col-sm-12 col-lg-6">
-                                <div class="form-floating mb-3" >
+                                <div class="form-floating mb-3">
                                   <input
-                                    formControlName="nom_societe"
-                                    placeholder="Nom de la société"
-                                    required
-                                    value="{{current_User?.nom_societe}}"
                                     type="text"
+                                    formControlName="nom_societe"
+                                     required
+                                    value="{{ current_User?.nom_societe }}"
                                     class="form-control shadow-none"
                                     id="floatingInput"
+                                    placeholder="Nom de la société"
                                   />
                                   <label for="floatingInput">Nom de la société</label>
                                 </div>
@@ -103,9 +107,9 @@
                               <div class="col col-sm-6 col-lg-3">
                                 <div class="form-floating mb-3">
                                   <input
-                                    formControlName="ville"
-                                    required
-                                    value="{{current_User?.ville}}"
+                                  formControlName="ville"
+
+                                value="{{ current_User?.ville }}"
                                     type="text"
                                     class="form-control shadow-none"
                                     id="floatingInput"
@@ -117,12 +121,13 @@
                               <div class="col col-sm-6 col-lg-3">
                                 <div class="form-floating mb-3">
                                   <input
-                                    formControlName="codePostal"
-                                    required
-                                    value="{{current_User?.codePostal}}"
+                                  formControlName="codePostal"
+
+                                  value="{{ current_User?.codePostal }}"
                                     type="text"
                                     class="form-control shadow-none"
                                     id="floatingInput"
+                                    placeholder="Ville"
                                   />
                                   <label for="floatingInput">Code Postale</label>
                                 </div>
@@ -172,12 +177,13 @@
 
           </div>
 
+
           <div  class="col-12 col-lg-8 left" *ngIf="ha">
             <div class="row d-flex justify-content-center mb-3">
               <div class="col-8">
-                <div class="row line mb-3 nav nav-pills" role="tablist">
+                <div class="row line mb-3 nav nav-pills" role="tablist" >
                   <div
-                    class="col-4 stepText1 actve"
+                    class="col-4 stepText1 active"
                     id="home-tab"
                     type="button"
                     data-bs-toggle="tab"
@@ -190,7 +196,7 @@
                   </div>
 
                   <div
-                    class="col-4 stepText2"
+                    class="col-4 stepText2 "
                     id="profile-tab"
                     type="button"
                     data-bs-toggle="tab"
@@ -219,8 +225,13 @@
                   <div class="col-4">
                     <div class="step step1 " [ngClass]="{ activated: isActiveTab(1) }" ></div>
                   </div>
-                  <div class="col-4"><div class="step step2" [ngClass]="{ activated: isActiveTab(2) }"></div></div>
-                  <div class="col-4"><div class="step step3" [ngClass]="{ activated: isActiveTab(3) }" ></div></div>
+                  <div class="col-4">
+                    <div class="step step2" [ngClass]="{ activated: isActiveTab(2) }"></div>
+                  </div>
+
+                  <div class="col-4">
+                    <div class="step step3" [ngClass]="{ activated: isActiveTab(3) }" ></div>
+                </div>
                 </div>
               </div>
             </div>
@@ -230,7 +241,7 @@
 
                 <div class="col-8 " class="align-self-center p-2">
                   <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_1)">
-                    <label for="floatingSelect">Type d'intrant </label>
+
                     <select #refIC1
                       class="form-select shadow-none"
                       id="floatingSelect"
@@ -239,12 +250,14 @@
                       (change)="listenType($event.target.value)"
                       [(ngModel)]="infos.IC1"
                       name="infos.IC1"
+                      type="text"
                     >
                       <option selected class="w-100" *ngFor="let item of infotrie"
                       [value]="item" >
                         {{ item }}
                       </option>
                     </select>
+                    <label for="floatingSelect">Type d'intrant </label>
                     <div
                       class="
                         d-flex
@@ -253,16 +266,20 @@
                         mt-2">
                       <p
                         style=" margin-left: 12px; font-weight: 600;color: #00ae81; ">
-                     <span > {{ eventType }}</span>
+                     <span>{{eventType}}</span>
                       </p>
-                      <button class="btn-form mt-2" (click)="setActive(Steps.STEP_2)">
-                        <span>Continuer</span>
-                        <span><i class="fi fi-rr-Angle-right"></i></span>
-                      </button>
+                      <button class="btn-form" (click)="setActive(Steps.STEP_2)">
+
+                        <i class="fas fa-chevron-right"></i>
+
+
+                    </button>
+
                     </div>
                   </div>
+
                   <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_2)">
-                    <select #refIC2
+                    <select
                       class="form-select shadow-none"
                       id="floatingSelect"
                       aria-label="Floating label select example"
@@ -284,7 +301,7 @@
                         align-items-center
                         mt-2"
                     >
-                      <p
+                      <!-- <p
                         style="
                           margin-left: 12px;
                           font-weight: 600;
@@ -292,12 +309,21 @@
                         "
                       >
                       {{ ic2 }}
-                      </p>
-                      <button class="btn-form mt-2"(click)="setActive(Steps.STEP_3)">
-                        <span>Continuer</span>
-                        <span><i class="fi fi-rr-Angle-right"></i></span>
-                      </button>
+                      </p> -->
+
+
+
+
                     </div>
+                    <button class="btn-form "(click)="setActive(Steps.STEP_1)">
+                      <i class="fas fa-chevron-left"></i>
+
+                    </button>
+
+                    <button class="btn-sm btn-form  float-end" (click)="setActive(Steps.STEP_3)" >
+                      <i class="fas fa-chevron-right"></i>
+
+                    </button>
                   </div>
                   <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_3)">
                     <select
@@ -321,7 +347,7 @@
                         align-items-center
                         mt-2"
                     >
-                      <p
+                      <!-- <p
                         style="
                           margin-left: 12px;
                           font-weight: 600;
@@ -329,12 +355,20 @@
                         "
                       >
                       {{ ic3 }}
-                      </p>
-                      <button class="btn-form mt-2" (click)="setActive(Steps.STEP_4)">
-                        <span>Continuer</span>
-                        <span><i class="fi fi-rr-Angle-right"></i></span>
-                      </button>
+                      </p> -->
+
+
+
                     </div>
+                    <button class="btn-form "(click)="setActive(Steps.STEP_2)">
+                      <i class="fas fa-chevron-left"></i>
+
+                    </button>
+
+                    <button class="btn-sm btn-form  float-end" (click)="setActive(Steps.STEP_4)" >
+                      <i class="fas fa-chevron-right"></i>
+
+                    </button>
                   </div>
                   <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_4)">
                     <select
@@ -360,7 +394,7 @@
                         align-items-center
                         mt-2"
                     >
-                      <p
+                      <!-- <p
                         style="
                           margin-left: 12px;
                           font-weight: 600;
@@ -368,30 +402,38 @@
                         "
                       >
                       {{ desc_biblio }}
-                      </p>
-                      <button class="btn-form mt-2" (click)="setActive(Steps.STEP_2)">
-                        <span>Continuer</span>
-                        <span><i class="fi fi-rr-Angle-right"></i></span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="floatingInput"
-                      placeholder="Quantité"
-                      (change)="listenQuantute($event.target.value)"
-                          [(ngModel)]="quantite"
-                          name="quantite"
+                      </p> -->
 
-                          [value]="q"
-                    />
-                    <label for="floatingInput">Quantité</label>
+
+
+                    </div>
+                    <button class="btn-form "(click)="setActive(Steps.STEP_3)">
+                      <i class="fas fa-chevron-left"></i>
+
+                    </button>
                   </div>
+
                   <div class="row">
                     <div class="col-4">
-                      <div class="form-floating mb-3">
+                      <label for="floatingInput">Quantité</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="floatingInput"
+                        placeholder="Quantité"
+                        (change)="listenQuantute($event.target.value)"
+                            [(ngModel)]="quantite"
+                            name="quantite"
+
+                            [value]="q"
+                      />
+                    </div>
+
+                    <div class="col-4">
+                      <label for="floatingInput">MB</label>
+
+                      <div class="input-group">
+
                         <input
 
                           type="text"
@@ -403,56 +445,42 @@
                           name="infos.uMB_an"
                           required
                           value="{{ infotrie5?.uMB_an }}"
+                          />
+                          <span class="percent input-group-addon">
+                            <i class="fas fa-pen" style="color: red;" type="button" *ngIf="infotrie5 && infotrie5.uMB_an"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                          </span>
+                        </div>
 
-                        />
 
-                        <label for="floatingInput">MB</label>
-                        <button class="btn btn-light mt-2 text-info" *ngIf="infotrie5 && infotrie5.uMB_an"
+                        <!-- <button class="btn btn-light mt-2 text-info" *ngIf="infotrie5 && infotrie5.uMB_an"
                         data-bs-toggle="modal" data-bs-target="#exampleModal">
                      Modifier MB
-                      </button>
+                      </button> -->
 
-                      </div>
+
+
+
                     </div>
-                    <div class="col-4 d-block justify-content-center align-items-center">
-                     <!--
-                        <label for="">Selectionnez:</label>
-                          <button class="btn btn-light mt-3"
-                       data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier MB</button>
 
-                     -->
-
-
-
-                      <!-- <div class="form-floating">
-                        <select
-                          class="form-select shadow-none"
-                          id="floatingSelect"
-                          aria-label="Floating label select example"
-                        >
-                          <option selected class="w-100">Sélectionner</option>
-                          <option value="1">Oui</option>
-                          <option value="2">Modifier</option>
-                        </select>
-                        <label for="floatingSelect"
-                          >Votre catégorie d'intrant?
-                        </label>
-                      </div> -->
-                    </div>
                     <div class="col-4">
                       <div class="form-floating mb-3">
-                        <input
-                          type="email"
-                          class="form-control"
-                          id="floatingInput"
 
+
+                        <input
+                          type="text"
+                          class="form-control"
+
+                          placeholder="Total"
                           [(ngModel)]="t_MB_an"
                           name="t_MB_an"
                           [value]="mb_an"
-                          id="formGroupExampleInput"
+                          id="floatingInput"
                           value="{{ prod }}"
                         />
                         <label for="floatingInput">Total</label>
+
+
                       </div>
                     </div>
                   </div>
@@ -463,20 +491,33 @@
                 <div class="col-8 " class="align-self-center p-2">
                   <table class="table">
                     <thead>
-                      <tr class="table-success">
-                        <th scope="col">Type</th>
-                        <th scope="col">Quantité</th>
+                      <tr>
+                        <th scope="col" class="centre-align" >Type</th>
+                        <th scope="col" class="centre-align">Quantité</th>
 
-                        <th scope="col">Total MB</th>
+                        <th scope="col" class="centre-align">Total MB</th>
+                        <th class="centre-align">Action</th>
                       </tr>
                     </thead>
                     <tbody>
 
                       <tr  *ngFor="let newFiche of arrayForm ; let i = index">
 
-                        <td scope="row"></td>
-                        <td>{{newFiche?.quantite}}</td>
-                        <td>{{newFiche?.t_MB_an}}</td>
+                        <td scope="row" style=" width: 35%;" ><span>{{newFiche.IC1 + ' ' + newFiche.IC2 + ' ' +  newFiche.IC3 + ' ' +  newFiche.Description}}
+
+                        </span> </td>
+
+                        <td class="centre-align">{{newFiche?.quantite}}</td>
+                        <td class="centre-align">{{newFiche?.t_MB_an}}</td>
+                        <td class="centre-align">
+                          <a type="button"
+                          class="settings" title="Parametre" data-toggle="tooltip"  (click)="indexRow(newFiche)" style="color: #00ae81;">
+                          <i class="material-icons" >&#xE8B8;</i></a>
+                            <a type="button"  class="delete" title="Delete"  data-toggle="tooltip" (click)="delete(newFiche)" style="color: red;" >
+                              <i class="material-icons">&#xE5C9;</i>
+                            </a>
+
+                        </td>
 
                       </tr>
 
@@ -513,24 +554,44 @@
 
 
             <div class="row d-flex justify-content">
-              <div class="col-12 d-flex justify-content align-items">
-                <div class=" col-2 next-btn" *ngIf="ha">
-                  <button class="add" (click)="clickprecedent1()" >
+              <div class="col-12 d-flex justify-content align-items" >
+                <div class=" col-2 next-btn nav nav-pills " *ngIf="tab==2" >
+                  <button class="add" (click)="openTab(1)"   data-bs-toggle="tab"
+                  data-bs-target="#categorieIntrant"  >
                     <span class="btn-txt">Precedent</span>
                   </button>
                 </div>
-                <div class=" col-1">
+                <div class=" col-2 next-btn nav nav-pills" *ngIf="tab==3 " >
+                  <button class="add"  (click)="openTab(2)"  data-bs-toggle="tab"
+                  data-bs-target="#total"  >
+                    <span class="btn-txt">Precedent</span>
+                  </button>
+                </div>
+
+                <div class=" col-1" *ngIf="tab==2 || tab==3 ">
                   </div>
-                  <div class=" d-grid gap-2 col-6 mx-auto next-btn">
-                    <button class="add">Ajouter
+
+                  <div class=" d-grid gap-2 col-2  next-btn" *ngIf="tab==1">
+                    <button class="add" (click)="saveContent(f.value)">Ajouter
                       <span class="btn-txt">+</span>
                     </button>
                   </div>
-                  <div class=" col-1">
+                  <div class=" col-8 next-btn" *ngIf="tab==1"></div>
+                  <div class=" col-1" *ngIf="tab==2 || tab==3 ">
                   </div>
-                <div class="col-2 next-btn" *ngIf="ha">
-                  <button class="add" (click)="click1()" >
-                    <span class="btn-txt">Suivant</span>
+                  <div class=" col-6" *ngIf="tab==2 || tab==3 ">
+                  </div>
+
+                <div class="col-2 next-btn  nav nav-pills " *ngIf="tab==1 "  >
+                  <button id="id_"    (click)="openTab(2)"  data-bs-toggle="tab"
+                  data-bs-target="#total" [disabled]="arrayForm.length==0"  >
+                    <span class="btn-txt" >Suivant</span>
+                  </button>
+                </div>
+                <div class="col-2 next-btn  nav nav-pills" *ngIf="tab==2"  >
+                  <button id="id_"    (click)="openTab(3)" data-bs-toggle="tab"
+                  data-bs-target="#Puissance" >
+                    <span class="btn-txt" >Suivant</span>
                   </button>
                 </div>
               </div>
@@ -538,38 +599,57 @@
 
           </div >
           <div class="col-12 col-lg-8 left" *ngIf="hb">
-            <div class="row d-flex justify-content-center">
+            <div class="row d-flex justify-content-center" >
               <div class="col-8" >
-                <div *ngIf="!listBtnConception">
-                  <button class="col-12 abc" (click)="conceptionClick()">
+
+                  <!-- <button class="col-12 abc" (click)="conceptionClick()">
                   CAPEX Conception
                   <i
                   style="margin-right: 20px;"
-                  class="fas fa-chevron-right"></i></button>
-                </div>
-                <div *ngIf="!listBtnConception">
-                  <button class="col-12 abc" (click)="constructionClick()" >
-                   <span>
-                    CAPEX Construction
-                    <i
-                    style="margin-right: 20px;"
-                    class="fas fa-chevron-right"></i>
-                   </span>
+                  class="fas fa-chevron-right"></i></button> -->
+                  <div class="row btn-cpx justify-content-between" *ngIf="!listBtnConception">
+                    <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="conceptionClick()">
 
+                      <span><p class="centre-align main-title" style="margin: 0;">CAPEX Conception</p></span
+                      >
+                      <span><p style="margin: 0;font-size: 0.75rem; color:#727272 ;">Total:</p><p class="main-title" style="margin: 0;">120.000€</p>
+                        </span
+                      >
+
+                    </button>
+                    <!-- <span class="col-12 col-lg-4 total">
+                      <span class="d-flex justify-content-center align-items-center"><p>Total:120.000€</p>
+                        </span
+                      >
+                      </span> -->
+                  </div>
+
+                <div class="row btn-cpx justify-content-between" *ngIf="!listBtnConception">
+                  <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="constructionClick()">
+
+                    <span><p class="centre-align main-title" style="margin: 0;"> CAPEX Construction</p></span
+                    >
+                    <span><p style="margin: 0;font-size: 0.75rem; color:#727272 ;">Total:</p><p class="main-title" style="margin: 0;">120.000€</p>
+                      </span>
+                  </button>
+
+                </div>
+                <div  class="row btn-cpx justify-content-between" *ngIf="!listBtnConception">
+                  <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="constructionClick()">
+
+                    <span><p class="centre-align main-title" style="margin: 0;">CAPEX Raccordement</p></span
+                    >
+                    <span><p style="margin: 0;font-size: 0.75rem; color:#727272 ;">Total:</p><p class="main-title" style="margin: 0;">120.000€</p>
+                      </span>
                   </button>
                 </div>
-                <div *ngIf="!listBtnConception">
-                  <button class="col-12 abc">CAPEX Raccordement
-                    <i
-                    style="margin-right: 20px;"
-                    class="fas fa-chevron-right"></i>
-                  </button>
-                </div>
-                <div *ngIf="!listBtnConception">
-                  <button class="col-12 abc">CAPEX Autres invesstissement
-                    <i
-                    style="margin-right: 20px;"
-                    class="fas fa-chevron-right"></i>
+                <div class="row btn-cpx justify-content-between" *ngIf="!listBtnConception">
+                  <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="constructionClick()">
+
+                    <span><p class="centre-align main-title" style="margin: 0;">CAPEX Autres invesstissement</p></span
+                    >
+                    <span><p style="margin: 0;font-size: 0.75rem; color:#727272 ;">Total:</p><p class="main-title" style="margin: 0;">{{conceptions[0]?.totaux_prixVente_Total}}€</p>
+                      </span>
                   </button>
                 </div>
               </div>
@@ -578,10 +658,10 @@
               <div class="col-8">
                 <div class="row justify-content-between align-items-center mb-2" >
                   <span class="col-1 btn-fwd">
-                    <button>
+                    <button (click)="closeConception()">
                       <i
                         style="vertical-align: middle; color: #018a65"
-                        class="fas fa-chevron-left" (click)="closeConception()"
+                        class="fas fa-chevron-left"
                       ></i>
                     </button>
                   </span>
@@ -600,17 +680,34 @@
                     role="button"
                     aria-expanded="false"
                     aria-controls="multiCollapseExample1"
+                  (click)="collapseUpDown()"
 >
-                    <span>1/ Intérêt du porteur de projet</span>
-                    <i
+                    <span>1/ Intérêt du porteur de projet </span>
+                    <span style="float:right">
+                      {{conceptions[0]?.Interet_porteur_projet?.Sous_Total_Prix_vente_Concep}}€
+                      <i *ngIf="!collapse"
                       style="
                         float: right;
                         vertical-align: middle;
                         color: #018a65;
                         margin-top: 5px;
+                        margin-left: 5px;
                       "
                       class="fas fa-chevron-down"
                     ></i>
+                    <i *ngIf="collapse"
+                    style="
+                      float: right;
+                      vertical-align: middle;
+                      color: #018a65;
+                      margin-top: 5px;
+                      margin-left: 5px;
+                    "
+                    class="fas fa-chevron-up"
+                  ></i>
+                    </span>
+
+
                   </a>
                   <ul
                     class="collapse multi-collapse"
@@ -621,15 +718,36 @@
                         list-item
                         cpx-list
                         d-flex
-                        justify-content-between
-                        mt-3
-                      "
-                    >
-                      <p>1.1. Etude préléminaire de la biomasse</p>
-                      <p class="price">00€</p>
+                        justify-content-between mt-3 " >
+
+                      <p scop>1.1. Etude préléminaire de la biomasse
+                        <span class="price">{{conceptions[0]?.Interet_porteur_projet?.Etude_preleminaire_biomasse?.Prix_vente_Concep}} €</span>
+                      </p>
                     </li>
+                    <li  class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                  <p>1.2 Rapport de préfaisabilité</p>
+                      <p>{{conceptions[0]?.Interet_porteur_projet?.Rapport_prefaisabilite?.Prix_vente_Concep}} €</p>
+                </li>
+                <li  class="list-item cpx-list d-flex justify-content-between mt-3"><p>1.3 Impact économique pour l'exploitant</p>
+                  <p class="price"> {{conceptions[0]?.Interet_porteur_projet?.Impact_economique_exploitant?.Prix_vente_Concep}} €</p>
+                </li>
+                <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                  <p>1.4 Bilan agronomique des sols</p>
+                  <p class="price"> {{conceptions[0]?.Interet_porteur_projet?.Bilan_agronomique_sols?.Prix_vente_Concep}} €</p>
+                </li>
+                <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                  <p>1.5. Après Avis favorable : Création SPV</p>
+                  <p class="price">{{conceptions[0]?.Interet_porteur_projet?.Apres_Avis_favorable_Creation_SPV?.Prix_vente_Concep}} €</p>
+                </li>
                   </ul>
                 </li>
+
                 <li class="nav-item mb-2">
                   <a
                     class="nav-link"
@@ -638,35 +756,69 @@
                     role="button"
                     aria-expanded="false"
                     aria-controls="multiCollapseExample2"
-                  >
-                  <span>2/ Etude de la biomasse du projet</span>
-                  <i
+                  (click)="collapseUpDown()"
+>
+                    <span>2/  Etude préléminaire de la biomasse</span>
+                    <span style="float:right">
+                      {{conceptions[0]?.Etude_biomasse_projet?.Sous_Total_Prix_vente_Concep}} €
+                      <i *ngIf="!collapse"
+                      style="
+                        float: right;
+                        vertical-align: middle;
+                        color: #018a65;
+                        margin-top: 5px;
+                        margin-left: 5px;
+                      "
+                      class="fas fa-chevron-down"
+                    ></i>
+                    <i *ngIf="collapse"
                     style="
                       float: right;
                       vertical-align: middle;
                       color: #018a65;
                       margin-top: 5px;
+                      margin-left: 5px;
                     "
-                    class="fas fa-chevron-down"
+                    class="fas fa-chevron-up"
                   ></i>
+                    </span>
+
 
                   </a>
                   <ul
                     class="collapse multi-collapse"
-                    id="multiCollapseExample2"
+                    id="multiCollapseExample1"
                   >
                     <li
                       class="
                         list-item
                         cpx-list
                         d-flex
-                        justify-content-between
-                        mt-3
-                      "
-                    >
-                      <p>1.1. Etude préléminaire de la biomasse</p>
-                      <p class="price">00€</p>
+                        justify-content-between mt-3 " >
+
+                      <p >2.1. Cibler les besoins complémentaires nutritionnels
+                        <span class="price">{{conceptions[0]?.Etude_biomasse_projet?.Cibler_besoins_complementaires_nutritionnels?.Prix_vente_Concep}} €</span>
+                      </p>
                     </li>
+                    <li  class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                  <p>2.2 Rapport d'étude approfondi du pouvoir méthanogène</p>
+                      <p>{{conceptions[0]?.Etude_biomasse_projet?.Rapport_etude_approfondi_pouvoir_meethanogeene?.Prix_vente_Concep}} €</p>
+                </li>
+                <li  class="list-item cpx-list d-flex justify-content-between mt-3">
+                  <p>2.3 Apport supplémentaire d'intrants réseau ENR Agri</p>
+                  <p class="price">{{conceptions[0]?.Etude_biomasse_projet?.Apport_supplementaire_intrants_reseau_ENR_Agri?.Prix_vente_Concep}} €</p>
+                </li>
+
+                <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                  <p>2.4. Assistance Juridique : Apporteur substrat & SPV</p>
+                  <p class="price">{{conceptions[0]?.Etude_biomasse_projet?.Assistance_juridique_Apporteur_substrat_SPV?.Prix_vente_Concep}} €</p>
+                </li>
                   </ul>
                 </li>
                 <li class="nav-item mb-2">
@@ -676,35 +828,79 @@
                     href="#multiCollapseExample3"
                     role="button"
                     aria-expanded="false"
-                    aria-controls="multiCollapseExample3"
-                  >
+                    aria-controls="multiCollapseExample3">
                   <span> 3/ Étude foncière du projet</span>
-                  <i
+                  <span style="float:right">
+                    {{conceptions[0]?.Etude_fonciere_projet?.Sous_Total_Prix_vente_Concep}} €
+                    <i *ngIf="!collapse"
                     style="
                       float: right;
                       vertical-align: middle;
                       color: #018a65;
                       margin-top: 5px;
-                    "
+                      margin-left: 5px;"
                     class="fas fa-chevron-down"
                   ></i>
-                  </a>
-                  <ul
-                    class="collapse multi-collapse"
-                    id="multiCollapseExample3"
-                  >
-                    <li
-                      class="
-                        list-item
-                        cpx-list
-                        d-flex
-                        justify-content-between
-                        mt-3
-                      "
-                    >
-                      <p>1.1. Etude préléminaire de la biomasse</p>
-                      <p class="price">00€</p>
-                    </li>
+                  <i *ngIf="collapse"
+                  style="
+                    float: right;
+                    vertical-align: middle;
+                    color: #018a65;
+                    margin-top: 5px;
+                    margin-left: 5px;
+                  "
+                  class="fas fa-chevron-up"
+                ></i>
+                  </span>
+
+
+                </a>
+                <ul
+                  class="collapse multi-collapse"
+                  id="multiCollapseExample1"
+                >
+                  <li
+                    class="
+                      list-item
+                      cpx-list
+                      d-flex
+                      justify-content-between mt-3 " >
+
+                    <p scop>3.1. Optimisation de l'emplacement du site
+                      <span class="price">{{conceptions[0]?.Etude_fonciere_projet?.Optimisation_emplacement_site?.Prix_vente_Concep}} €</span>
+                    </p>
+                  </li>
+                  <li  class="
+                  list-item
+                  cpx-list
+                  d-flex
+                  justify-content-between
+                  mt-3
+                ">
+                <p>3.2. Relevé topographique</p>
+                    <p>{{conceptions[0]?.Etude_fonciere_projet?.Releve_topographique?.Prix_vente_Concep}} €</p>
+              </li>
+              <li  class="list-item cpx-list d-flex justify-content-between mt-3">
+                <p>3.3 Rapport du géomètre</p>
+                <p class="price">{{conceptions[0]?.Etude_fonciere_projet?.Rapport_geometre?.Prix_vente_Concep}} €</p>
+              </li>
+
+              <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                <p>3.4. Plan de masse</p>
+                <p class="price">{{conceptions[0]?.Etude_fonciere_projet?.Plan_masse?.Prix_vente_Concep}} €</p>
+              </li>
+              <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                <p>3.5.  Analyse géotechnique primaire (G1 PGC)</p>
+                <p class="price">{{conceptions[0]?.Etude_fonciere_projet?.Analyse_geotechnique_primaire?.Prix_vente_Concep}} €</p>
+              </li>
+              <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                <p>3.6. Analyse géotechnique approfondie (G2 AVP + G2 PRO)</p>
+                <p class="price">{{conceptions[0]?.Etude_fonciere_projet?.Analyse_geotechnique_approfondie?.Prix_vente_Concep}} €</p>
+              </li>
+              <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                <p>3.7. Assistance juridique auprès du notaire : Propriétaire foncier & SPV</p>
+                <p class="price">{{conceptions[0]?.Etude_fonciere_projet?.Assistance_juridique_aupres_notaire_Proprietaire_foncier_SPV?.Prix_vente_Concep}} €</p>
+              </li>
                   </ul>
                 </li>
                 <li class="nav-item mb-2">
@@ -716,34 +912,60 @@
                     aria-expanded="false"
                     aria-controls="multiCollapseExample4"
                   >
-                  <span>4/ La sécurisation des droits gaziers
-                  </span>
-                  <i
+                  <span>4/ La sécurisation des droits gaziers</span>
+                    <span style="float:right">
+                      {{conceptions[0]?.sercurisation_gaziers?.Sous_Total_Prix_vente_Concep}} €
+                      <i *ngIf="!collapse"
+                      style="
+                        float: right;
+                        vertical-align: middle;
+                        color: #018a65;
+                        margin-top: 5px;
+                        margin-left: 5px;
+                      "
+                      class="fas fa-chevron-down"
+                    ></i>
+                    <i *ngIf="collapse"
                     style="
                       float: right;
                       vertical-align: middle;
                       color: #018a65;
                       margin-top: 5px;
+                      margin-left: 5px;
                     "
-                    class="fas fa-chevron-down"
+                    class="fas fa-chevron-up"
                   ></i>
+                    </span>
                   </a>
                   <ul
                     class="collapse multi-collapse"
-                    id="multiCollapseExample4"
+                    id="multiCollapseExample1"
                   >
                     <li
                       class="
                         list-item
                         cpx-list
                         d-flex
-                        justify-content-between
-                        mt-3
-                      "
-                    >
-                      <p>1.1. Etude préléminaire de la biomasse</p>
-                      <p class="price">00€</p>
+                        justify-content-between mt-3 " >
+
+                      <p scop>4.1. Étude détaillée auprès du réseau de transport et/ou de distribution de gaz
+                        <span class="price">{{conceptions[0]?.sercurisation_gaziers?.etude_detaille_reseau_transport__distribution_gaz?.Prix_vente_Concep}} €</span>
+                      </p>
                     </li>
+                    <li  class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                  <p>4.2. Convention de raccordement auprès du gestionnaire de réseau</p>
+                      <p>{{conceptions[0]?.sercurisation_gaziers?.Convention_raccordement_gestionnaire_reseau?.Prix_vente_Concep}} €</p>
+                </li>
+                <li  class="list-item cpx-list d-flex justify-content-between mt-3">
+                  <p>4.3. Contrat de vente biométhane</p>
+                  <p class="price">{{conceptions[0]?.sercurisation_gaziers?.Contrat_vente_biomethane?.Prix_vente_Concep}} €</p>
+                </li>
                   </ul>
                 </li>
                 <li class="nav-item mb-2">
@@ -755,34 +977,75 @@
                     aria-expanded="false"
                     aria-controls="multiCollapseExample5"
                   >
-                  <span>5/ La valorisation du digestat
-                  </span>
-                  <i
+                  <span>5/ La valorisation du digestat</span>
+                    <span style="float:right">
+                      {{conceptions[0]?.valorisation_digestat?.Sous_Total_Prix_vente_Concep}} €
+                      <i *ngIf="!collapse"
+                      style="
+                        float: right;
+                        vertical-align: middle;
+                        color: #018a65;
+                        margin-top: 5px;
+                        margin-left: 5px;
+                      "
+                      class="fas fa-chevron-down"
+                    ></i>
+                    <i *ngIf="collapse"
                     style="
                       float: right;
                       vertical-align: middle;
                       color: #018a65;
                       margin-top: 5px;
+                      margin-left: 5px;
                     "
-                    class="fas fa-chevron-down"
+                    class="fas fa-chevron-up"
                   ></i>
+                    </span>
+
+
                   </a>
                   <ul
                     class="collapse multi-collapse"
-                    id="multiCollapseExample5"
+                    id="multiCollapseExample1"
                   >
                     <li
                       class="
                         list-item
                         cpx-list
                         d-flex
-                        justify-content-between
-                        mt-3
-                      "
-                    >
-                      <p>1.1. Etude préléminaire de la biomasse</p>
-                      <p class="price">00€</p>
+                        justify-content-between mt-3 " >
+
+                      <p >5.1. Étude de la qualité du digestat
+                        <span class="price">{{conceptions[0]?.valorisation_digestat?.etude_qualite_digestat?.Prix_vente_Concep}} €</span>
+                      </p>
                     </li>
+                    <li  class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                  <p>5.2. Diagnostic de la zone épandable</p>
+                      <p>{{conceptions[0]?.valorisation_digestat?.Diagnostic_zone_epandable?.Prix_vente_Concep}} €</p>
+                </li>
+                <li  class="list-item cpx-list d-flex justify-content-between mt-3">
+                  <p>5.3 Chiffrage budget d’épandage</p>
+                  <p class="price">{{conceptions[0]?.valorisation_digestat?.Chiffrage_budget_epandage?.Prix_vente_Concep}} €</p>
+                </li>
+
+                <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                  <p>5.4. Dossier et autorisation du plan d’épandage</p>
+                  <p class="price">{{conceptions[0]?.valorisation_digestat?.Dossier_autorisation_plan_epandage?.Prix_vente_Concep}} €</p>
+                </li>
+                <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                  <p>5.5.  Rendez-vous avec les exploitants qui recevront le digestat</p>
+                  <p class="price">{{conceptions[0]?.valorisation_digestat?.Rendez_vous_exploitants_recevront_digestat?.Prix_vente_Concep}} €</p>
+                </li>
+                <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                  <p>5.6. Assistance juridique : Contrat d'épandage & SPV</p>
+                  <p class="price">{{conceptions[0]?.valorisation_digestat?.Assistance_juridique_Contrat_epandage_SPV?.Prix_vente_Concep}} €</p>
+                </li>
                   </ul>
                 </li>
                 <li class="nav-item mb-2">
@@ -794,35 +1057,67 @@
                     aria-expanded="false"
                     aria-controls="multiCollapseExample6"
                   >
-                  <span>6/ Réalisation des supports Marketing
-                  </span>
-                  <i
+                  <span>6/ Réalisation des supports Marketing</span>
+                    <span style="float:right">
+                      {{conceptions[0]?.Realisation_Marketing?.Sous_Total_Prix_vente_Concep}} €
+                      <i *ngIf="!collapse"
+                      style="
+                        float: right;
+                        vertical-align: middle;
+                        color: #018a65;
+                        margin-top: 5px;
+                        margin-left: 5px;
+                      "
+                      class="fas fa-chevron-down"
+                    ></i>
+                    <i *ngIf="collapse"
                     style="
                       float: right;
                       vertical-align: middle;
                       color: #018a65;
                       margin-top: 5px;
+                      margin-left: 5px;
                     "
-                    class="fas fa-chevron-down"
+                    class="fas fa-chevron-up"
                   ></i>
+                    </span>
+
 
                   </a>
                   <ul
                     class="collapse multi-collapse"
-                    id="multiCollapseExample6"
+                    id="multiCollapseExample1"
                   >
                     <li
                       class="
                         list-item
                         cpx-list
                         d-flex
-                        justify-content-between
-                        mt-3
-                      "
-                    >
-                      <p>1.1. Etude préléminaire de la biomasse</p>
-                      <p class="price">00€</p>
+                        justify-content-between mt-3 " >
+
+                      <p >6.1. Plaquette de présentation
+                        <span class="price">{{conceptions[0]?.Realisation_Marketing?.Plaquette_presentation?.Prix_vente_Concep}} €</span>
+                      </p>
                     </li>
+                    <li  class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                  <p>6.2. Réalisation d'infographie en 3D</p>
+                      <p>{{conceptions[0]?.Realisation_Marketing?.Realisation_infographie_3D?.Prix_vente_Concep}} €</p>
+                </li>
+                <li  class="list-item cpx-list d-flex justify-content-between mt-3">
+                  <p>6.3 Film d'animation</p>
+                  <p class="price">{{conceptions[0]?.Realisation_Marketing?.Film_animation?.Prix_vente_Concep}} €</p>
+                </li>
+
+                <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                  <p>6.4. Site internet</p>
+                  <p class="price">{{conceptions[0]?.Realisation_Marketing?.Site_internet?.Prix_vente_Concep}} €</p>
+                </li>
                   </ul>
                 </li>
                 <li class="nav-item mb-2">
@@ -836,32 +1131,71 @@
                   >
                   <span> 7/ L’acceptabilité locale du Projet
                   </span>
-                  <i
+                  <span style="float:right">
+                    {{conceptions[0]?.acceptabilite_projet?.Sous_Total_Prix_vente_Concep}} €
+                    <i *ngIf="!collapse"
                     style="
                       float: right;
                       vertical-align: middle;
                       color: #018a65;
                       margin-top: 5px;
+                      margin-left: 5px;
                     "
                     class="fas fa-chevron-down"
                   ></i>
-                  </a>
-                  <ul
-                    class="collapse multi-collapse"
-                    id="multiCollapseExample7"
-                  >
-                    <li
-                      class="
-                        list-item
-                        cpx-list
-                        d-flex
-                        justify-content-between
-                        mt-3
-                      "
-                    >
-                      <p>1.1. Etude préléminaire de la biomasse</p>
-                      <p class="price">00€</p>
-                    </li>
+                  <i *ngIf="collapse"
+                  style="
+                    float: right;
+                    vertical-align: middle;
+                    color: #018a65;
+                    margin-top: 5px;
+                    margin-left: 5px;
+                  "
+                  class="fas fa-chevron-up"
+                ></i>
+                  </span>
+
+
+                </a>
+                <ul
+                  class="collapse multi-collapse"
+                  id="multiCollapseExample1"
+                >
+                  <li
+                    class="
+                      list-item
+                      cpx-list
+                      d-flex
+                      justify-content-between mt-3 " >
+
+                    <p>7.1. Diagnostic territorial
+                      <span class="price">{{conceptions[0]?.acceptabilite_projet?.Diagnostic_territorial?.Prix_vente_Concep}} €</span>
+                    </p>
+                  </li>
+                  <li  class="
+                  list-item
+                  cpx-list
+                  d-flex
+                  justify-content-between
+                  mt-3
+                ">
+                <p>7.2. Réalisation des plans d’action</p>
+                    <p>{{conceptions[0]?.acceptabilite_projet?.Realisation_plans_action?.Prix_vente_Concep}} €</p>
+              </li>
+              <li  class="list-item cpx-list d-flex justify-content-between mt-3">
+                <p>7.3 Formation des riverains aux bienfaits de la méthanisation</p>
+                <p class="price">{{conceptions[0]?.acceptabilite_projet?.Film_aniFormation_riverains_bienfaits_methanisationmation?.Prix_vente_Concep}} €</p>
+              </li>
+
+              <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                <p>7.4. Défense et promotion du projet auprès des élus et de la population locale</p>
+                <p class="price">{{conceptions[0]?.acceptabilite_projet?.Defense_promotion_projet_elus_population_locale?.Prix_vente_Concep}} €</p>
+              </li>
+              <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                <p>7.5. Réponses aux questions lors des enquêtes publiques</p>
+                <p class="price">{{conceptions[0]?.acceptabilite_projet?.Reponses_questions_enquete_publiques?.Prix_vente_Concep}} €</p>
+              </li>
+
                   </ul>
                 </li>
                 <li class="nav-item mb-2">
@@ -875,32 +1209,78 @@
                   >
                   <span> 8/ La réalisation de l’ingénierie du Projet
                   </span>
-                  <i
+                  <span style="float:right">
+                    {{conceptions[0]?.realisation_Projet?.Sous_Total_Prix_vente_Concep}} €
+                    <i *ngIf="!collapse"
                     style="
                       float: right;
                       vertical-align: middle;
                       color: #018a65;
                       margin-top: 5px;
+                      margin-left: 5px;
                     "
                     class="fas fa-chevron-down"
                   ></i>
-                  </a>
-                  <ul
-                    class="collapse multi-collapse"
-                    id="multiCollapseExample8"
-                  >
-                    <li
-                      class="
-                        list-item
-                        cpx-list
-                        d-flex
-                        justify-content-between
-                        mt-3
-                      "
-                    >
-                      <p>1.1. Etude préléminaire de la biomasse</p>
-                      <p class="price">00€</p>
-                    </li>
+                  <i *ngIf="collapse"
+                  style="
+                    float: right;
+                    vertical-align: middle;
+                    color: #018a65;
+                    margin-top: 5px;
+                    margin-left: 5px;
+                  "
+                  class="fas fa-chevron-up"
+                ></i>
+                  </span>
+
+
+                </a>
+                <ul
+                  class="collapse multi-collapse"
+                  id="multiCollapseExample1"
+                >
+                  <li
+                    class="
+                      list-item
+                      cpx-list
+                      d-flex
+                      justify-content-between mt-3 " >
+
+                    <p >8.1. Dimensionnement du Projet
+                      <span class="price">{{conceptions[0]?.realisation_Projet?.Dimensionnement_Projet?.Prix_vente_Concep}} €</span>
+                    </p>
+                  </li>
+                  <li  class="
+                  list-item
+                  cpx-list
+                  d-flex
+                  justify-content-between
+                  mt-3
+                ">
+                <p>8.2. Étude dispersion d'odeur éventuelle</p>
+                    <p>{{conceptions[0]?.realisation_Projet?.etude_dispersion_odeur_eventuelle?.Prix_vente_Concep}} €</p>
+              </li>
+              <li  class="list-item cpx-list d-flex justify-content-between mt-3">
+                <p>8.3 Proposition de choix du process</p>
+                <p class="price">{{conceptions[0]?.realisation_Projet?.Proposition_choix_process?.Prix_vente_Concep}} €</p>
+              </li>
+
+              <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                <p>8.4. Dossier de consultation des Entreprises (DCE)</p>
+                <p class="price">{{conceptions[0]?.realisation_Projet?.Dossier_consultation_Entreprises?.Prix_vente_Concep}} €</p>
+              </li>
+              <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                <p>8.5. Contrat TRC / TRME / Exploitation négocié</p>
+                <p class="price">{{conceptions[0]?.realisation_Projet?.Contrat_TRC_TRME_Exploitation_negociee?.Prix_vente_Concep}} €</p>
+              </li>
+              <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                <p>8.6. Business Plan détaillé</p>
+                <p class="price">{{conceptions[0]?.realisation_Projet?.Business_Plan_detaille?.Prix_vente_Concep}} €</p>
+              </li>
+              <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                <p>8.7. Contrat prestataire : MOE, SPS, Contrôle technique</p>
+                <p class="price">{{conceptions[0]?.realisation_Projet?.Contrat_prestataire_Controle_technique?.Prix_vente_Concep}} €</p>
+              </li>
                   </ul>
                 </li>
                 <li class="nav-item mb-2">
@@ -1027,7 +1407,7 @@
             </div>
 
 
-            <div class="row d-flex justify-content">
+            <!-- <div class="row d-flex justify-content">
               <div class="col-12 d-flex justify-content align-items">
                 <div class=" col-2 next-btn" *ngIf="hb">
                   <button class="add" (click)="clickprecedent2()" >
@@ -1045,10 +1425,27 @@
                   </button>
                 </div>
               </div>
-            </div>
+            </div> -->
 
 
 
+
+<div class="row d-flex justify-content-center mt-3">
+  <div
+    class="col-8 d-flex justify-content-between align-items-center"
+  >
+    <div *ngIf="hb">
+      <button class="save" (click)="clickprecedent2()">
+        <span class="btn-txt">Precedant</span>
+      </button>
+    </div>
+    <div class="next-btn" *ngIf="hb">
+      <button class="save" (click)="click2()">
+        <span class="btn-txt">Suivant</span>
+      </button>
+    </div>
+  </div>
+</div>
 
 
 
@@ -1572,6 +1969,509 @@
           <div class="row d-flex justify-content-center">
             <div class="col-8" >
 
+
+                <!-- <div class="row" style="margin-top: 30px;">
+                      <div class="col-md-12">
+                        <div class="col-md-4">
+                          Montant Total du Capex
+                        </div>
+
+                        <div class="col-md-2">
+                          <div class="input-group">
+
+
+                          <input class="form-control autogrow" id="field-ta" value="{{Mtn_Total_Concep_Contruc_inj}}">
+                          <span class="input-group-addon ">€</span>
+                        </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="input-group">
+
+                          <input class="form-control autogrow" id="field-ta" value="{{cout_racc_cog}}">
+                          <span class="percent input-group-addon">€</span>
+                              </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="input-group">
+                          <input class="form-control autogrow" id="field-ta" value="{{Mtn_Total_Concep_Contruc_cog}}">
+                          <span class="percent input-group-addon">€</span>
+                        </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="input-group">
+                          <input class="form-control autogrow" id="field-ta" value="{{cout_racc_cog}}">
+                          <span class="percent input-group-addon">€</span>
+                        </div>
+                        </div>
+                      </div>
+                    </div> -->
+
+                <div class="row">
+                  <div
+                    class="
+                      titre
+                      d-flex
+                      justify-content-start
+                      flex-wrap flex-md-nowrap
+                      align-items-start
+                      pt-3
+                      pb-2
+                      mb-3
+                    "
+                  >
+                    <p class="title">
+                      Fiche Projet |<span
+                        style="
+                          font-family: Open Sans, sans-serif;
+                          font-weight: 300;
+                          color: #666666;
+                          font-size: 20px;
+                        "
+                      >
+                        Scenario</span
+                      >
+                    </p>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                        <B> Date prev. De signature du contrat d'achat de biométhane</B>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="input-group">
+                          <input
+                            class="form-control autogrow"
+                            id="field-ta"
+                            placeholder=""
+                            [(ngModel)]="Date_signature_contrat_achat_biomethane"
+                            name="Date_signature_contrat_achat_biomethane"
+                            value="{{ selected | date: 'dd/MM/yyyy' }}"
+                          />
+                          <span
+                            class="input-group-addon"
+                            style="
+                              background-color: white;
+                              border-top-right-radius: 10px;
+                              border-bottom-right-radius: 10px;
+                            "
+                          >
+                            <i class="entypo-calendar" (click)="showDialog()"> </i
+                          ></span>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top: 15px">
+                        <div class="col-md-12">
+                          <div class="col-md-3"></div>
+                          <div class="col-md-5" *ngIf="showCalander">
+                            <app-calendar (selected)="selected = $event"></app-calendar>
+                          </div>
+                          <div class="col-md-3"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="
+                      titre
+                      flex-wrap flex-md-nowrap
+                      align-items-start
+                      pt-3
+                      pb-2
+                      mb-1
+                    "
+                  >
+                    <!-- Formulaire Start -->
+
+                    <div class="tableOne container mt-3">
+                      <div class="row">
+                        <h6>Contrainte règlémentaire</h6>
+                        <div class="col border-end border-3">
+                          <div class="row">
+                            <div class="col">
+                              <div class="input-group mb-3">
+                                <input
+                                  class="form-control autogrow"
+                                  id="field-ta"
+                                  value="INJECTION"
+                                  style="
+                                    border-top-left-radius: 10px;
+                                    border-bottom-left-radius: 10px;
+                                  "
+                                />
+                                <span
+                                  class="input-group-text"
+                                  style="
+                                    background-color: white;
+                                    border-top-right-radius: 10px;
+                                    border-bottom-right-radius: 10px;
+                                  "
+                                >
+                                  <i
+                                    class="entypo-check"
+                                    style="background-color: green; color: white"
+                                  ></i
+                                ></span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <h6>Montant total de capex</h6>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >Conception et construction</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  [(ngModel)]="montant_total"
+                                  name="montant_total"
+                                  value="{{ calcul_Mtn() }}"
+                                />
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >Cout de racc réseau gazier</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  [(ngModel)]="cout_racc_inj"
+                                  name="cout_racc_inj"
+                                  value="{{ cout_racc_inj }}"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <h6>Réparation du financement</h6>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >Banque</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value="{{ financement_bq() }}"
+                                />
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >Fonds propres</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value="{{ financement_Fp() }}"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <h6>
+                              Part finanancée en compte courant par le porteur de projet
+                            </h6>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >En pourcentage %</label
+                                >
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="0"
+                                />
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >Montant en €</label
+                                >
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="0"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <h6>Part restante à financer</h6>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >En pourcentage %</label
+                                >
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="0"
+                                />
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >Montant en €</label
+                                >
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="0"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="row">
+                            <div class="col">
+                              <div class="input-group mb-3">
+                                <input
+                                  class="form-control"
+                                  id="field-ta"
+                                  value="COGÉNÉRATION"
+                                  style="
+                                    border-top-left-radius: 10px;
+                                    border-bottom-left-radius: 10px;
+                                  "
+                                  [ngClass]="volume_Nm3_CH4_an > 500 ? 'A' : 'B'"
+                                />
+
+                                <span
+                                  *ngIf="volume_Nm3_CH4_an > 500"
+                                  class="input-group-text"
+                                  style="
+                                    background-color: white;
+                                    border-top-right-radius: 10px;
+                                    border-bottom-right-radius: 10px;
+                                  "
+                                >
+                                  <i
+                                    class="entypo-cancel"
+                                    style="background-color: #cc2b26; color: white"
+                                  >
+                                  </i
+                                ></span>
+
+                                <span
+                                  *ngIf="volume_Nm3_CH4_an < 500"
+                                  class="input-group-addon"
+                                  style="
+                                    background-color: white;
+                                    border-top-right-radius: 10px;
+                                    border-bottom-right-radius: 10px;
+                                  "
+                                >
+                                  <i
+                                    class="entypo-check"
+                                    style="background-color: #2d7574; color: white"
+                                  ></i
+                                ></span>
+
+                                <span
+                                  *ngIf="!volume_Nm3_CH4_an"
+                                  class="input-group-addon"
+                                  style="
+                                    background-color: #353e41;
+                                    border-color: #353e41;
+                                    border-top-right-radius: 10px;
+                                    border-bottom-right-radius: 10px;
+                                  "
+                                >
+                                  <i></i
+                                ></span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <h6>Montant total de capex</h6>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >Conception et construction</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  [(ngModel)]="montant_total_cog"
+                                  name="montant_total_cog"
+                                  value=""
+                                />
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >Cout de racc réseau gazier</label
+                                >
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  value="{{ cout_racc_cog }}"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <h6>Réparation du financement</h6>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >Banque</label
+                                >
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="0"
+                                />
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >Fonds propres</label
+                                >
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="0"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <h6>
+                              Part finanancée en compte courant par le porteur de projet
+                            </h6>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >En pourcentage %</label
+                                >
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="0"
+                                />
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >Montant en €</label
+                                >
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="0"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <h6>Part restante à financer</h6>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >En pourcentage %</label
+                                >
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="0"
+                                />
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label"
+                                  >Montant en €</label
+                                >
+                                <input
+                                  type="email"
+                                  class="form-control"
+                                  id="exampleFormControlInput1"
+                                  placeholder="0"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Formulaire End -->
+
+                    <!-- Table Start-->
+
+                    <div class="tableTwo container mt-3 mb-3">
+                      <div class="row" class="table-responsive">
+                        <div class="col border-end border-3">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Avec subvention</th>
+                                <th scope="col">Sans subvention</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>000</td>
+                                <td>000</td>
+                              </tr>
+                              <tr>
+                                <td>001</td>
+                                <td>001</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="col">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Avec subvention</th>
+                                <th scope="col">Sans subvention</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>000</td>
+                                <td>000</td>
+                              </tr>
+                              <tr>
+                                <td>001</td>
+                                <td>001</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
             </div>
           </div>
 
@@ -1702,18 +2602,18 @@
       <!-- Step Bar start -->
 
       <div class="container" *ngIf="!hc && !hd &&!he && !hf && !hg ">
-        <ul class="progressbar">
+        <ul class="progressbar" >
           <li   [ngClass]="showGreenColor ? 'active': ''" (click)="goToProfile()">
             <img width="60px" src="assets/images/ficheClient.png" />
-            <p>Profil</p>
+            <p [style.color]="photoTextProfile ? 'green': 'black'">Profil</p>
           </li>
           <li  [ngClass]="greenCapex ? 'active': ''" (click)="goToGisement()">
             <img width="60px" src="assets/images/gisement.png" />
-            <p>Gisement</p>
+            <p [style.color]="photoTextGisement ? 'green': 'black'">Gisement</p>
           </li>
           <li (click)="goToCapex()">
             <img width="60px" src="assets/images/capex.png" />
-            <p>CAPEX</p>
+            <p [style.color]="photoTextCapex ? 'green': 'black'">CAPEX</p>
           </li>
 
         </ul>
