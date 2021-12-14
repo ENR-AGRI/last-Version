@@ -220,8 +220,8 @@ percent_eff_elevage;
   rep_Financement_Fp;
   rep_Financement_bq_cog;
   rep_Financement_Fp_cog;
-  part_financier_percent=undefined;
-  part_financier_Montant=undefined;
+  part_financier_percent=0
+  part_financier_Montant=0;
   montant_total;
   montant_total_cog;
 
@@ -425,6 +425,7 @@ Redevance_traitement_dechets_n15
 Vente_digestat_solide_n15
 Vente_digestat_liquide_n15
 Redevance_traitement_dechets;
+PrixIII;
 
 
 
@@ -452,10 +453,12 @@ Redevance_traitement_dechets;
     private authSrv:AuthService
   ) {}
 
+  userCreatedAt
   ngOnInit() {
+
     this.authSrv.profile().subscribe((data:any)=>{
       this.current_User=data
-      console.log("current_User",this.current_User);
+      this.userCreatedAt=this.current_User.createdOn
     }
     )
 
@@ -1523,6 +1526,8 @@ this.percent_eff_elevage=this.newFiche.filter((x)=>x.Effluent_Delevage=="Oui")
 
 );
 
+console.log( "WHYYYYYYYYYYYaaaaa",this.percent_eff_elevage);
+
 this.percent_eff_elevage=this.quotion( this.percent_eff_elevage,this.somme_MB);
 console.log("La SOMME ",this.somme_MB);
 
@@ -2239,6 +2244,50 @@ calcul_Mtn(){
     return  this.montant_total;
   }
 }
+xxxxx;
+//Calcul aleatoire de percent fond propre et montant en euro
+@ViewChild('percent',{static:false}) per:ElementRef
+
+desibled1=false
+desibled2=false
+getPercent(partPercent,partMontant){
+  this.part_financier_percent=parseFloat(partPercent)
+  this.part_financier_Montant=parseFloat(partMontant)
+
+console.log(partPercent,partMontant)
+if((partPercent==0 && partMontant==0)||(partPercent=='' || partMontant=='')){
+  this.part_financier_percent=0
+  this.part_financier_Montant=0
+
+  this.desibled2=false
+  this.desibled1=false
+} else if((partPercent!=0 ||partMontant=='' )&& (partMontant==0  ))
+   {
+    this.desibled1=false
+    this.part_financier_Montant=6767
+//  this.part_financier_percent=this.part_financier_percent
+//  this.part_financier_Montant=
+//  this.produit2(this.part_financier_percent/100,this.financement_Fp())
+// console.log("b",this.part_financier_Montant);
+
+this.desibled2=true
+
+   } else {
+
+    console.log("this.rep_Financement_bq",this.rep_Financement_bq)
+    this.desibled1=true
+    this.part_financier_percent=23
+    // this.part_financier_percent=this.quotion(
+    //   this.produit2(this.part_financier_Montant,100),this.rep_Financement_bq);
+    //   console.log('azerty',this.part_financier_percent)
+      this.desibled2=false
+
+
+    }
+  console.log("*******1",this.desibled1,"*******2",this.desibled2);
+}
+
+
 
   financement_bq(){
 let x = this.rep_Financement_bq=this.produit2(0.75,(this.calcul_Mtn()));
@@ -2248,43 +2297,43 @@ return x;
 let x = this. rep_Financement_Fp=(this.calcul_Mtn() - this.rep_Financement_bq);
 return x;
   }
-  listenMontant(event){
-    console.log("event",event);
+//   listenMontant(event){
+//     console.log("event",event);
 
-if(this.part_financier_percent==null &&this.part_financier_Montant!=null)
+// if(this.part_financier_percent==null &&this.part_financier_Montant!=null)
 
-  {
-
-  this.part_financier_percent=this.quotion(this.produit2(this.part_financier_Montant,100),this.rep_Financement_bq);
-  console.log("this.part_financier_percent",this.part_financier_percent);
+//   {
 
 
-
-  return this.part_financier_percent;
-}
-  }
-listenPercent(E,l){
-  console.log("event",E);
+//   console.log("this.part_financier_percent",this.part_financier_percent);
 
 
 
- let p_f_m =this.form.value
+//   return this.part_financier_percent;
+// }
+  //}
+// listenPercent(E,l){
+//   console.log("event",E);
 
- console.log("p_f_m",p_f_m);
 
 
-  if(E!=null &&this.part_financier_Montant==null)
-console.log("hello",this.part_financier_percent,this.part_financier_Montant);
+//  let p_f_m =this.form.value
 
-{
-  this.part_financier_percent=parseFloat(this.part_financier_percent)
- this.part_financier_Montant=this.produit2(this.part_financier_percent/100,this.financement_Fp())
-  console.log("b",this.part_financier_Montant);
+//  console.log("p_f_m",p_f_m);
 
-  return this.part_financier_Montant;
-}
 
-  }
+//   if(E!=null &&this.part_financier_Montant==null)
+// console.log("hello",this.part_financier_percent,this.part_financier_Montant);
+
+// {
+//   this.part_financier_percent=parseFloat(this.part_financier_percent)
+//  this.part_financier_Montant=this.produit2(this.part_financier_percent/100,this.financement_Fp())
+//   console.log("b",this.part_financier_Montant);
+
+//   return this.part_financier_Montant;
+// }
+
+//   }
 
 
   //CAPEX
@@ -2336,12 +2385,15 @@ setStateAsActive(state) {
 
 
 
- monthDiff(d1, d2) {
-  var months;
-  months = (d2.getFullYear() - d1.getFullYear()) * 12;
-  months -= d1.getMonth() + 1;
-  months += d2.getMonth();
-  return months <= 0 ? 0 : months;
+ monthDiff() {
+  let date2=new Date().getTime()
+  let date1=new Date(this.userCreatedAt).getTime()
+  if( isNaN(date1) )return "";
+  //var days = Math.floor((date2 - date1) / 1000 / 60 / (60 * 24))
+  var date_diff = new Date( (date2 - date1) )
+ //console.log("ff",  days + " Days "+ date_diff.getHours() + " Hours " + date_diff.getMinutes() + " Minutes " + date_diff.getSeconds() + " Seconds");
+ return date_diff.getMonth() <= 0 ? 0 : date_diff.getMonth();
+
 }
 
 
@@ -2352,16 +2404,18 @@ setStateAsActive(state) {
  prixLineaire=0
 calaculPrixDeBase(val){
 
- let trimestres =this.monthDiff(new Date(2010, 0, 1),new Date(2010, 2, 12));
 
+
+ let trimestres =this.monthDiff();
+ console.log("trimestres",trimestres)
  if(trimestres>3){
 console.log(trimestres,this.prixdebase*0.05);
-
-
-  return this.prixtrim=this.prixdebase*0.05
+return this.prixtrim=this.prixdebase*0.05
  }
 
 
+ console.log("this.percent_eff_elevage",this.percent_eff_elevage);
+ 
 if(this.percent_eff_elevage>0.6){
   console.log(this.percent_eff_elevage,this.prixdebase + 2);
   return this.prixpercent=this.prixdebase + 2
@@ -2483,8 +2537,9 @@ this.greenOpex=true
     this.hf=false
     this.hg=false
   }
+  greenRecette=false
   click4(){
-
+this.greenRecette=true
      this.ha=false
         this.hb=false
         this.hc=false
@@ -2493,26 +2548,26 @@ this.greenOpex=true
         this.hf=false
         this.hg=false
       }
-      click5(){
+      // click5(){
 
-        this.ha=false
-           this.hb=false
-           this.hc=false
-           this.hd=false
-           this.he=false
-           this.hf=true
-           this.hg=false
-         }
-         click6(){
+      //   this.ha=false
+      //      this.hb=false
+      //      this.hc=false
+      //      this.hd=false
+      //      this.he=false
+      //     //  this.hf=true
+      //     //  this.hg=false
+      //    }
+      //    click6(){
 
-          this.ha=false
-             this.hb=false
-             this.hc=false
-             this.hd=false
-             this.he=false
-             this.hf=false
-             this.hg=true
-           }
+      //     this.ha=false
+      //        this.hb=false
+      //        this.hc=false
+      //        this.hd=false
+      //        this.he=false
+      //       //  this.hf=false
+      //       //  this.hg=true
+      //      }
 
   clickprecedent1(){
 
@@ -2521,8 +2576,7 @@ this.greenOpex=true
     this.hc=false
     this.hd=false
     this.he=false
-    this.hf=false
-    this.hg=false
+
     this.showGreenColor=false
 
   }
@@ -2532,8 +2586,7 @@ this.greenOpex=true
     this.hc=false
     this.hd=false
     this.he=false
-    this.hf=false
-    this.hg=false
+
     this.greenCapex=false
 
 
@@ -2544,8 +2597,7 @@ this.greenOpex=true
     this.hc=false
     this.hd=false
     this.he=false
-    this.hf=false
-    this.hg=false
+
     this.greenCapex=false
   }
   clickprecedent4(){
@@ -2554,8 +2606,7 @@ this.greenOpex=true
     this.hc=true
     this.hd=false
     this.he=false
-    this.hf=false
-    this.hg=false
+
     this.greenCapex=false
   }
   clickprecedent5(){
@@ -2564,30 +2615,29 @@ this.greenOpex=true
     this.hc=false
     this.hd=true
     this.he=false
-    this.hf=false
-    this.hg=false
+
     this.greenCapex=false
   }
-  clickprecedent6(){
-    this.ha=false
-    this.hb=false
-    this.hc=false
-    this.hd=false
-    this.he=true
-    this.hf=false
-    this.hg=false
-    this.greenCapex=false
-  }
-  clickprecedent7(){
-    this.ha=false
-    this.hb=false
-    this.hc=false
-    this.hd=false
-    this.he=false
-    this.hf=true
-    this.hg=false
-    this.greenCapex=false
-  }
+  // clickprecedent6(){
+  //   this.ha=false
+  //   this.hb=false
+  //   this.hc=false
+  //   this.hd=false
+  //   this.he=true
+  //   this.hf=false
+  //   this.hg=false
+  //   this.greenCapex=false
+  // }
+  // clickprecedent7(){
+  //   this.ha=false
+  //   this.hb=false
+  //   this.hc=false
+  //   this.hd=false
+  //   this.he=false
+  //   this.hf=true
+  //   this.hg=false
+  //   this.greenCapex=false
+  // }
   btnConstruction=false
   btnRaccordement=false
   btnInvesstissement=false
@@ -2599,6 +2649,7 @@ this.btnConception=false
   }
   closeConception(){
 this.listBtnConception=false
+
   }
   constructionClick(){
     this.btnConstruction=true
@@ -2606,6 +2657,17 @@ this.listBtnConception=false
     this.btnInvesstissement=false
     this.listBtnConception=false
   }
+  RaccordementClick(){
+    this.btnConstruction=false
+    this.btnRaccordement=true
+    this.btnInvesstissement=false
+    this.listBtnConception=false
+  }
+  closeConstruction(){
+    this.btnConstruction=false}
+      closeRaccordement(){
+        this.btnRaccordement=false}
+
 
 
 
@@ -2652,10 +2714,59 @@ this.listBtnConception=false
       this.showGreenColor=true
       this.click1()
     }
+  }
 
 
+  photoTextOpex=true
+  goToOpex(){
+    this.photoTextOpex=true
+    this.photoTextRecette=false
+    this.photoTextScenario=false
+    this.greenOpex=false
+    this.greenRecette=false
+    this.greenScenario=false
+    this.clickprecedent4()
 
   }
+  photoTextRecette=true
+  goToRecette(){
+    this.greenOpex=true
+    this.greenRecette=false
+
+    this.photoTextRecette=true
+    this.photoTextOpex=false
+    this.photoTextScenario=false
+
+
+    if(!this.greenOpex)
+    this.click4()
+    this.clickprecedent4()
+  }
+
+  greenScenario=false
+  photoTextScenario=true
+  goToScenario(){
+    this.photoTextRecette=false
+    this.photoTextOpex=false
+    this.photoTextScenario=true
+
+
+    if(this.greenOpex){
+      this.greenRecette=true
+      // this.click5()
+    }
+    else if(!this.greenOpex) {
+
+      this.greenRecette=false
+      this.clickprecedent5()
+    }
+    if(!this.greenOpex && !this.greenRecette){
+      this.greenRecette=true
+      this.greenOpex=true
+      this.click4()
+    }
+  }
+
   collapse=false
   collapseUpDown(){
 this.collapse=!this.collapse
