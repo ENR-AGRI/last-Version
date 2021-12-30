@@ -44,13 +44,18 @@
    color: #5a5a5a;
  }
 
- .accordion-button::after{
-   background-image: url("/assets/icon/angle-vers-le-bas.svg");
+ .fi-rr-angle-down:before {
+   content: "\f10d";
+ }
+
+ .accordion-button.fi-rr-angle-down::after {
+   content:"\f10d";
+
    margin-left: 20px;
   }
 
- .accordion-button:not(.collapsed)::after{
-  background-image: url("/assets/icon/angle-vers-le-bas.svg");
+ .accordion-button.fi-rr-angle-down:not(.collapsed)::after{
+  content:"\f10d";
   margin-left: 20px;
  }
 

@@ -47,10 +47,16 @@
           <td data-label="Date En Service :">{{p?.dateEnService |date}}</td>
           <td data-label="Date Abandon :">{{p?.dateAbandon |date}}</td>
           <td data-label="Commentaire :">{{p?.commentaire}}</td>
-          <td data-label="Action :">   <i class="entypo-trash"
-          style="font-size: 15px; margin-left: 15px; color: red"
-          (click)="deleteProjet(p._id)" title="Delete"
-          ></i></td>
+          <td data-label="Action :">
+            <a type="button"
+            class="settings" title="Parametre" data-toggle="tooltip">
+            <i class="material-icons" style="color: #018a65;">&#xE8B8;</i></a>
+
+            <a type="button" (click)="deleteProjet(p._id)" class="delete"
+            title="Delete" data-toggle="tooltip">
+              <i class="material-icons" style="color: red;">&#xE5C9;</i>
+            </a>
+        </td>
 
         </tr>
 

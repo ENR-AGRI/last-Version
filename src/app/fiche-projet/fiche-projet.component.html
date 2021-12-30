@@ -189,9 +189,11 @@
                       aria-label="Floating label select example" [value]="ic1"
                       (change)="listenType($event.target.value)" [(ngModel)]="infos.IC1" name="infos.IC1" type="text">
                       <option selected class="w-100" *ngFor="let item of infotrie" [value]="item">
-                        {{ item }}
+                        {{ item}}
                       </option>
+
                     </select>
+
                     <label for="floatingSelect">Type d'intrant </label>
                     <div class="
                         d-flex
@@ -473,7 +475,7 @@
             </div>
 
           </div>
-            <!--CAPEX hc-->
+          <!--CAPEX hc-->
           <div class="col-12 col-lg-8 left" *ngIf="hb">
             <div class="row d-flex justify-content-center">
               <div class="col-8">
@@ -482,7 +484,8 @@
                   <i
                   style="margin-right: 20px;"
                   class="fas fa-chevron-right"></i></button> -->
-                <div class="row btn-cpx justify-content-between" *ngIf="!listBtnConception && !btnConstruction && !btnRaccordement">
+                <div class="row btn-cpx justify-content-between"
+                  *ngIf="!listBtnConception && !btnConstruction && !btnRaccordement && !btnInvesstissement">
                   <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="conceptionClick()">
 
                     <span>
@@ -501,7 +504,8 @@
                       </span> -->
                 </div>
 
-                <div class="row btn-cpx justify-content-between" *ngIf="!listBtnConception && !btnConstruction && !btnRaccordement">
+                <div class="row btn-cpx justify-content-between"
+                  *ngIf="!listBtnConception && !btnConstruction && !btnRaccordement && !btnInvesstissement">
                   <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="constructionClick()">
 
                     <span>
@@ -509,12 +513,15 @@
                     </span>
                     <span>
                       <p style="margin: 0;font-size: 0.75rem; color:#727272 ;">Total:</p>
-                      <p class="main-title" style="margin: 0;">{{constructions[0]?.Tab_140?.totaux_prixVente_Total_140}}€</p>
+                      <p class="main-title" style="margin: 0;">
+                        {{constructions[0]?.Tab_140?.totaux_prixVente_Total_140}}€</p>
                     </span>
                   </button>
 
+
                 </div>
-                <div class="row btn-cpx justify-content-between" *ngIf="!listBtnConception && !btnConstruction && !btnRaccordement">
+                <div class="row btn-cpx justify-content-between"
+                  *ngIf="!listBtnConception && !btnConstruction && !btnRaccordement && !btnInvesstissement">
                   <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="RaccordementClick()">
 
                     <span>
@@ -522,25 +529,27 @@
                     </span>
                     <span>
                       <p style="margin: 0;font-size: 0.75rem; color:#727272 ;">Total:</p>
-                      <p class="main-title" style="margin: 0;">120.000€</p>
+                      <p class="main-title" style="margin: 0;">{{Racc}}</p>
                     </span>
                   </button>
                 </div>
-                <div class="row btn-cpx justify-content-between" *ngIf="!listBtnConception && !btnConstruction && !btnRaccordement">
-                  <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="constructionClick()">
+                <div class="row btn-cpx justify-content-between"
+                  *ngIf="!listBtnConception && !btnConstruction && !btnRaccordement && !btnInvesstissement">
+                  <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="AutreClick()">
 
                     <span>
                       <p class="centre-align main-title" style="margin: 0;">CAPEX Autres invesstissement</p>
                     </span>
                     <span>
                       <p style="margin: 0;font-size: 0.75rem; color:#727272 ;">Total:</p>
-                      <p class="main-title" style="margin: 0;">{{conceptions[0]?.totaux_prixVente_Total}}€</p>
+                      <p class="main-title" style="margin: 0;">{{Total_autres}}€</p>
                     </span>
                   </button>
                 </div>
               </div>
             </div>
-            <div class="row d-flex justify-content-center pt-2" *ngIf="listBtnConception && !btnConstruction && !btnRaccordement">
+            <div class="row d-flex justify-content-center pt-2"
+              *ngIf="listBtnConception && !btnConstruction && !btnRaccordement && !btnInvesstissement">
               <div class="col-8">
                 <div class="row justify-content-between align-items-center mb-2">
                   <span class="col-1 btn-fwd">
@@ -585,13 +594,7 @@
                               class="price">{{conceptions[0]?.Interet_porteur_projet?.Etude_preleminaire_biomasse?.Prix_vente_Concep}}€</span>
 
                           </li>
-                          <li class="
-                    list-item
-                    cpx-list
-                    d-flex
-                    justify-content-between
-                    mt-3
-                  ">
+                          <li class=" list-item cpx-list d-flex justify-content-between mt-3">
                             <span>1.2 Rapport de préfaisabilité</span>
                             <span
                               class="price">{{conceptions[0]?.Interet_porteur_projet?.Rapport_prefaisabilite?.Prix_vente_Concep}}€
@@ -1468,7 +1471,8 @@
                 </div>
               </div>
             </div>
-            <div class="row d-flex justify-content-center pt-2" *ngIf="!listBtnConception && btnConstruction && !btnRaccordement" >
+            <div class="row d-flex justify-content-center pt-2"
+              *ngIf="!listBtnConception && btnConstruction && !btnRaccordement && !btnInvesstissement">
               <div class="col-8">
                 <div class="row justify-content-between align-items-center mb-2">
                   <span class="col-1 btn-fwd">
@@ -1511,7 +1515,7 @@
                             <span>1.1. Contrôle technique - SPS</span>
                             <span
                               class="price">{{c.Tab_140.Ouverture_chantier.Controle_technique_SPS.Prix_vente_Concep}}€</span>
-                             
+
                           </li>
                           <li class="
                     list-item
@@ -1521,8 +1525,7 @@
                     mt-3
                   ">
                             <span>1.2. Frais de dossier</span>
-                            <span
-                              class="price">{{c.Tab_140.Ouverture_chantier.Frais_dossier.Prix_vente_Concep}}€
+                            <span class="price">{{c.Tab_140.Ouverture_chantier.Frais_dossier.Prix_vente_Concep}}€
 
                             </span>
                           </li>
@@ -1569,24 +1572,24 @@
                           justify-content-between
                           mt-3
                         ">
-                                    <span>1.6. Achat Terrain</span>
-                                    <span class="price">
-                                      {{c.Tab_140.Ouverture_chantier?.Achat_Terrain?.Prix_vente_Concep}}€
-                                    </span>
-                                  </li>
-                                  <li class="
+                            <span>1.6. Achat Terrain</span>
+                            <span class="price">
+                              {{c.Tab_140.Ouverture_chantier?.Achat_Terrain?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
                                   list-item
                                   cpx-list
                                   d-flex
                                   justify-content-between
                                   mt-3
                                 ">
-                                            <span>1.7. Frais de notaire</span>
-                                            <span class="price">
-                                              {{c.Tab_140.Ouverture_chantier?.Frais_notaire?.Prix_vente_Concep}}€
-                                            </span>
-                                          </li>
-                          
+                            <span>1.7. Frais de notaire</span>
+                            <span class="price">
+                              {{c.Tab_140.Ouverture_chantier?.Frais_notaire?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
                         </ul>
                       </div>
                     </div>
@@ -1637,7 +1640,7 @@
                               {{c.Tab_140.Lot_1_Process_methanisation.Pieces_usure_premiere_urgence_Lot_1.Prix_vente_Concep}}€
                             </span>
                           </li>
-                        
+
                         </ul>
                       </div>
                     </div>
@@ -1666,7 +1669,8 @@
                           ">
                             <span>
                               3.1.Epuration - Compression - Chaudière</span>
-                            <span class="price">{{c.Tab_140.Lot_2_Valorisation.Epuration_Compression_Chaudiere.Prix_vente_Concep}}€</span>
+                            <span
+                              class="price">{{c.Tab_140.Lot_2_Valorisation.Epuration_Compression_Chaudiere.Prix_vente_Concep}}€</span>
 
                           </li>
                           <li class="
@@ -1683,7 +1687,7 @@
                               {{c.Tab_140.Lot_2_Valorisation.Cogenerateur.Prix_vente_Concep}}€
                             </span>
                           </li>
-                       
+
                         </ul>
                       </div>
                     </div>
@@ -1712,10 +1716,11 @@
                           ">
                             <span>
                               4.1.Terrassement Grande Masse - Talutafe - VRD</span>
-                            <span class="price">{{c.Tab_140.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Terrassement_Grande_Masse_Talutafe_VRD.Prix_vente_Concep}}€</span>
+                            <span
+                              class="price">{{c.Tab_140.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Terrassement_Grande_Masse_Talutafe_VRD.Prix_vente_Concep}}€</span>
 
                           </li>
-                        
+
                         </ul>
                       </div>
                     </div>
@@ -1744,11 +1749,12 @@
                           ">
                             <span>
                               5.1.Génie Civil circulaire digestat liquide + couverture simple</span>
-                            <span class="price">{{c.Tab_140.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Genie_Civil_circulaire_digestat_liquide_couverture_simple.Prix_vente_Concep}}€</span>
+                            <span
+                              class="price">{{c.Tab_140.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Genie_Civil_circulaire_digestat_liquide_couverture_simple.Prix_vente_Concep}}€</span>
 
                           </li>
-                       
-                          
+
+
                         </ul>
                       </div>
                     </div>
@@ -1780,7 +1786,7 @@
                               {{c.Tab_140.Lot_5_Genie_Civil_ouvrages_peripheriques.Genie_Civil_ouvrages_peripheriques.Prix_vente_Concep}}€€</span>
 
                           </li>
-                       
+
                         </ul>
                       </div>
                     </div>
@@ -1808,10 +1814,11 @@
                           ">
                             <span>
                               7.1.Charpente - Batiment - Couverture</span>
-                            <span class="price">{{c.Tab_140.Lot_6_Charpente_Batiment_Couverture.Charpente_Batiment_Couverture.Prix_vente_Concep}}€</span>
+                            <span
+                              class="price">{{c.Tab_140.Lot_6_Charpente_Batiment_Couverture.Charpente_Batiment_Couverture.Prix_vente_Concep}}€</span>
 
                           </li>
-                       
+
                         </ul>
                       </div>
                     </div>
@@ -1841,11 +1848,12 @@
                           ">
                             <span>
                               8.1.Courant fort - Soutirage - Electricité Générale</span>
-                            <span class="price">{{c.Tab_140.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Courant_fort_Soutirage_Electricite_Generale.Prix_vente_Concep}}€
-                              </span>
+                            <span
+                              class="price">{{c.Tab_140.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Courant_fort_Soutirage_Electricite_Generale.Prix_vente_Concep}}€
+                            </span>
 
                           </li>
-                       
+
                         </ul>
                       </div>
                     </div>
@@ -1930,7 +1938,7 @@
                             <span>11.1. Matériels agricoles</span>
                             <span class="price">{{c.Tab_140.Materiel.Matrriels_agricoles.Prix_vente_Concep}}€</span>
                           </li>
-                        
+
                           <li class="
                           list-item
                           cpx-list
@@ -1938,30 +1946,31 @@
                           justify-content-between
                           mt-3
                         ">
-                          <span>  11.2. Pont bascule - Réserve Incendie</span>
-                          <span class="price">{{c.Tab_140.Materiel.Pont_bascule_Reserve_Incendie.Prix_vente_Concep}}€</span>
-                        </li>
-                       
-                        <li class="
+                            <span> 11.2. Pont bascule - Réserve Incendie</span>
+                            <span
+                              class="price">{{c.Tab_140.Materiel.Pont_bascule_Reserve_Incendie.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
                         list-item
                         cpx-list
                         d-flex
                         justify-content-between
                         mt-3
                       ">
-                        <span>  11.3. Hygénisiation (200 000€)</span>
-                        <span class="price">{{c.Tab_140.Materiel.Hygenisiation.Prix_vente_Concep}}€</span>
-                      </li>
-                      <li class="
+                            <span> 11.3. Hygénisiation (200 000€)</span>
+                            <span class="price">{{c.Tab_140.Materiel.Hygenisiation.Prix_vente_Concep}}€</span>
+                          </li>
+                          <li class="
                       list-item
                       cpx-list
                       d-flex
                       justify-content-between
                       mt-3
                     ">
-                      <span>  Semi-remorque 44 t (Transport intrants) (110 000€)</span>
-                      <span class="price">{{c.Tab_140.Materiel.Semi_remorque_44_t.Prix_vente_Concep}}€</span>
-                    </li>
+                            <span> Semi-remorque 44 t (Transport intrants) (110 000€)</span>
+                            <span class="price">{{c.Tab_140.Materiel.Semi_remorque_44_t.Prix_vente_Concep}}€</span>
+                          </li>
                         </ul>
                       </div>
                     </div>
@@ -1970,181 +1979,19 @@
               </div>
             </div>
 
-            <div class="row d-flex justify-content-center pt-2" *ngIf="!listBtnConception && btnConstruction && !btnRaccordement" >
+            <div class="row d-flex justify-content-center pt-2"
+              *ngIf="!listBtnConception && !btnConstruction && btnRaccordement && !btnInvesstissement">
               <div class="col-8">
                 <div class="row justify-content-between align-items-center mb-2">
                   <span class="col-1 btn-fwd">
-                    <button (click)="closeConstruction()">
+                    <button (click)="closeRaccordement()">
                       <i style="vertical-align: middle; color: #018a65" class="fas fa-chevron-left"></i>
                     </button>
                   </span>
                   <div class="col-10" style="padding-left: 50px;">
                     <p class="m-0" style="font-size: 1.25rem">
-                      CAPEX Construction
-                    </p>
-                  </div>
-                </div>
-                <!-- Accordion start -->
-                <div class="accordion" id="accordionExample" *ngIf="c && c.Tab_140">
-                  <div class="accordion-item mb-2">
-                    <h2 class="accordion-header" id="headingOne">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      Raccordement Réseau après refaction
 
-                        <span> 1/ Ouverture du Chantier </span>
-                        <span class="total">
-                          {{c.Tab_140.Ouverture_chantier.Sous_Total_Prix_vente}}€
-
-                        </span>
-
-
-                      </button>
-                    </h2>
-                  
-                  </div>
-
-
-                  <div class="accordion-item mb-2">
-                    <h2 class="accordion-header" id="headingTwo">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <span>2/ Lot 1: Process méthanisation</span>
-                        <span class="total">
-                          {{c.Tab_140.Lot_1_Process_methanisation.Sous_Total_Prix_vente}}€
-
-                        </span>
-                      </button>
-                    </h2>
-                  
-                  </div>
-                  <div class="accordion-item mb-2">
-                    <h2 class="accordion-header" id="headingThree">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        <span> 3/ Lot 2 : Valorisation
-                        </span>
-                        <span class="total">
-                          {{c.Tab_140.Lot_2_Valorisation.Sous_Total_Prix_vente}}€
-                        </span>
-                      </button>
-                    </h2>
-                 
-                  </div>
-                  <div class="accordion-item mb-2">
-                    <h2 class="accordion-header" id="headingFour">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        <span>4/ Lot 3 : Terrassement Grande Masse - Talutage - VRD
-                        </span>
-                        <span class="total">
-                          {{c.Tab_140.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Sous_Total_Prix_vente}}€
-                        </span>
-                      </button>
-                    </h2>
-                   
-                  </div>
-                  <div class="accordion-item mb-2">
-                    <h2 class="accordion-header" id="headingFive">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                        <span>5/ Lot 4 : Génie Civil circulaire digestat liquide + couverture simple
-                        </span>
-                        <span class="total">
-                          {{c.Tab_140.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Sous_Total_Prix_vente}}€
-                        </span>
-                      </button>
-                    </h2>
-                  
-                  </div>
-                  <div class="accordion-item mb-2">
-                    <h2 class="accordion-header" id="headingSix">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                        <span>6/ Lot 5 : Génie Civil ouvrages périphériques</span>
-                        <span class="total">
-                          {{c.Tab_140.Lot_5_Genie_Civil_ouvrages_peripheriques.Sous_Total_Prix_vente}}€
-                        </span>
-                      </button>
-                    </h2>
-                  
-                  </div>
-                  <div class="accordion-item mb-2">
-                    <h2 class="accordion-header" id="headingSeven">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                        <span> 7/ Lot 6 : Charpente - Batiment - Couverture</span>
-                        <span class="total">
-                          {{c.Tab_140.Lot_6_Charpente_Batiment_Couverture.Sous_Total_Prix_vente}}€
-                        </span>
-                      </button>
-                    </h2>
-                
-                  </div>
-                  <div class="accordion-item mb-2">
-                    <h2 class="accordion-header" id="headingEight">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                        <span>
-                          8/ Lot 7 : Courant fort - Soutirage - Electricité Générale
-                        </span>
-                        <span class="total">
-                          {{c.Tab_140.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Sous_Total_Prix_vente}}€
-                        </span>
-                      </button>
-                    </h2>
-                  
-                  </div>
-                  <div class="accordion-item mb-2">
-                    <h2 class="accordion-header" id="headingNine">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-                        <span> 9/ Maitrise d'œuvre</span>
-                        <span class="total">
-                          {{c.Tab_140.Maitrise_oevre.Sous_Total_Prix_vente}}€
-                        </span>
-                      </button>
-                    </h2>
-                   
-                  </div>
-                  <div class="accordion-item mb-2">
-                    <h2 class="accordion-header" id="headingTen">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-                        <span>10/ Assistance à maitrise d'ouvrage </span>
-                        <span class="total">
-                          {{c.Tab_140.Assistance_maitrise_ouvrage.Sous_Total_Prix_vente}}€
-                        </span>
-                      </button>
-                    </h2>
-                  
-                  </div>
-                  <div class="accordion-item mb-2">
-                    <h2 class="accordion-header" id="headingEleven">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
-                        <span>11/ Matériel </span>
-                        <span class="total">
-                          {{c.Tab_140.Materiel.Sous_Total_Prix_vente}}€
-                        </span>
-                      </button>
-                    </h2>
-                  
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row d-flex justify-content-center pt-2" *ngIf="!listBtnConception && btnConstruction && !btnRaccordement" >
-              <div class="col-8">
-                <div class="row justify-content-between align-items-center mb-2">
-                  <span class="col-1 btn-fwd">
-                    <button (click)="closeConstruction()">
-                      <i style="vertical-align: middle; color: #018a65" class="fas fa-chevron-left"></i>
-                    </button>
-                  </span>
-                  <div class="col-10" style="padding-left: 50px;">
-                    <p class="m-0" style="font-size: 1.25rem">
-                      CAPEX Construction
                     </p>
                   </div>
                 </div>
@@ -2164,7 +2011,7 @@
 
                       </button>
                     </h2>
-                  
+
                   </div>
 
 
@@ -2179,13 +2026,170 @@
                         </span>
                       </button>
                     </h2>
-                  
+
                   </div>
-               
-                
+
+
                 </div>
               </div>
             </div>
+
+            <div class="row d-flex justify-content-center pt-2"
+              *ngIf="!listBtnConception && !btnConstruction && !btnRaccordement && btnInvesstissement">
+              <div class="col-8">
+                <div class="row justify-content-between align-items-center mb-2">
+                  <span class="col-1 btn-fwd">
+                    <button (click)="closeAutre()">
+                      <i style="vertical-align: middle; color: #018a65" class="fas fa-chevron-left"></i>
+                    </button>
+                  </span>
+                  <div class="col-10" style="padding-left: 50px;">
+                    <p class="m-0" style="font-size: 1.25rem">
+                      AUTRES INVESTISSEMENT
+                    </p>
+                  </div>
+                </div>
+                <!-- Accordion start -->
+                <div class="accordion" id="accordionExample" *ngIf="c && c.Tab_140">
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+
+                        <span> Audit assurantiel </span>
+                        <span class="total">
+                          {{Audit_assurantiel}}€
+
+                        </span>
+
+
+                      </button>
+                    </h2>
+
+                  </div>
+
+
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <span>Audit juridique</span>
+                        <span class="total">
+                          {{Audit_juridique}}€
+
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span> Audit_Technique
+                        </span>
+                        <span class="total">
+                          {{Audit_Technique}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFour">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <span>Audit_Fiscal
+                        </span>
+                        <span class="total">
+                          {{Audit_Fiscal}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFive">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <span>Convention de credit dette syndiquee
+                        </span>
+                        <span class="total">
+                          {{Convention_de_credit_dette_syndiquee}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSix">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        <span>Suivi de chantier</span>
+                        <span class="total">
+                          {{Suivi_de_chantier}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEight">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        <span>
+                          BFR
+                        </span>
+                        <span class="total">
+                          {{BFR_Frais_Financier}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingNine">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        <span>Hypothéque</span>
+                        <span class="total">
+                          {{Hypotheque}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSeven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        <span> In Front (Oblig)</span>
+                        <span class="total">
+                          {{In_Front_Oblig}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTen">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                        <span>TOTAL AUTRES INVEST</span>
+                        <span class="total">
+                          {{Total_autres}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
 
             <!-- <div class="row d-flex justify-content">
               <div class="col-12 d-flex justify-content align-items">
@@ -2213,18 +2217,18 @@
             <div class="row d-flex justify-content-center">
               <div class="col-8 d-flex justify-content-between align-items-center mb-2 g-0">
 
-                  <div>
-                    <button class="save" (click)="clickprecedent2()" *ngIf="hb">
-                      <span class="btn-txt">Precedant</span>
-                    </button>
-                  </div>
+                <div>
+                  <button class="save" (click)="clickprecedent2()" *ngIf="hb">
+                    <span class="btn-txt">Precedant</span>
+                  </button>
+                </div>
 
 
-                  <div>
-                    <button class="save" (click)="click2()" *ngIf="hb">
-                      <span class="btn-txt">Suivant</span>
-                    </button>
-                  </div>
+                <div>
+                  <button class="save" (click)="click2()" *ngIf="hb">
+                    <span class="btn-txt">Suivant</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -2238,9 +2242,10 @@
                   <i
                   style="margin-right: 20px;"
                   class="fas fa-chevron-right"></i></button> -->
-                <div class="row btn-cpx justify-content-between" *ngIf="!listBtnConception">
-                  <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="conceptionClick()"
-                  data-bs-toggle="collapse" data-bs-target="#demoop">
+                <div class="row btn-cpx justify-content-between"
+                  *ngIf="!listBtnexploitation && !listBtnConsommable && !listBtnEntretien">
+                  <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="exploitationClick()"
+                    data-bs-toggle="collapse" data-bs-target="#demoop">
 
                     <span>
                       <p class="centre-align main-title" style="margin: 0;"> Charges d'Exploitation</p>
@@ -2258,8 +2263,9 @@
                       </span> -->
                 </div>
 
-                <div class="row btn-cpx justify-content-between" *ngIf="!listBtnConception">
-                  <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="constructionClick()">
+                <div class="row btn-cpx justify-content-between"
+                  *ngIf="!listBtnexploitation && !listBtnConsommable && !listBtnEntretien">
+                  <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="ConsommableClick()">
 
                     <span>
                       <p class="centre-align main-title" style="margin: 0;"> Charges Consommables
@@ -2267,42 +2273,35 @@
                     </span>
                     <span>
                       <p style="margin: 0;font-size: 0.75rem; color:#727272 ;">Total:</p>
-                      <p class="main-title" style="margin: 0;">{{D?.Tab140?.tabExploi_140_ChargesConsommables?.Sous_total}}€</p>
+                      <p class="main-title" style="margin: 0;">
+                        {{D?.Tab140?.tabExploi_140_ChargesConsommables?.Sous_total}}€</p>
                     </span>
                   </button>
 
                 </div>
-                <div class="row btn-cpx justify-content-between" *ngIf="!listBtnConception">
-                  <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="constructionClick()">
+                <div class="row btn-cpx justify-content-between"
+                  *ngIf="!listBtnexploitation && !listBtnConsommable && !listBtnEntretien">
+                  <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="EntretienClick()">
 
                     <span>
                       <p class="centre-align main-title" style="margin: 0;">Charges d'Entretien</p>
                     </span>
                     <span>
                       <p style="margin: 0;font-size: 0.75rem; color:#727272 ;">Total:</p>
-                      <p class="main-title" style="margin: 0;">{{D?.Tab140?.tabExploi_140_ChargesEntretien?.Sous_total}}€</p>
+                      <p class="main-title" style="margin: 0;">
+                        {{D?.Tab140?.tabExploi_140_ChargesEntretien?.Sous_total}}€</p>
                     </span>
                   </button>
                 </div>
-                <div class="row btn-cpx justify-content-between" *ngIf="!listBtnConception">
-                  <button class="col-12 col-lg-12 d-flex justify-content-between" (click)="constructionClick()">
 
-                    <span>
-                      <p class="centre-align main-title" style="margin: 0;">CAPEX Autres invesstissement</p>
-                    </span>
-                    <span>
-                      <p style="margin: 0;font-size: 0.75rem; color:#727272 ;">Total:</p>
-                      <p class="main-title" style="margin: 0;">{{conceptions[0]?.totaux_prixVente_Total}}€</p>
-                    </span>
-                  </button>
-                </div>
               </div>
             </div>
-            <div class="row d-flex justify-content-center pt-2" *ngIf="listBtnConception">
+            <div class="row d-flex justify-content-center pt-2" *ngIf="listBtnexploitation && !listBtnConsommable
+            && !listBtnEntretien && ss >=0  && ss <= 140">
               <div class="col-8">
                 <div class="row justify-content-between align-items-center mb-2">
                   <span class="col-1 btn-fwd">
-                    <button (click)="closeConception()">
+                    <button (click)="closeExploitation()">
                       <i style="vertical-align: middle; color: #018a65" class="fas fa-chevron-left"></i>
                     </button>
                   </span>
@@ -2313,7 +2312,7 @@
                   </div>
                 </div>
                 <!-- Accordion start -->
-                <div class="accordion" id="accordionExample">
+                <div class="accordion" id="accordionExample ">
                   <div class="accordion-item mb-2">
                     <h2 class="accordion-header" id="headingOne">
                       <button class="accordion-button collapsed" type="button">
@@ -2332,7 +2331,7 @@
                   <div class="accordion-item mb-2">
                     <h2 class="accordion-header" id="headingTwo">
                       <button class="accordion-button collapsed" type="button">
-                        <span>2/ Etude préléminaire de la biomasse</span>
+                        <span>2/ Location Chargeur</span>
                         <span class="total">
                           {{D?.Tab140?.Charges_Exploitation?.Location_Chargeur?.an}}€
 
@@ -2343,7 +2342,7 @@
                   </div>
                   <div class="accordion-item mb-2">
                     <h2 class="accordion-header" id="headingThree">
-                      <button class="accordion-button collapsed" type="button" >
+                      <button class="accordion-button collapsed" type="button">
                         <span> 3/ Gérance et administration</span>
                         <span class="total">
                           {{D?.Tab140?.Charges_Exploitation?.Gerance_et_administration?.an}}€
@@ -2354,7 +2353,7 @@
                   </div>
                   <div class="accordion-item mb-2">
                     <h2 class="accordion-header" id="headingFour">
-                      <button class="accordion-button collapsed" type="button" >
+                      <button class="accordion-button collapsed" type="button">
                         <span>4/ Assistance technique</span>
                         <span class="total">
                           {{D?.Tab140?.Charges_Exploitation?.Assistance_technique?.an}}€
@@ -2376,7 +2375,7 @@
                   </div>
                   <div class="accordion-item mb-2">
                     <h2 class="accordion-header" id="headingSix">
-                      <button class="accordion-button collapsed" type="button" >
+                      <button class="accordion-button collapsed" type="button">
                         <span>6/ Assurance perte d'exploitation</span>
                         <span class="total">
                           {{D?.Tab140?.Charges_Exploitation?.Assurance_perte_exploitation?.an}}€
@@ -2401,11 +2400,12 @@
               </div>
             </div>
 
-            <div class="row d-flex justify-content-center pt-2" *ngIf="listBtnConception">
+            <div class="row d-flex justify-content-center pt-2" *ngIf="!listBtnexploitation && listBtnConsommable
+            && !listBtnEntretien && ss >=0  && ss <= 140">
               <div class="col-8">
                 <div class="row justify-content-between align-items-center mb-2">
                   <span class="col-1 btn-fwd">
-                    <button (click)="closeConception()">
+                    <button (click)="closeConsommable()">
                       <i style="vertical-align: middle; color: #018a65" class="fas fa-chevron-left"></i>
                     </button>
                   </span>
@@ -2446,7 +2446,7 @@
                   </div>
                   <div class="accordion-item mb-2">
                     <h2 class="accordion-header" id="headingThree">
-                      <button class="accordion-button collapsed" type="button" >
+                      <button class="accordion-button collapsed" type="button">
                         <span> 3/ Achat électricité (Epurateur)</span>
                         <span class="total">
                           {{D?.Tab140?.tabExploi_140_ChargesConsommables?.Achat_electricite_Epurateur?.an}}€
@@ -2457,7 +2457,7 @@
                   </div>
                   <div class="accordion-item mb-2">
                     <h2 class="accordion-header" id="headingFour">
-                      <button class="accordion-button collapsed" type="button" >
+                      <button class="accordion-button collapsed" type="button">
                         <span>4/ Fioul chargeur</span>
                         <span class="total">
                           {{D?.Tab140?.tabExploi_140_ChargesConsommables?.Fioul_chargeur?.an}}€
@@ -2479,7 +2479,7 @@
                   </div>
                   <div class="accordion-item mb-2">
                     <h2 class="accordion-header" id="headingSix">
-                      <button class="accordion-button collapsed" type="button" >
+                      <button class="accordion-button collapsed" type="button">
                         <span>6/ Assurance perte d'exploitation</span>
                         <span class="total">
                           {{D?.Tab140?.Charges_Exploitation?.Assurance_perte_exploitation?.an}}€
@@ -2504,10 +2504,135 @@
               </div>
             </div>
 
+            <div class="row d-flex justify-content-center pt-2" *ngIf="!listBtnexploitation && !listBtnConsommable
+            && listBtnEntretien && ss >=0  && ss <= 140">
+              <div class="col-8">
+                <div class="row justify-content-between align-items-center mb-2">
+                  <span class="col-1 btn-fwd">
+                    <button (click)="closeEntretien()">
+                      <i style="vertical-align: middle; color: #018a65" class="fas fa-chevron-left"></i>
+                    </button>
+                  </span>
+                  <div class="col-10" style="padding-left: 50px;">
+                    <p class="m-0" style="font-size: 1.25rem">
+                      Charges d'Entretien
+                    </p>
+                  </div>
+                </div>
+                <!-- Accordion start -->
+                <div class="accordion" id="accordionExample">
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button collapsed" type="button">
+
+                        <span> 1/Maintenance Unité épuration du gaz (P2) </span>
+                        <span class="total">
+                          {{D?.Tab140?.tabExploi_140_ChargesEntretien?.maintenance_Unite_epuration_du_gaz?.an}}€</span>
+
+
+                      </button>
+                    </h2>
+
+                  </div>
+
+
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button">
+                        <span> 2/Gros entretien unité épuration (P3)</span>
+                        <span class="total">
+                          {{D?.Tab140?.tabExploi_140_ChargesEntretien?.Gros_entretien_unite_epuration?.an}}€
+
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button class="accordion-button collapsed" type="button">
+                        <span> 3/Location poste injection</span>
+                        <span class="total">
+                          {{D?.Tab140?.tabExploi_140_ChargesEntretien?.Location_poste_injection?.an}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFour">
+                      <button class="accordion-button collapsed" type="button">
+                        <span>4/Analyse de contrôle GRDF</span>
+                        <span class="total">
+                          {{D?.Tab140?.tabExploi_140_ChargesEntretien?.Analyse_de_controle_GRDF?.an}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFive">
+                      <button class="accordion-button collapsed" type="button">
+                        <span> 5/Maintenance Metha (P2</span>
+                        <span class="total">
+                          {{D?.Tab140?.tabExploi_140_ChargesEntretien?.Maintenance_Metha?.an}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSix">
+                      <button class="accordion-button collapsed" type="button">
+                        <span> 6/ GER Metha (P3)</span>
+                        <span class="total">
+                          {{D?.Tab140?.tabExploi_140_ChargesEntretien?.GER_Metha?.an}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSeven">
+                      <button class="accordion-button collapsed" type="button">
+                        <span> 7/ Vidange décennale (coût moyen) </span>
+                        <span class="total">
+                          {{D?.Tab140?.tabExploi_140_ChargesEntretien?.Vidange_decennale?.an}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSeven">
+                      <button class="accordion-button collapsed" type="button">
+                        <span> 8/ Maintenance Logistique & VRD (P2)</span>
+                        <span class="total">
+                          {{D?.Tab140?.tabExploi_140_ChargesEntretien?.Maintenance_Logistique_VRD?.an}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSeven">
+                      <button class="accordion-button collapsed" type="button">
+                        <span> 9/Grosse réparation Logistique & VRD (P3)</span>
+                        <span class="total">
+                          {{D?.Tab140?.tabExploi_140_ChargesEntretien?.Grosse_reparation_Logistique_VRD?.an}}€
+                        </span>
+                      </button>
+                    </h2>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
 
             <div class="row d-flex justify-content-center">
               <div class="col-8 d-flex justify-content-between align-items-center mb-2 g-0">
-                <div  >
+                <div>
                   <button class="save" (click)="clickprecedent3()">
                     <span class="btn-txt">Precedent</span>
                   </button>
@@ -2517,7 +2642,7 @@
 
                 </div>
 
-                <div >
+                <div>
                   <button class="save" (click)="click3()">
                     <span class="btn-txt">Suivant</span>
                   </button>
@@ -2529,302 +2654,388 @@
 
           </div>
 
- <!--Recette hd-->
- <div class="col-12 col-lg-8 left" *ngIf="hd">
-  <div class="row d-flex justify-content-center">
-    <div class="col-8">
-      <div class="col d-flex justify-content-center">
-        <div><p style="font-size: 1.25rem">Calcul des recettes de la vente de biométhane</p></div>
-      </div>
-      <li class="nav-item mb-2">
-        <a
-          class="nav-link"
-          data-bs-toggle="collapse"
-          href="#multiCollapseExample1"
-          role="button"
-          aria-expanded="false"
-          aria-controls="multiCollapseExample1"
-        >
-          <span>Volume de produit methane Nm3(CH4/an)</span>
-          <i
-            style="
+          <!--Recette hd-->
+          <div class="col-12 col-lg-8 left" *ngIf="hd">
+            <div class="row d-flex justify-content-center">
+              <div class="col-8">
+                <div class="col d-flex justify-content-center">
+                  <div>
+                    <p style="font-size: 1.25rem">Calcul des recettes de la vente de biométhane</p>
+                  </div>
+                </div>
+                <li class="nav-item mb-2">
+                  <a class="nav-link" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
+                    aria-expanded="false" aria-controls="multiCollapseExample1">
+                    <span>Volume de produit methane Nm3(CH4/an)</span>
+
+                    <span style="float: right;">{{volume_Nm3_CH4_an}}
+                      <i style="
               float: right;
               vertical-align: middle;
               color: #018a65;
               margin-top: 5px;
-            "
-            class="fas fa-chevron-down"
-          ></i>
-        </a>
-        <ul
-          class="collapse multi-collapse"
-          id="multiCollapseExample1"
-        >
-          <li
-            class="
+            " class="fas fa-chevron-down"></i>
+                    </span>
+                  </a>
+                  <ul class="collapse multi-collapse" id="multiCollapseExample1">
+                    <li class="
               list-item
               cpx-list
               d-flex
               justify-content-between
               mt-3
-            "
-          >
-            <p>Total heure d'une année</p>
-            <p class="price">00€</p>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item mb-2">
-        <a
-          class="nav-link"
-          data-bs-toggle="collapse"
-          href="#multiCollapseExample2"
-          role="button"
-          aria-expanded="false"
-          aria-controls="multiCollapseExample2"
-        >
-        <span>% d'Efluent d'élevage</span>
-        <i
-          style="
-            float: right;
-            vertical-align: middle;
-            color: #018a65;
-            margin-top: 5px;
-          "
-          class="fas fa-chevron-down"
-        ></i>
+            ">
+                      <p>Total heure d'une année</p>
+                      <p class="price">8760</p>
+                    </li>
+                    <li class="
+            list-item
+            cpx-list
+            d-flex
+            justify-content-between
+            mt-3
+          ">
+                      <p> Débit horaire produit(Nm³ CH4/h)</p>
+                      <p class="price">{{debit_horaire_Nm3_CH4_an}}</p>
+                    </li>
+                    <li class="
+          list-item
+          cpx-list
+          d-flex
+          justify-content-between
+          mt-3
+        ">
+                      <p> Débit moyen annuel 88% (Nm3 CH4/h)</p>
+                      <p class="price">{{debit_moyen_annuel}}</p>
+                    </li>
+                    <li class="
+        list-item
+        cpx-list
+        d-flex
+        justify-content-between
+        mt-3
+      ">
+                      <p> Auto-consommation 8% (Nm3 CH4/h)</p>
+                      <p class="price">{{Auto_consommation}}</p>
+                    </li>
 
-        </a>
-        <ul
-          class="collapse multi-collapse"
-          id="multiCollapseExample2"
-        >
-          <li
-            class="
+
+                    <li class="
+      list-item
+      cpx-list
+      d-flex
+      justify-content-between
+      mt-3
+    ">
+                      <p> Poste à injection et pertes 4% (Nm3 CH4/h)</p>
+                      <p class="price">{{Poste_injection_pertes}}</p>
+                    </li>
+
+                    <li class="
+    list-item
+    cpx-list
+    d-flex
+    justify-content-between
+    mt-3
+  ">
+                      <p> Débit moyen annuel (Nm3 CH4/h)</p>
+                      <p class="price">{{debit_moyen_annuel}}</p>
+                    </li>
+                    <li class="
+  list-item
+  cpx-list
+  d-flex
+  justify-content-between
+  mt-3
+">
+                      <p>Débit horaire injecté(Nm³ CH4/h)</p>
+                      <p class="price">{{debit_horaire_injecte_Nm3_CH4_an}}</p>
+                    </li>
+
+                    <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                      <p>Pouvoir calorifique supérieur CH4(PCS)</p>
+                      <p class="price">{{pvoir_calorfiq_sup_CH4}}</p>
+                    </li>
+                    <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                      <p>Sous-Total KWh/h</p>
+                      <p class="price">{{s_tt_KWH_h}}</p>
+                    </li>
+
+                    <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                      <p>Heure de fonctionnement</p>
+                      <p class="price">8200</p>
+                    </li>
+
+                    <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                      <p>KWh produit par an</p>
+                      <p class="price">{{enrg_KWH_an}}</p>
+                    </li>
+                    <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                      <p>MWh produit par an</p>
+                      <p class="price">{{enrg_MWH_an}}</p>
+                    </li>
+                    <li class="list-item cpx-list d-flex justify-content-between mt-3">
+                      <p>GWh produit par an</p>
+                      <p class="price">{{enrg_GWH_an}}</p>
+                    </li>
+
+                  </ul>
+                </li>
+                <li class="nav-item mb-2">
+                  <a class="nav-link" data-bs-toggle="collapse" href="#multiCollapseExample2" role="button"
+                    aria-expanded="false" aria-controls="multiCollapseExample2">
+                    <span>% d'Efluent d'élevage </span>
+                    <span style="float: right">{{percent_eff_elevage}}
+                      <i style="
+              float: right;
+              vertical-align: middle;
+              color: #018a65;
+              margin-top: 5px;
+              margin-left: 5px;
+            " class="fas fa-chevron-down"></i>
+
+                    </span>
+
+                  </a>
+                  <ul class="collapse multi-collapse" id="multiCollapseExample2">
+                    <li class="
               list-item
               cpx-list
               d-flex
               justify-content-between
               mt-3
-            "
-          >
-            <p>Total heure d'une année</p>
-            <p class="price">**** {{monthDiff()}} <br>$$$ {{calaculPrixDeBase(123)}}</p>
-           
-          </li>
-        </ul>
-      </li>
-    </div>
-  </div>
+            ">
+                      <p> Tarif au début du contrat [c€ / kWh PCS]</p>
+                      <p class="price"> {{Tarif_debut_contrat1}}</p>
 
-  <div class="row d-flex justify-content-center">
-    <div class="col-8 d-flex justify-content-between align-items-center mb-2 g-0">
-      <div  >
-        <button class="save" (click)="clickprecedent4()" >
-          <span class="btn-txt">Precedent</span>
-        </button>
-      </div>
+                    </li>
 
-      <div class=" d-grid gap-2 col-8 mx-auto next-btn">
+                    <li class=" list-item cpx-list d-flex justify-content-between mt-3 ">
+                      <p> Tarif au début du contrat [€ / kWh PCS]</p>
+                      <p class="price"> {{Tarif_debut_contrat2}}€</p>
 
-      </div>
+                    </li>
+                    <li class=" list-item cpx-list d-flex justify-content-between mt-3 ">
+                      <p> CA Annuel Energie (€) Injection </p>
+                      <p class="price"> {{CA_annuel_energie}}€</p>
 
-      <div >
-        <button class="save" (click)="click4()">
-          <span class="btn-txt">Suivant</span>
-        </button>
-      </div>
-    </div>
-  </div>
+                    </li>
+                    <li class=" list-item cpx-list d-flex justify-content-between mt-3 ">
+                      <p> Prix du digestat Liquide</p>
+                      <p class="price"> {{Prix_digestat_Liquide}}€</p>
+                    </li>
+                    <li class=" list-item cpx-list d-flex justify-content-between mt-3 ">
+                      <p> Prix du digestat Liquide</p>
+                      <p class="price"> {{Prix_digestat_Solide}}€</p>
+                    </li>
 
-</div>
+                  </ul>
+                </li>
+              </div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+              <div class="col-8 d-flex justify-content-between align-items-center mb-2 g-0">
+                <div>
+                  <button class="save" (click)="clickprecedent4()">
+                    <span class="btn-txt">Precedent</span>
+                  </button>
+                </div>
+
+                <div class=" d-grid gap-2 col-8 mx-auto next-btn">
+
+                </div>
+
+                <div>
+                  <button class="save" (click)="click4()">
+                    <span class="btn-txt">Suivant</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
 
           <!--Scenario he-->
           <div class="col-12 col-lg-12 p-5" *ngIf="he ">
-<div>
+            <div>
 
 
-            <h6>Contrainte règlémentaire</h6>
+              <h6>Contrainte règlémentaire</h6>
 
-            <div class="row justify-content-center d-md-none mb-4">
-              <button class="col-8 btn-cpx">Injection</button>
-              <button class="col-8 btn-cpx">Cogenaration</button>
-            </div>
-            <div class="row">
-              <div class="col border-end  border-success  border-3  d-none d-sm-none d-md-block">
-                <div class="row">
-                  <div class="col">
+              <div class="row justify-content-center d-md-none mb-4">
+                <button class="col-8 btn-cpx">Injection</button>
+                <button class="col-8 btn-cpx">Cogenaration</button>
+              </div>
+              <div class="row">
+                <div class="col border-end  border-success  border-3  d-none d-sm-none d-md-block">
+                  <div class="row">
+                    <div class="col">
                       <div class="input-group mb-3">
                         <input class="form-control autogrow" id="field-ta" value="INJECTION"
-                        style="border-top-left-radius: 10px;border-bottom-left-radius: 10px;"
-                        >
-                          <span class="input-group-text" style="background-color:white;
+                          style="border-top-left-radius: 10px;border-bottom-left-radius: 10px;">
+                        <span class="input-group-text" style="background-color:white;
                           border-top-right-radius: 10px;border-bottom-right-radius: 10px;">
-                            <i class="entypo-check"
-                            style="background-color:green;color: white;"></i></span>
-                          </div>
+                          <i class="entypo-check" style="background-color:green;color: white;"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <h6>Montant total de capex</h6>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Conception et construction</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Cout de racc réseau gazier</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <h6>Réparation du financement</h6>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Banque</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Fonds propres</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <h6>Part finanancée en compte courant par le porteur de projet</h6>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">En pourcentage %</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Montant en €</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <h6>Part restante à financer</h6>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">En pourcentage %</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Montant en €</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="row">
-                  <h6>Montant total de capex</h6>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">Conception et construction</label>
-                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="0">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">Cout de racc réseau gazier</label>
-                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="0">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <h6>Réparation du financement</h6>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">Banque</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">Fonds propres</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <h6>Part finanancée en compte courant par le porteur de projet</h6>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">En pourcentage %</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">Montant en €</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <h6>Part restante à financer</h6>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">En pourcentage %</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">Montant en €</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col d-none d-sm-none d-md-block">
-                <div class="row">
-                  <div class="col">
+                <div class="col d-none d-sm-none d-md-block">
+                  <div class="row">
+                    <div class="col">
 
-                    <div class="input-group mb-3">
+                      <div class="input-group mb-3">
 
-                      <input class="form-control " id="field-ta" value="COGÉNÉRATION"
-                       style="border-top-left-radius: 10px;border-bottom-left-radius: 10px;"
-                       [ngClass]="volume_Nm3_CH4_an > 500 ? 'A':'B'" >
+                        <input class="form-control " id="field-ta" value="COGÉNÉRATION"
+                          style="border-top-left-radius: 10px;border-bottom-left-radius: 10px;"
+                          [ngClass]="volume_Nm3_CH4_an > 500 ? 'A':'B'">
 
 
 
-                      <span *ngIf="volume_Nm3_CH4_an > 500 "
-                        class="input-group-text" style="background-color:white;
-                         border-top-right-radius: 10px;border-bottom-right-radius: 10px;"
-                     >
-                        <i class="entypo-cancel" style="background-color:#CC2B26;color: white;">
+                        <span *ngIf="volume_Nm3_CH4_an > 500 " class="input-group-text" style="background-color:white;
+                         border-top-right-radius: 10px;border-bottom-right-radius: 10px;">
+                          <i class="entypo-cancel" style="background-color:#CC2B26;color: white;">
 
-                        </i></span>
+                          </i></span>
 
-                        <span  *ngIf="volume_Nm3_CH4_an < 500 " class=" input-group-addon"
-                        style="background-color:white;
+                        <span *ngIf="volume_Nm3_CH4_an < 500 " class=" input-group-addon" style="background-color:white;
                             border-top-right-radius: 10px;border-bottom-right-radius: 10px;">
                           <i class="entypo-check" style="background-color:#2D7574;color: white;"></i></span>
 
-                            <span  *ngIf="!volume_Nm3_CH4_an" class=" input-group-addon "
-                            style="background-color:#353E41;border-color: #353E41;
+                        <span *ngIf="!volume_Nm3_CH4_an" class=" input-group-addon " style="background-color:#353E41;border-color: #353E41;
                       border-top-right-radius: 10px;border-bottom-right-radius: 10px;">
-                              <i
-                              ></i></span>
-                        </div>
+                          <i></i></span>
+                      </div>
 
 
-                </div>
-                </div>
-                <div class="row">
-                  <h6>Montant total de capex</h6>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">Conception et construction</label>
-                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="0">
                     </div>
                   </div>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">Cout de racc réseau gazier</label>
-                      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                  <div class="row">
+                    <h6>Montant total de capex</h6>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Conception et construction</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Cout de racc réseau gazier</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <h6>Réparation du financement</h6>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">Banque</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                  <div class="row">
+                    <h6>Réparation du financement</h6>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Banque</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Fonds propres</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
                     </div>
                   </div>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">Fonds propres</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                  <div class="row">
+                    <h6>Part finanancée en compte courant par le porteur de projet</h6>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">En pourcentage %</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Montant en €</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <h6>Part finanancée en compte courant par le porteur de projet</h6>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">En pourcentage %</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                  <div class="row">
+                    <h6>Part restante à financer</h6>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">En pourcentage %</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
                     </div>
-                  </div>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">Montant en €</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <h6>Part restante à financer</h6>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">En pourcentage %</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="mb-3">
-                      <label for="exampleFormControlInput1" class="form-label">Montant en €</label>
-                      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Montant en €</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="0">
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-            <div class="tableTwo container mt-3 mb-3" style=" background-color: white;
+            <div class="tableTwo container mt-3 mb-3"
+              style=" background-color: white;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;min-height: 100px;padding-top: 30px;padding-bottom: 30px;border-radius: 15px;">
               <div class="row">
                 <div class="col border-end border-success  border-3">
@@ -2871,7 +3082,7 @@
             </div>
             <div class="row d-flex justify-content">
               <div class="col-12 d-flex justify-content align-items">
-                <div class=" col-2 next-btn" >
+                <div class=" col-2 next-btn">
                   <button class="add" (click)="clickprecedent5()">
                     <span class="btn-txt">Precedent</span>
                   </button>
@@ -2884,7 +3095,7 @@
 
               </div>
             </div>
-            </div>
+          </div>
 
 
 
@@ -2928,11 +3139,11 @@
             <img width="60px" src="assets/icon/opex.png" />
             <p>Opex</p>
           </li>
-          <li  [ngClass]="greenRecette ? 'active': ''" (click)="goToRecette()">
+          <li [ngClass]="greenRecette ? 'active': ''" (click)="goToRecette()">
             <img width="60px" src="assets/icon/recette.png" />
             <p>Recette</p>
           </li>
-          <li  (click)="goToScenario()">
+          <li (click)="goToScenario()">
             <img width="60px" src="assets/icon/28011.png" />
             <p>Scenario</p>
           </li>
@@ -2971,9 +3182,10 @@
                       <div class="form-group">
 
                         <label class="form-label">Ajouter vote MB/u</label>
-                        <input *ngIf="infos && infos.uMB_an" type="text" class="form-control form-control-sm me-1"
-                          placeholder="00000" required #i [(ngModel)]="infos.uMB_an" name="infos.uMB_an"
+                        <input *ngIf="infos" type="text" class="form-control form-control-sm me-1" placeholder="00000"
+                          required #someVar [(ngModel)]="infos.uMB_an" name="infos.uMB_an"
                           value="{{ infotrie5?.uMB_an }}" />
+
                       </div>
                     </div>
 
@@ -2987,9 +3199,9 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer">
+        <div class=" modal-footer">
           <div class="buttons">
-            <button class="btn-form" (click)="ModifierUMB(i.value)">
+            <button class="btn-form" (click)="ModifierUMB(f)">
               <span>Modifier</span>
             </button>
             <button class="btn-form" data-bs-dismiss="modal">

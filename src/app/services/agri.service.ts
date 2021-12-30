@@ -27,27 +27,20 @@ export class AgriService {
   getAllProjets() {
     return this.http.get(this.config.baseURL + "/projets");
   }
+
   deleteProjet(id: any) {
     return this.http.delete(this.config.baseURL + "/projets/" + id);
   }
   //CLIENT
 
-  addClient(client){
-
+  addClient(client) {
     return this.http.post(this.config.baseURL + "/clients", client);
-
   }
 
+  updateClient(id, client) {
+    console.log("id", id);
 
-
-  updateClient(id,client){
-
-    console.log("id",id);
-
-
-
-    return this.http.put(this.config.baseURL + "/clients/"+id, client);
-
+    return this.http.put(this.config.baseURL + "/clients/" + id, client);
   }
 
   //REAL TIME WITH SUBJECT
@@ -59,13 +52,9 @@ export class AgriService {
   handlePostCreated() {
     return this.resultSubject.asObservable();
   }
-//FIN REAL TIME WITH SUBJECT
-
-
+  //FIN REAL TIME WITH SUBJECT
 
   addFicheClient(value) {
-
-
     return this.http.post(this.config.baseURL + "/fiches", value);
   }
 
@@ -83,8 +72,6 @@ export class AgriService {
     return this.http.get(this.config.baseURL + "/");
   }
 
-
-
   getIC1() {
     return this.http.get(this.config.baseURL + "/ic1s");
   }
@@ -101,34 +88,36 @@ export class AgriService {
     return this.http.get(this.config.baseURL + "/fiches");
   }
 
-
-
   //construction
-  getDataConstruction(){
+  getDataConstruction() {
     return this.http.get(this.config.baseURL + "/getDonnees");
   }
-  getData(){
+  getData() {
     return this.http.get(this.config.baseURL + "/getconstructions");
   }
-  getDataExploitation(){
+  getDataExploitation() {
     return this.http.get(this.config.baseURL + "/getexploitations");
   }
-  SubmitDataConception(value){
+  SubmitDataConception(value) {
     return this.http.post(this.config.baseURL + "/donnees", value);
   }
 
-  updateDataconceptionByID(id,val){
-    console.log("sstraitance",id,val);
-    return this.http.post(this.config.baseURL + "/updateDate/" + id,val);
-    }
+  updateDataconceptionByID(id, val) {
+    console.log("sstraitance", id, val);
+    return this.http.post(this.config.baseURL + "/updateDate/" + id, val);
+  }
 
-    updateDataconstructionByID(id,val){
-      return this.http.post(this.config.baseURL + "/updateConstruction/" + id,val);
-      }
+  updateDataconstructionByID(id, val) {
+    return this.http.post(
+      this.config.baseURL + "/updateConstruction/" + id,
+      val
+    );
+  }
 
-      updateDataexploitationByID(id,val){
-       return this.http.post(this.config.baseURL + "/updateexploitation/" + id,val);
-        }
-
-
+  updateDataexploitationByID(id, val) {
+    return this.http.post(
+      this.config.baseURL + "/updateexploitation/" + id,
+      val
+    );
+  }
 }
