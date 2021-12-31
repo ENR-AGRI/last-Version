@@ -419,7 +419,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>{{ somme_MS }}</td>
+                        <td>{{ CalculSUMMS(newFiche) }}</td>
                         <td>{{ somme_MB }}</td>
                         <td>{{ volume_Nm3_CH4_an }}</td>
                         <td>{{ somme_KWH }}</td>
@@ -529,7 +529,7 @@
                     </span>
                     <span>
                       <p style="margin: 0;font-size: 0.75rem; color:#727272 ;">Total:</p>
-                      <p class="main-title" style="margin: 0;">{{Racc}}</p>
+                      <p class="main-title" style="margin: 0;">300 000€</p>
                     </span>
                   </button>
                 </div>
@@ -1976,6 +1976,3436 @@
                     </div>
                   </div>
                 </div>
+                <!--190-->
+                <div class="accordion" id="accordionExample" *ngIf="c && c.Tab_190">
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+
+                        <span> 1/ Ouverture du Chantier </span>
+                        <span class="total">
+                          {{c.Tab_190.Ouverture_chantier.Sous_Total_Prix_vente}}€
+
+                        </span>
+
+
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between mt-3 ">
+
+                            <span>1.1. Contrôle technique - SPS</span>
+                            <span
+                              class="price">{{c.Tab_190.Ouverture_chantier.Controle_technique_SPS.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.2. Frais de dossier</span>
+                            <span class="price">{{c.Tab_190.Ouverture_chantier.Frais_dossier.Prix_vente_Concep}}€
+
+                            </span>
+                          </li>
+                          <li class="
+                  list-item
+                  cpx-list
+                  d-flex
+                  justify-content-between
+                  mt-3
+                ">
+                            <span>1.3. Conseil et suivi</span>
+                            <span class="price">
+                              {{c.Tab_190.Ouverture_chantier?.Conseil_suivi?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                  list-item
+                  cpx-list
+                  d-flex
+                  justify-content-between
+                  mt-3
+                ">
+                            <span>1.4. Aléas</span>
+                            <span class="price">
+                              {{c.Tab_190.Ouverture_chantier?.Aleas?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                  list-item
+                  cpx-list
+                  d-flex
+                  justify-content-between
+                  mt-3
+                ">
+                            <span>1.5. TRCME</span>
+                            <span class="price">
+                              {{c.Tab_190.Ouverture_chantier?.TRCME?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                          list-item
+                          cpx-list
+                          d-flex
+                          justify-content-between
+                          mt-3
+                        ">
+                            <span>1.6. Achat Terrain</span>
+                            <span class="price">
+                              {{c.Tab_190.Ouverture_chantier?.Achat_Terrain?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                                  list-item
+                                  cpx-list
+                                  d-flex
+                                  justify-content-between
+                                  mt-3
+                                ">
+                            <span>1.7. Frais de notaire</span>
+                            <span class="price">
+                              {{c.Tab_190.Ouverture_chantier?.Frais_notaire?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <span>2/ Lot 1: Process méthanisation</span>
+                        <span class="total">
+                          {{c.Tab_190.Lot_1_Process_methanisation.Sous_Total_Prix_vente}}€
+
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+
+
+                        <ul>
+                          <li class="
+        list-item
+        cpx-list
+        d-flex
+        justify-content-between
+        mt-3
+      ">
+                            <span>
+                              2.1. Process méthanisation
+                            </span>
+                            <span class="price">
+                              {{c.Tab_190.Lot_1_Process_methanisation.Process_methanisation.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+        list-item
+        cpx-list
+        d-flex
+        justify-content-between
+        mt-3
+      ">
+                            <span>
+                              2.2. Pièces d'usure de première urgence Lot 1</span>
+                            <span class="price">
+                              {{c.Tab_190.Lot_1_Process_methanisation.Pieces_usure_premiere_urgence_Lot_1.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span> 3/ Lot 2 : Valorisation
+                        </span>
+                        <span class="total">
+                          {{c.Tab_190.Lot_2_Valorisation.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>
+                              3.1.Epuration - Compression - Chaudière</span>
+                            <span
+                              class="price">{{c.Tab_190.Lot_2_Valorisation.Epuration_Compression_Chaudiere.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>
+                              3.2.Cogénérateur
+                            </span>
+                            <span class="price">
+                              {{c.Tab_190.Lot_2_Valorisation.Cogenerateur.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFour">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <span>4/ Lot 3 : Terrassement Grande Masse - Talutage - VRD
+                        </span>
+                        <span class="total">
+                          {{c.Tab_190.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>
+                              4.1.Terrassement Grande Masse - Talutafe - VRD</span>
+                            <span
+                              class="price">{{c.Tab_190.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Terrassement_Grande_Masse_Talutafe_VRD.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFive">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <span>5/ Lot 4 : Génie Civil circulaire digestat liquide + couverture simple
+                        </span>
+                        <span class="total">
+                          {{c.Tab_190.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>
+                              5.1.Génie Civil circulaire digestat liquide + couverture simple</span>
+                            <span
+                              class="price">{{c.Tab_190.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Genie_Civil_circulaire_digestat_liquide_couverture_simple.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSix">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        <span>6/ Lot 5 : Génie Civil ouvrages périphériques</span>
+                        <span class="total">
+                          {{c.Tab_190.Lot_5_Genie_Civil_ouvrages_peripheriques.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>
+                              6.1.Génie Civil ouvrages périphériques</span>
+                            <span class="price">
+                              {{c.Tab_190.Lot_5_Genie_Civil_ouvrages_peripheriques.Genie_Civil_ouvrages_peripheriques.Prix_vente_Concep}}€€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSeven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        <span> 7/ Lot 6 : Charpente - Batiment - Couverture</span>
+                        <span class="total">
+                          {{c.Tab_190.Lot_6_Charpente_Batiment_Couverture.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>
+                              7.1.Charpente - Batiment - Couverture</span>
+                            <span
+                              class="price">{{c.Tab_190.Lot_6_Charpente_Batiment_Couverture.Charpente_Batiment_Couverture.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEight">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        <span>
+                          8/ Lot 7 : Courant fort - Soutirage - Electricité Générale
+                        </span>
+                        <span class="total">
+                          {{c.Tab_190.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>
+                              8.1.Courant fort - Soutirage - Electricité Générale</span>
+                            <span
+                              class="price">{{c.Tab_190.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Courant_fort_Soutirage_Electricite_Generale.Prix_vente_Concep}}€
+                            </span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingNine">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        <span> 9/ Maitrise d'œuvre</span>
+                        <span class="total">
+                          {{c.Tab_190.Maitrise_oevre.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>9.1.Maîtrise d'œuvre</span>
+                            <span class="price">{{c.Tab_190.Maitrise_oevre.Maitrise_oevre.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTen">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                        <span>10/ Assistance à maitrise d'ouvrage </span>
+                        <span class="total">
+                          {{c.Tab_190.Assistance_maitrise_ouvrage.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>10.1. AMO</span>
+                            <span class="price">{{c.Tab_190.Assistance_maitrise_ouvrage.AMO.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEleven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                        <span>11/ Matériel </span>
+                        <span class="total">
+                          {{c.Tab_190.Materiel.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>11.1. Matériels agricoles</span>
+                            <span class="price">{{c.Tab_190.Materiel.Matrriels_agricoles.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
+                          list-item
+                          cpx-list
+                          d-flex
+                          justify-content-between
+                          mt-3
+                        ">
+                            <span> 11.2. Pont bascule - Réserve Incendie</span>
+                            <span
+                              class="price">{{c.Tab_190.Materiel.Pont_bascule_Reserve_Incendie.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      ">
+                            <span> 11.3. Hygénisiation (200 000€)</span>
+                            <span class="price">{{c.Tab_190.Materiel.Hygenisiation.Prix_vente_Concep}}€</span>
+                          </li>
+                          <li class="
+                      list-item
+                      cpx-list
+                      d-flex
+                      justify-content-between
+                      mt-3
+                    ">
+                            <span> Semi-remorque 44 t (Transport intrants) (110 000€)</span>
+                            <span class="price">{{c.Tab_190.Materiel.Semi_remorque_44_t.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--240-->
+                <div class="accordion" id="accordionExample" *ngIf="c && c.Tab_240">
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+
+                        <span> 1/ Ouverture du Chantier </span>
+                        <span class="total">
+                          {{c.Tab_240.Ouverture_chantier.Sous_Total_Prix_vente}}€
+
+                        </span>
+
+
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                          list-item
+                          cpx-list
+                          d-flex
+                          justify-content-between mt-3 ">
+
+                            <span>1.1. Contrôle technique - SPS</span>
+                            <span
+                              class="price">{{c.Tab_240.Ouverture_chantier.Controle_technique_SPS.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+                      list-item
+                      cpx-list
+                      d-flex
+                      justify-content-between
+                      mt-3
+                    ">
+                            <span>1.2. Frais de dossier</span>
+                            <span class="price">{{c.Tab_240.Ouverture_chantier.Frais_dossier.Prix_vente_Concep}}€
+
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.3. Conseil et suivi</span>
+                            <span class="price">
+                              {{c.Tab_240.Ouverture_chantier?.Conseil_suivi?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.4. Aléas</span>
+                            <span class="price">
+                              {{c.Tab_240.Ouverture_chantier?.Aleas?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.5. TRCME</span>
+                            <span class="price">
+                              {{c.Tab_240.Ouverture_chantier?.TRCME?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>1.6. Achat Terrain</span>
+                            <span class="price">
+                              {{c.Tab_240.Ouverture_chantier?.Achat_Terrain?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                                    list-item
+                                    cpx-list
+                                    d-flex
+                                    justify-content-between
+                                    mt-3
+                                  ">
+                            <span>1.7. Frais de notaire</span>
+                            <span class="price">
+                              {{c.Tab_240.Ouverture_chantier?.Frais_notaire?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <span>2/ Lot 1: Process méthanisation</span>
+                        <span class="total">
+                          {{c.Tab_240.Lot_1_Process_methanisation.Sous_Total_Prix_vente}}€
+
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+
+
+                        <ul>
+                          <li class="
+          list-item
+          cpx-list
+          d-flex
+          justify-content-between
+          mt-3
+        ">
+                            <span>
+                              2.1. Process méthanisation
+                            </span>
+                            <span class="price">
+                              {{c.Tab_240.Lot_1_Process_methanisation.Process_methanisation.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+          list-item
+          cpx-list
+          d-flex
+          justify-content-between
+          mt-3
+        ">
+                            <span>
+                              2.2. Pièces d'usure de première urgence Lot 1</span>
+                            <span class="price">
+                              {{c.Tab_240.Lot_1_Process_methanisation.Pieces_usure_premiere_urgence_Lot_1.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span> 3/ Lot 2 : Valorisation
+                        </span>
+                        <span class="total">
+                          {{c.Tab_240.Lot_2_Valorisation.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              3.1.Epuration - Compression - Chaudière</span>
+                            <span
+                              class="price">{{c.Tab_240.Lot_2_Valorisation.Epuration_Compression_Chaudiere.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              3.2.Cogénérateur
+                            </span>
+                            <span class="price">
+                              {{c.Tab_240.Lot_2_Valorisation.Cogenerateur.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFour">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <span>4/ Lot 3 : Terrassement Grande Masse - Talutage - VRD
+                        </span>
+                        <span class="total">
+                          {{c.Tab_240.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              4.1.Terrassement Grande Masse - Talutafe - VRD</span>
+                            <span
+                              class="price">{{c.Tab_240.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Terrassement_Grande_Masse_Talutafe_VRD.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFive">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <span>5/ Lot 4 : Génie Civil circulaire digestat liquide + couverture simple
+                        </span>
+                        <span class="total">
+                          {{c.Tab_240.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              5.1.Génie Civil circulaire digestat liquide + couverture simple</span>
+                            <span
+                              class="price">{{c.Tab_240.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Genie_Civil_circulaire_digestat_liquide_couverture_simple.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSix">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        <span>6/ Lot 5 : Génie Civil ouvrages périphériques</span>
+                        <span class="total">
+                          {{c.Tab_240.Lot_5_Genie_Civil_ouvrages_peripheriques.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              6.1.Génie Civil ouvrages périphériques</span>
+                            <span class="price">
+                              {{c.Tab_240.Lot_5_Genie_Civil_ouvrages_peripheriques.Genie_Civil_ouvrages_peripheriques.Prix_vente_Concep}}€€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSeven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        <span> 7/ Lot 6 : Charpente - Batiment - Couverture</span>
+                        <span class="total">
+                          {{c.Tab_240.Lot_6_Charpente_Batiment_Couverture.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              7.1.Charpente - Batiment - Couverture</span>
+                            <span
+                              class="price">{{c.Tab_240.Lot_6_Charpente_Batiment_Couverture.Charpente_Batiment_Couverture.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEight">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        <span>
+                          8/ Lot 7 : Courant fort - Soutirage - Electricité Générale
+                        </span>
+                        <span class="total">
+                          {{c.Tab_240.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              8.1.Courant fort - Soutirage - Electricité Générale</span>
+                            <span
+                              class="price">{{c.Tab_240.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Courant_fort_Soutirage_Electricite_Generale.Prix_vente_Concep}}€
+                            </span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingNine">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        <span> 9/ Maitrise d'œuvre</span>
+                        <span class="total">
+                          {{c.Tab_240.Maitrise_oevre.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>9.1.Maîtrise d'œuvre</span>
+                            <span class="price">{{c.Tab_240.Maitrise_oevre.Maitrise_oevre.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTen">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                        <span>10/ Assistance à maitrise d'ouvrage </span>
+                        <span class="total">
+                          {{c.Tab_240.Assistance_maitrise_ouvrage.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>10.1. AMO</span>
+                            <span class="price">{{c.Tab_240.Assistance_maitrise_ouvrage.AMO.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEleven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                        <span>11/ Matériel </span>
+                        <span class="total">
+                          {{c.Tab_240.Materiel.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>11.1. Matériels agricoles</span>
+                            <span class="price">{{c.Tab_240.Materiel.Matrriels_agricoles.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span> 11.2. Pont bascule - Réserve Incendie</span>
+                            <span
+                              class="price">{{c.Tab_240.Materiel.Pont_bascule_Reserve_Incendie.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
+                          list-item
+                          cpx-list
+                          d-flex
+                          justify-content-between
+                          mt-3
+                        ">
+                            <span> 11.3. Hygénisiation (200 000€)</span>
+                            <span class="price">{{c.Tab_240.Materiel.Hygenisiation.Prix_vente_Concep}}€</span>
+                          </li>
+                          <li class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      ">
+                            <span> Semi-remorque 44 t (Transport intrants) (110 000€)</span>
+                            <span class="price">{{c.Tab_240.Materiel.Semi_remorque_44_t.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--280-->
+                <div class="accordion" id="accordionExample" *ngIf="c && c.Tab_280">
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+
+                        <span> 1/ Ouverture du Chantier </span>
+                        <span class="total">
+                          {{c.Tab_280.Ouverture_chantier.Sous_Total_Prix_vente}}€
+
+                        </span>
+
+
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                          list-item
+                          cpx-list
+                          d-flex
+                          justify-content-between mt-3 ">
+
+                            <span>1.1. Contrôle technique - SPS</span>
+                            <span
+                              class="price">{{c.Tab_280.Ouverture_chantier.Controle_technique_SPS.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+                      list-item
+                      cpx-list
+                      d-flex
+                      justify-content-between
+                      mt-3
+                    ">
+                            <span>1.2. Frais de dossier</span>
+                            <span class="price">{{c.Tab_280.Ouverture_chantier.Frais_dossier.Prix_vente_Concep}}€
+
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.3. Conseil et suivi</span>
+                            <span class="price">
+                              {{c.Tab_280.Ouverture_chantier?.Conseil_suivi?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.4. Aléas</span>
+                            <span class="price">
+                              {{c.Tab_280.Ouverture_chantier?.Aleas?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.5. TRCME</span>
+                            <span class="price">
+                              {{c.Tab_280.Ouverture_chantier?.TRCME?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>1.6. Achat Terrain</span>
+                            <span class="price">
+                              {{c.Tab_280.Ouverture_chantier?.Achat_Terrain?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                                    list-item
+                                    cpx-list
+                                    d-flex
+                                    justify-content-between
+                                    mt-3
+                                  ">
+                            <span>1.7. Frais de notaire</span>
+                            <span class="price">
+                              {{c.Tab_280.Ouverture_chantier?.Frais_notaire?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <span>2/ Lot 1: Process méthanisation</span>
+                        <span class="total">
+                          {{c.Tab_280.Lot_1_Process_methanisation.Sous_Total_Prix_vente}}€
+
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+
+
+                        <ul>
+                          <li class="
+          list-item
+          cpx-list
+          d-flex
+          justify-content-between
+          mt-3
+        ">
+                            <span>
+                              2.1. Process méthanisation
+                            </span>
+                            <span class="price">
+                              {{c.Tab_280.Lot_1_Process_methanisation.Process_methanisation.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+          list-item
+          cpx-list
+          d-flex
+          justify-content-between
+          mt-3
+        ">
+                            <span>
+                              2.2. Pièces d'usure de première urgence Lot 1</span>
+                            <span class="price">
+                              {{c.Tab_280.Lot_1_Process_methanisation.Pieces_usure_premiere_urgence_Lot_1.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span> 3/ Lot 2 : Valorisation
+                        </span>
+                        <span class="total">
+                          {{c.Tab_280.Lot_2_Valorisation.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              3.1.Epuration - Compression - Chaudière</span>
+                            <span
+                              class="price">{{c.Tab_280.Lot_2_Valorisation.Epuration_Compression_Chaudiere.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              3.2.Cogénérateur
+                            </span>
+                            <span class="price">
+                              {{c.Tab_280.Lot_2_Valorisation.Cogenerateur.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFour">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <span>4/ Lot 3 : Terrassement Grande Masse - Talutage - VRD
+                        </span>
+                        <span class="total">
+                          {{c.Tab_280.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              4.1.Terrassement Grande Masse - Talutafe - VRD</span>
+                            <span
+                              class="price">{{c.Tab_280.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Terrassement_Grande_Masse_Talutafe_VRD.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFive">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <span>5/ Lot 4 : Génie Civil circulaire digestat liquide + couverture simple
+                        </span>
+                        <span class="total">
+                          {{c.Tab_280.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              5.1.Génie Civil circulaire digestat liquide + couverture simple</span>
+                            <span
+                              class="price">{{c.Tab_280.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Genie_Civil_circulaire_digestat_liquide_couverture_simple.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSix">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        <span>6/ Lot 5 : Génie Civil ouvrages périphériques</span>
+                        <span class="total">
+                          {{c.Tab_280.Lot_5_Genie_Civil_ouvrages_peripheriques.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              6.1.Génie Civil ouvrages périphériques</span>
+                            <span class="price">
+                              {{c.Tab_280.Lot_5_Genie_Civil_ouvrages_peripheriques.Genie_Civil_ouvrages_peripheriques.Prix_vente_Concep}}€€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSeven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        <span> 7/ Lot 6 : Charpente - Batiment - Couverture</span>
+                        <span class="total">
+                          {{c.Tab_280.Lot_6_Charpente_Batiment_Couverture.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              7.1.Charpente - Batiment - Couverture</span>
+                            <span
+                              class="price">{{c.Tab_280.Lot_6_Charpente_Batiment_Couverture.Charpente_Batiment_Couverture.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEight">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        <span>
+                          8/ Lot 7 : Courant fort - Soutirage - Electricité Générale
+                        </span>
+                        <span class="total">
+                          {{c.Tab_280.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              8.1.Courant fort - Soutirage - Electricité Générale</span>
+                            <span
+                              class="price">{{c.Tab_280.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Courant_fort_Soutirage_Electricite_Generale.Prix_vente_Concep}}€
+                            </span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingNine">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        <span> 9/ Maitrise d'œuvre</span>
+                        <span class="total">
+                          {{c.Tab_280.Maitrise_oevre.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>9.1.Maîtrise d'œuvre</span>
+                            <span class="price">{{c.Tab_280.Maitrise_oevre.Maitrise_oevre.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTen">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                        <span>10/ Assistance à maitrise d'ouvrage </span>
+                        <span class="total">
+                          {{c.Tab_280.Assistance_maitrise_ouvrage.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>10.1. AMO</span>
+                            <span class="price">{{c.Tab_280.Assistance_maitrise_ouvrage.AMO.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEleven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                        <span>11/ Matériel </span>
+                        <span class="total">
+                          {{c.Tab_280.Materiel.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>11.1. Matériels agricoles</span>
+                            <span class="price">{{c.Tab_280.Materiel.Matrriels_agricoles.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span> 11.2. Pont bascule - Réserve Incendie</span>
+                            <span
+                              class="price">{{c.Tab_280.Materiel.Pont_bascule_Reserve_Incendie.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
+                          list-item
+                          cpx-list
+                          d-flex
+                          justify-content-between
+                          mt-3
+                        ">
+                            <span> 11.3. Hygénisiation (200 000€)</span>
+                            <span class="price">{{c.Tab_280.Materiel.Hygenisiation.Prix_vente_Concep}}€</span>
+                          </li>
+                          <li class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      ">
+                            <span> Semi-remorque 44 t (Transport intrants) (110 000€)</span>
+                            <span class="price">{{c.Tab_280.Materiel.Semi_remorque_44_t.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--560-->
+                <div class="accordion" id="accordionExample" *ngIf="c && c.Tab_560">
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+
+                        <span> 1/ Ouverture du Chantier </span>
+                        <span class="total">
+                          {{c.Tab_560.Ouverture_chantier.Sous_Total_Prix_vente}}€
+
+                        </span>
+
+
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                          list-item
+                          cpx-list
+                          d-flex
+                          justify-content-between mt-3 ">
+
+                            <span>1.1. Contrôle technique - SPS</span>
+                            <span
+                              class="price">{{c.Tab_560.Ouverture_chantier.Controle_technique_SPS.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+                      list-item
+                      cpx-list
+                      d-flex
+                      justify-content-between
+                      mt-3
+                    ">
+                            <span>1.2. Frais de dossier</span>
+                            <span class="price">{{c.Tab_560.Ouverture_chantier.Frais_dossier.Prix_vente_Concep}}€
+
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.3. Conseil et suivi</span>
+                            <span class="price">
+                              {{c.Tab_560.Ouverture_chantier?.Conseil_suivi?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.4. Aléas</span>
+                            <span class="price">
+                              {{c.Tab_560.Ouverture_chantier?.Aleas?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.5. TRCME</span>
+                            <span class="price">
+                              {{c.Tab_560.Ouverture_chantier?.TRCME?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>1.6. Achat Terrain</span>
+                            <span class="price">
+                              {{c.Tab_560.Ouverture_chantier?.Achat_Terrain?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                                    list-item
+                                    cpx-list
+                                    d-flex
+                                    justify-content-between
+                                    mt-3
+                                  ">
+                            <span>1.7. Frais de notaire</span>
+                            <span class="price">
+                              {{c.Tab_560.Ouverture_chantier?.Frais_notaire?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <span>2/ Lot 1: Process méthanisation</span>
+                        <span class="total">
+                          {{c.Tab_560.Lot_1_Process_methanisation.Sous_Total_Prix_vente}}€
+
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+
+
+                        <ul>
+                          <li class="
+          list-item
+          cpx-list
+          d-flex
+          justify-content-between
+          mt-3
+        ">
+                            <span>
+                              2.1. Process méthanisation
+                            </span>
+                            <span class="price">
+                              {{c.Tab_560.Lot_1_Process_methanisation.Process_methanisation.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+          list-item
+          cpx-list
+          d-flex
+          justify-content-between
+          mt-3
+        ">
+                            <span>
+                              2.2. Pièces d'usure de première urgence Lot 1</span>
+                            <span class="price">
+                              {{c.Tab_560.Lot_1_Process_methanisation.Pieces_usure_premiere_urgence_Lot_1.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span> 3/ Lot 2 : Valorisation
+                        </span>
+                        <span class="total">
+                          {{c.Tab_560.Lot_2_Valorisation.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              3.1.Epuration - Compression - Chaudière</span>
+                            <span
+                              class="price">{{c.Tab_560.Lot_2_Valorisation.Epuration_Compression_Chaudiere.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              3.2.Cogénérateur
+                            </span>
+                            <span class="price">
+                              {{c.Tab_560.Lot_2_Valorisation.Cogenerateur.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFour">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <span>4/ Lot 3 : Terrassement Grande Masse - Talutage - VRD
+                        </span>
+                        <span class="total">
+                          {{c.Tab_560.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              4.1.Terrassement Grande Masse - Talutafe - VRD</span>
+                            <span
+                              class="price">{{c.Tab_560.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Terrassement_Grande_Masse_Talutafe_VRD.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFive">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <span>5/ Lot 4 : Génie Civil circulaire digestat liquide + couverture simple
+                        </span>
+                        <span class="total">
+                          {{c.Tab_560.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              5.1.Génie Civil circulaire digestat liquide + couverture simple</span>
+                            <span
+                              class="price">{{c.Tab_560.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Genie_Civil_circulaire_digestat_liquide_couverture_simple.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSix">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        <span>6/ Lot 5 : Génie Civil ouvrages périphériques</span>
+                        <span class="total">
+                          {{c.Tab_560.Lot_5_Genie_Civil_ouvrages_peripheriques.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              6.1.Génie Civil ouvrages périphériques</span>
+                            <span class="price">
+                              {{c.Tab_560.Lot_5_Genie_Civil_ouvrages_peripheriques.Genie_Civil_ouvrages_peripheriques.Prix_vente_Concep}}€€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSeven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        <span> 7/ Lot 6 : Charpente - Batiment - Couverture</span>
+                        <span class="total">
+                          {{c.Tab_560.Lot_6_Charpente_Batiment_Couverture.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              7.1.Charpente - Batiment - Couverture</span>
+                            <span
+                              class="price">{{c.Tab_560.Lot_6_Charpente_Batiment_Couverture.Charpente_Batiment_Couverture.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEight">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        <span>
+                          8/ Lot 7 : Courant fort - Soutirage - Electricité Générale
+                        </span>
+                        <span class="total">
+                          {{c.Tab_560.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              8.1.Courant fort - Soutirage - Electricité Générale</span>
+                            <span
+                              class="price">{{c.Tab_560.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Courant_fort_Soutirage_Electricite_Generale.Prix_vente_Concep}}€
+                            </span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingNine">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        <span> 9/ Maitrise d'œuvre</span>
+                        <span class="total">
+                          {{c.Tab_560.Maitrise_oevre.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>9.1.Maîtrise d'œuvre</span>
+                            <span class="price">{{c.Tab_560.Maitrise_oevre.Maitrise_oevre.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTen">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                        <span>10/ Assistance à maitrise d'ouvrage </span>
+                        <span class="total">
+                          {{c.Tab_560.Assistance_maitrise_ouvrage.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>10.1. AMO</span>
+                            <span class="price">{{c.Tab_560.Assistance_maitrise_ouvrage.AMO.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEleven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                        <span>11/ Matériel </span>
+                        <span class="total">
+                          {{c.Tab_560.Materiel.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>11.1. Matériels agricoles</span>
+                            <span class="price">{{c.Tab_560.Materiel.Matrriels_agricoles.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span> 11.2. Pont bascule - Réserve Incendie</span>
+                            <span
+                              class="price">{{c.Tab_560.Materiel.Pont_bascule_Reserve_Incendie.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
+                          list-item
+                          cpx-list
+                          d-flex
+                          justify-content-between
+                          mt-3
+                        ">
+                            <span> 11.3. Hygénisiation (200 000€)</span>
+                            <span class="price">{{c.Tab_560.Materiel.Hygenisiation.Prix_vente_Concep}}€</span>
+                          </li>
+                          <li class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      ">
+                            <span> Semi-remorque 44 t (Transport intrants) (110 000€)</span>
+                            <span class="price">{{c.Tab_560.Materiel.Semi_remorque_44_t.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--760-->
+                <div class="accordion" id="accordionExample" *ngIf="c && c.Tab_760">
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+
+                        <span> 1/ Ouverture du Chantier </span>
+                        <span class="total">
+                          {{c.Tab_760.Ouverture_chantier.Sous_Total_Prix_vente}}€
+
+                        </span>
+
+
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                          list-item
+                          cpx-list
+                          d-flex
+                          justify-content-between mt-3 ">
+
+                            <span>1.1. Contrôle technique - SPS</span>
+                            <span
+                              class="price">{{c.Tab_760.Ouverture_chantier.Controle_technique_SPS.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+                      list-item
+                      cpx-list
+                      d-flex
+                      justify-content-between
+                      mt-3
+                    ">
+                            <span>1.2. Frais de dossier</span>
+                            <span class="price">{{c.Tab_760.Ouverture_chantier.Frais_dossier.Prix_vente_Concep}}€
+
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.3. Conseil et suivi</span>
+                            <span class="price">
+                              {{c.Tab_760.Ouverture_chantier?.Conseil_suivi?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.4. Aléas</span>
+                            <span class="price">
+                              {{c.Tab_760.Ouverture_chantier?.Aleas?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.5. TRCME</span>
+                            <span class="price">
+                              {{c.Tab_760.Ouverture_chantier?.TRCME?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>1.6. Achat Terrain</span>
+                            <span class="price">
+                              {{c.Tab_760.Ouverture_chantier?.Achat_Terrain?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                                    list-item
+                                    cpx-list
+                                    d-flex
+                                    justify-content-between
+                                    mt-3
+                                  ">
+                            <span>1.7. Frais de notaire</span>
+                            <span class="price">
+                              {{c.Tab_760.Ouverture_chantier?.Frais_notaire?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <span>2/ Lot 1: Process méthanisation</span>
+                        <span class="total">
+                          {{c.Tab_760.Lot_1_Process_methanisation.Sous_Total_Prix_vente}}€
+
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+
+
+                        <ul>
+                          <li class="
+          list-item
+          cpx-list
+          d-flex
+          justify-content-between
+          mt-3
+        ">
+                            <span>
+                              2.1. Process méthanisation
+                            </span>
+                            <span class="price">
+                              {{c.Tab_760.Lot_1_Process_methanisation.Process_methanisation.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+          list-item
+          cpx-list
+          d-flex
+          justify-content-between
+          mt-3
+        ">
+                            <span>
+                              2.2. Pièces d'usure de première urgence Lot 1</span>
+                            <span class="price">
+                              {{c.Tab_760.Lot_1_Process_methanisation.Pieces_usure_premiere_urgence_Lot_1.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span> 3/ Lot 2 : Valorisation
+                        </span>
+                        <span class="total">
+                          {{c.Tab_760.Lot_2_Valorisation.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              3.1.Epuration - Compression - Chaudière</span>
+                            <span
+                              class="price">{{c.Tab_760.Lot_2_Valorisation.Epuration_Compression_Chaudiere.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              3.2.Cogénérateur
+                            </span>
+                            <span class="price">
+                              {{c.Tab_760.Lot_2_Valorisation.Cogenerateur.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFour">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <span>4/ Lot 3 : Terrassement Grande Masse - Talutage - VRD
+                        </span>
+                        <span class="total">
+                          {{c.Tab_760.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              4.1.Terrassement Grande Masse - Talutafe - VRD</span>
+                            <span
+                              class="price">{{c.Tab_760.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Terrassement_Grande_Masse_Talutafe_VRD.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFive">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <span>5/ Lot 4 : Génie Civil circulaire digestat liquide + couverture simple
+                        </span>
+                        <span class="total">
+                          {{c.Tab_760.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              5.1.Génie Civil circulaire digestat liquide + couverture simple</span>
+                            <span
+                              class="price">{{c.Tab_760.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Genie_Civil_circulaire_digestat_liquide_couverture_simple.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSix">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        <span>6/ Lot 5 : Génie Civil ouvrages périphériques</span>
+                        <span class="total">
+                          {{c.Tab_760.Lot_5_Genie_Civil_ouvrages_peripheriques.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              6.1.Génie Civil ouvrages périphériques</span>
+                            <span class="price">
+                              {{c.Tab_760.Lot_5_Genie_Civil_ouvrages_peripheriques.Genie_Civil_ouvrages_peripheriques.Prix_vente_Concep}}€€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSeven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        <span> 7/ Lot 6 : Charpente - Batiment - Couverture</span>
+                        <span class="total">
+                          {{c.Tab_760.Lot_6_Charpente_Batiment_Couverture.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              7.1.Charpente - Batiment - Couverture</span>
+                            <span
+                              class="price">{{c.Tab_760.Lot_6_Charpente_Batiment_Couverture.Charpente_Batiment_Couverture.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEight">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        <span>
+                          8/ Lot 7 : Courant fort - Soutirage - Electricité Générale
+                        </span>
+                        <span class="total">
+                          {{c.Tab_760.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              8.1.Courant fort - Soutirage - Electricité Générale</span>
+                            <span
+                              class="price">{{c.Tab_760.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Courant_fort_Soutirage_Electricite_Generale.Prix_vente_Concep}}€
+                            </span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingNine">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        <span> 9/ Maitrise d'œuvre</span>
+                        <span class="total">
+                          {{c.Tab_760.Maitrise_oevre.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>9.1.Maîtrise d'œuvre</span>
+                            <span class="price">{{c.Tab_760.Maitrise_oevre.Maitrise_oevre.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTen">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                        <span>10/ Assistance à maitrise d'ouvrage </span>
+                        <span class="total">
+                          {{c.Tab_760.Assistance_maitrise_ouvrage.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>10.1. AMO</span>
+                            <span class="price">{{c.Tab_760.Assistance_maitrise_ouvrage.AMO.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEleven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                        <span>11/ Matériel </span>
+                        <span class="total">
+                          {{c.Tab_760.Materiel.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>11.1. Matériels agricoles</span>
+                            <span class="price">{{c.Tab_760.Materiel.Matrriels_agricoles.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span> 11.2. Pont bascule - Réserve Incendie</span>
+                            <span
+                              class="price">{{c.Tab_760.Materiel.Pont_bascule_Reserve_Incendie.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
+                          list-item
+                          cpx-list
+                          d-flex
+                          justify-content-between
+                          mt-3
+                        ">
+                            <span> 11.3. Hygénisiation (200 000€)</span>
+                            <span class="price">{{c.Tab_760.Materiel.Hygenisiation.Prix_vente_Concep}}€</span>
+                          </li>
+                          <li class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      ">
+                            <span> Semi-remorque 44 t (Transport intrants) (110 000€)</span>
+                            <span class="price">{{c.Tab_760.Materiel.Semi_remorque_44_t.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--960-->
+                <div class="accordion" id="accordionExample" *ngIf="c && c.Tab_960">
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+
+                        <span> 1/ Ouverture du Chantier </span>
+                        <span class="total">
+                          {{c.Tab_960.Ouverture_chantier.Sous_Total_Prix_vente}}€
+
+                        </span>
+
+
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                          list-item
+                          cpx-list
+                          d-flex
+                          justify-content-between mt-3 ">
+
+                            <span>1.1. Contrôle technique - SPS</span>
+                            <span
+                              class="price">{{c.Tab_960.Ouverture_chantier.Controle_technique_SPS.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+                      list-item
+                      cpx-list
+                      d-flex
+                      justify-content-between
+                      mt-3
+                    ">
+                            <span>1.2. Frais de dossier</span>
+                            <span class="price">{{c.Tab_960.Ouverture_chantier.Frais_dossier.Prix_vente_Concep}}€
+
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.3. Conseil et suivi</span>
+                            <span class="price">
+                              {{c.Tab_960.Ouverture_chantier?.Conseil_suivi?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.4. Aléas</span>
+                            <span class="price">
+                              {{c.Tab_960.Ouverture_chantier?.Aleas?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.5. TRCME</span>
+                            <span class="price">
+                              {{c.Tab_960.Ouverture_chantier?.TRCME?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>1.6. Achat Terrain</span>
+                            <span class="price">
+                              {{c.Tab_960.Ouverture_chantier?.Achat_Terrain?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                                    list-item
+                                    cpx-list
+                                    d-flex
+                                    justify-content-between
+                                    mt-3
+                                  ">
+                            <span>1.7. Frais de notaire</span>
+                            <span class="price">
+                              {{c.Tab_960.Ouverture_chantier?.Frais_notaire?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <span>2/ Lot 1: Process méthanisation</span>
+                        <span class="total">
+                          {{c.Tab_960.Lot_1_Process_methanisation.Sous_Total_Prix_vente}}€
+
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+
+
+                        <ul>
+                          <li class="
+          list-item
+          cpx-list
+          d-flex
+          justify-content-between
+          mt-3
+        ">
+                            <span>
+                              2.1. Process méthanisation
+                            </span>
+                            <span class="price">
+                              {{c.Tab_960.Lot_1_Process_methanisation.Process_methanisation.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+          list-item
+          cpx-list
+          d-flex
+          justify-content-between
+          mt-3
+        ">
+                            <span>
+                              2.2. Pièces d'usure de première urgence Lot 1</span>
+                            <span class="price">
+                              {{c.Tab_960.Lot_1_Process_methanisation.Pieces_usure_premiere_urgence_Lot_1.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span> 3/ Lot 2 : Valorisation
+                        </span>
+                        <span class="total">
+                          {{c.Tab_960.Lot_2_Valorisation.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              3.1.Epuration - Compression - Chaudière</span>
+                            <span
+                              class="price">{{c.Tab_960.Lot_2_Valorisation.Epuration_Compression_Chaudiere.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              3.2.Cogénérateur
+                            </span>
+                            <span class="price">
+                              {{c.Tab_960.Lot_2_Valorisation.Cogenerateur.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFour">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <span>4/ Lot 3 : Terrassement Grande Masse - Talutage - VRD
+                        </span>
+                        <span class="total">
+                          {{c.Tab_960.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              4.1.Terrassement Grande Masse - Talutafe - VRD</span>
+                            <span
+                              class="price">{{c.Tab_960.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Terrassement_Grande_Masse_Talutafe_VRD.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFive">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <span>5/ Lot 4 : Génie Civil circulaire digestat liquide + couverture simple
+                        </span>
+                        <span class="total">
+                          {{c.Tab_960.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              5.1.Génie Civil circulaire digestat liquide + couverture simple</span>
+                            <span
+                              class="price">{{c.Tab_960.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Genie_Civil_circulaire_digestat_liquide_couverture_simple.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSix">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        <span>6/ Lot 5 : Génie Civil ouvrages périphériques</span>
+                        <span class="total">
+                          {{c.Tab_960.Lot_5_Genie_Civil_ouvrages_peripheriques.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              6.1.Génie Civil ouvrages périphériques</span>
+                            <span class="price">
+                              {{c.Tab_960.Lot_5_Genie_Civil_ouvrages_peripheriques.Genie_Civil_ouvrages_peripheriques.Prix_vente_Concep}}€€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSeven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        <span> 7/ Lot 6 : Charpente - Batiment - Couverture</span>
+                        <span class="total">
+                          {{c.Tab_960.Lot_6_Charpente_Batiment_Couverture.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              7.1.Charpente - Batiment - Couverture</span>
+                            <span
+                              class="price">{{c.Tab_960.Lot_6_Charpente_Batiment_Couverture.Charpente_Batiment_Couverture.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEight">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        <span>
+                          8/ Lot 7 : Courant fort - Soutirage - Electricité Générale
+                        </span>
+                        <span class="total">
+                          {{c.Tab_960.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              8.1.Courant fort - Soutirage - Electricité Générale</span>
+                            <span
+                              class="price">{{c.Tab_960.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Courant_fort_Soutirage_Electricite_Generale.Prix_vente_Concep}}€
+                            </span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingNine">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        <span> 9/ Maitrise d'œuvre</span>
+                        <span class="total">
+                          {{c.Tab_960.Maitrise_oevre.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>9.1.Maîtrise d'œuvre</span>
+                            <span class="price">{{c.Tab_960.Maitrise_oevre.Maitrise_oevre.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTen">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                        <span>10/ Assistance à maitrise d'ouvrage </span>
+                        <span class="total">
+                          {{c.Tab_960.Assistance_maitrise_ouvrage.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>10.1. AMO</span>
+                            <span class="price">{{c.Tab_960.Assistance_maitrise_ouvrage.AMO.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEleven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                        <span>11/ Matériel </span>
+                        <span class="total">
+                          {{c.Tab_960.Materiel.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>11.1. Matériels agricoles</span>
+                            <span class="price">{{c.Tab_960.Materiel.Matrriels_agricoles.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span> 11.2. Pont bascule - Réserve Incendie</span>
+                            <span
+                              class="price">{{c.Tab_960.Materiel.Pont_bascule_Reserve_Incendie.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
+                          list-item
+                          cpx-list
+                          d-flex
+                          justify-content-between
+                          mt-3
+                        ">
+                            <span> 11.3. Hygénisiation (200 000€)</span>
+                            <span class="price">{{c.Tab_960.Materiel.Hygenisiation.Prix_vente_Concep}}€</span>
+                          </li>
+                          <li class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      ">
+                            <span> Semi-remorque 44 t (Transport intrants) (110 000€)</span>
+                            <span class="price">{{c.Tab_960.Materiel.Semi_remorque_44_t.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--1120-->
+                <div class="accordion" id="accordionExample" *ngIf="c && c.Tab_1120">
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+
+                        <span> 1/ Ouverture du Chantier </span>
+                        <span class="total">
+                          {{c.Tab_1120.Ouverture_chantier.Sous_Total_Prix_vente}}€
+
+                        </span>
+
+
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                          list-item
+                          cpx-list
+                          d-flex
+                          justify-content-between mt-3 ">
+
+                            <span>1.1. Contrôle technique - SPS</span>
+                            <span
+                              class="price">{{c.Tab_1120.Ouverture_chantier.Controle_technique_SPS.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+                      list-item
+                      cpx-list
+                      d-flex
+                      justify-content-between
+                      mt-3
+                    ">
+                            <span>1.2. Frais de dossier</span>
+                            <span class="price">{{c.Tab_1120.Ouverture_chantier.Frais_dossier.Prix_vente_Concep}}€
+
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.3. Conseil et suivi</span>
+                            <span class="price">
+                              {{c.Tab_1120.Ouverture_chantier?.Conseil_suivi?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.4. Aléas</span>
+                            <span class="price">
+                              {{c.Tab_1120.Ouverture_chantier?.Aleas?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                    list-item
+                    cpx-list
+                    d-flex
+                    justify-content-between
+                    mt-3
+                  ">
+                            <span>1.5. TRCME</span>
+                            <span class="price">
+                              {{c.Tab_1120.Ouverture_chantier?.TRCME?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span>1.6. Achat Terrain</span>
+                            <span class="price">
+                              {{c.Tab_1120.Ouverture_chantier?.Achat_Terrain?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+                          <li class="
+                                    list-item
+                                    cpx-list
+                                    d-flex
+                                    justify-content-between
+                                    mt-3
+                                  ">
+                            <span>1.7. Frais de notaire</span>
+                            <span class="price">
+                              {{c.Tab_1120.Ouverture_chantier?.Frais_notaire?.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <span>2/ Lot 1: Process méthanisation</span>
+                        <span class="total">
+                          {{c.Tab_1120.Lot_1_Process_methanisation.Sous_Total_Prix_vente}}€
+
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+
+
+                        <ul>
+                          <li class="
+          list-item
+          cpx-list
+          d-flex
+          justify-content-between
+          mt-3
+        ">
+                            <span>
+                              2.1. Process méthanisation
+                            </span>
+                            <span class="price">
+                              {{c.Tab_1120.Lot_1_Process_methanisation.Process_methanisation.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+          list-item
+          cpx-list
+          d-flex
+          justify-content-between
+          mt-3
+        ">
+                            <span>
+                              2.2. Pièces d'usure de première urgence Lot 1</span>
+                            <span class="price">
+                              {{c.Tab_1120.Lot_1_Process_methanisation.Pieces_usure_premiere_urgence_Lot_1.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span> 3/ Lot 2 : Valorisation
+                        </span>
+                        <span class="total">
+                          {{c.Tab_1120.Lot_2_Valorisation.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              3.1.Epuration - Compression - Chaudière</span>
+                            <span
+                              class="price">{{c.Tab_1120.Lot_2_Valorisation.Epuration_Compression_Chaudiere.Prix_vente_Concep}}€</span>
+
+                          </li>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              3.2.Cogénérateur
+                            </span>
+                            <span class="price">
+                              {{c.Tab_1120.Lot_2_Valorisation.Cogenerateur.Prix_vente_Concep}}€
+                            </span>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFour">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <span>4/ Lot 3 : Terrassement Grande Masse - Talutage - VRD
+                        </span>
+                        <span class="total">
+                          {{c.Tab_1120.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              4.1.Terrassement Grande Masse - Talutafe - VRD</span>
+                            <span
+                              class="price">{{c.Tab_1120.Lot_3_Terrassement_Grande_Masse_Talutage_VRD.Terrassement_Grande_Masse_Talutafe_VRD.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingFive">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <span>5/ Lot 4 : Génie Civil circulaire digestat liquide + couverture simple
+                        </span>
+                        <span class="total">
+                          {{c.Tab_1120.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              5.1.Génie Civil circulaire digestat liquide + couverture simple</span>
+                            <span
+                              class="price">{{c.Tab_1120.Lot_4_Genie_Civil_circulaire_digestat_liquide_couverture_simple.Genie_Civil_circulaire_digestat_liquide_couverture_simple.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSix">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        <span>6/ Lot 5 : Génie Civil ouvrages périphériques</span>
+                        <span class="total">
+                          {{c.Tab_1120.Lot_5_Genie_Civil_ouvrages_peripheriques.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              6.1.Génie Civil ouvrages périphériques</span>
+                            <span class="price">
+                              {{c.Tab_1120.Lot_5_Genie_Civil_ouvrages_peripheriques.Genie_Civil_ouvrages_peripheriques.Prix_vente_Concep}}€€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingSeven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        <span> 7/ Lot 6 : Charpente - Batiment - Couverture</span>
+                        <span class="total">
+                          {{c.Tab_1120.Lot_6_Charpente_Batiment_Couverture.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              7.1.Charpente - Batiment - Couverture</span>
+                            <span
+                              class="price">{{c.Tab_1120.Lot_6_Charpente_Batiment_Couverture.Charpente_Batiment_Couverture.Prix_vente_Concep}}€</span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEight">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        <span>
+                          8/ Lot 7 : Courant fort - Soutirage - Electricité Générale
+                        </span>
+                        <span class="total">
+                          {{c.Tab_1120.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>
+                              8.1.Courant fort - Soutirage - Electricité Générale</span>
+                            <span
+                              class="price">{{c.Tab_1120.Lot_7_Courant_fort_Soutirage_Electricite_Generale.Courant_fort_Soutirage_Electricite_Generale.Prix_vente_Concep}}€
+                            </span>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingNine">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        <span> 9/ Maitrise d'œuvre</span>
+                        <span class="total">
+                          {{c.Tab_1120.Maitrise_oevre.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>9.1.Maîtrise d'œuvre</span>
+                            <span class="price">{{c.Tab_1120.Maitrise_oevre.Maitrise_oevre.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingTen">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                        <span>10/ Assistance à maitrise d'ouvrage </span>
+                        <span class="total">
+                          {{c.Tab_1120.Assistance_maitrise_ouvrage.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>10.1. AMO</span>
+                            <span class="price">{{c.Tab_1120.Assistance_maitrise_ouvrage.AMO.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item mb-2">
+                    <h2 class="accordion-header" id="headingEleven">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                        <span>11/ Matériel </span>
+                        <span class="total">
+                          {{c.Tab_1120.Materiel.Sous_Total_Prix_vente}}€
+                        </span>
+                      </button>
+                    </h2>
+                    <div id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingEleven"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <ul>
+                          <li class="
+                              list-item
+                              cpx-list
+                              d-flex
+                              justify-content-between
+                              mt-3
+                            ">
+                            <span>11.1. Matériels agricoles</span>
+                            <span class="price">{{c.Tab_1120.Materiel.Matrriels_agricoles.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
+                            list-item
+                            cpx-list
+                            d-flex
+                            justify-content-between
+                            mt-3
+                          ">
+                            <span> 11.2. Pont bascule - Réserve Incendie</span>
+                            <span
+                              class="price">{{c.Tab_1120.Materiel.Pont_bascule_Reserve_Incendie.Prix_vente_Concep}}€</span>
+                          </li>
+
+                          <li class="
+                          list-item
+                          cpx-list
+                          d-flex
+                          justify-content-between
+                          mt-3
+                        ">
+                            <span> 11.3. Hygénisiation (200 000€)</span>
+                            <span class="price">{{c.Tab_1120.Materiel.Hygenisiation.Prix_vente_Concep}}€</span>
+                          </li>
+                          <li class="
+                        list-item
+                        cpx-list
+                        d-flex
+                        justify-content-between
+                        mt-3
+                      ">
+                            <span> Semi-remorque 44 t (Transport intrants) (110 000€)</span>
+                            <span class="price">{{c.Tab_1120.Materiel.Semi_remorque_44_t.Prix_vente_Concep}}€</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -2320,8 +5750,6 @@
                         <span>1/ Conduite unité méthanisation </span>
                         <span class="total">
                           {{D?.Tab140?.Charges_Exploitation?.Conduite_unite_methanisation?.an}}€</span>
-
-
                       </button>
                     </h2>
 
@@ -2399,6 +5827,12 @@
                 </div>
               </div>
             </div>
+
+
+
+
+
+
 
             <div class="row d-flex justify-content-center pt-2" *ngIf="!listBtnexploitation && listBtnConsommable
             && !listBtnEntretien && ss >=0  && ss <= 140">

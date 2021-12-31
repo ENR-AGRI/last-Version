@@ -844,6 +844,16 @@ export class FicheProjetComponent implements OnInit {
     console.log("this.infooooo", this.infofilter);
     //delete this.fiche.descrptin_id
   }
+  CalculSUMMS(y) {
+    this.somme_MS = y
+      .map((x) => {
+        return x.t_MS_an;
+      })
+      .reduce((accumulator, current) => {
+        return accumulator + parseFloat(current);
+      }, 0);
+    return this.somme_MS;
+  }
   listenQuantute(event) {
     console.log("305", event);
 
@@ -851,17 +861,9 @@ export class FicheProjetComponent implements OnInit {
     console.log("ingo5", this.infotrie5);
 
     //somme MS
-    this.somme_MS = this.newFiche
-      .filter((x) => x.t_MS_an)
-      .reduce(
-        (accumulator, current) => accumulator + parseFloat(current.t_MS_an),
-        0
-      );
+    console.log("***", this.newFiche);
 
-    console.log(
-      "somme_MB****************************************",
-      this.somme_MS
-    );
+    this.somme_MS = this.CalculSUMMS(this.newFiche);
 
     this.prod = this.produit(
       parseFloat(this.infotrie5.uMB_an.replace(",", ".")),
@@ -1295,7 +1297,7 @@ export class FicheProjetComponent implements OnInit {
       v.InputValue = this.InputValue;
       v.volume_Nm3_CH4_an = this.volume_Nm3_CH4_an.toFixed(2);
       v.somme_MB = this.somme_MB.toFixed(2);
-      v.somme_MS = this.somme_MS.toFixed(2);
+      v.somme_MS = this.somme_MS;
       v.somme_KWH = this.somme_KWH.toFixed(2);
       this.newFiche.push(v);
       this.formValue = v;
