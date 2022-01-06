@@ -805,9 +805,11 @@ export class FicheProjetComponent implements OnInit {
     this.bases = this.base_prix.find((x) => x.data == event);
     console.log("bases1", this.bases);
   }
-
+  dashboarcard = [{ titel: "", percent: 0 }];
+  nzStrokeColorVal: string = "red";
   listenType(event) {
     console.log("eveeeeeeeeeeeeent", event);
+    this.dashboarcard = [{ titel: `${event}`, percent: 25 }];
     this.eventType = event;
 
     this.infotrie2 = this.infos
@@ -817,12 +819,16 @@ export class FicheProjetComponent implements OnInit {
   }
   listenIc1(event) {
     this.eventIC2 = event;
+    this.dashboarcard = [{ titel: `${event}`, percent: 50 }];
+
     this.infotrie3 = this.infos
       .filter((x) => x.IC2 == event)
       .map((item) => item.IC3)
       .filter((value, index, self) => self.indexOf(value) === index);
   }
   listenIc2(event) {
+    this.dashboarcard = [{ titel: `${event}`, percent: 75 }];
+
     this.eventIC3 = event;
     this.infotrie4 = this.infos
       .filter((x) => x.IC3 == event)
@@ -831,6 +837,10 @@ export class FicheProjetComponent implements OnInit {
   }
   desc;
   listenDesc(event) {
+    setTimeout(() => {
+      this.dashboarcard = undefined;
+    }, 500);
+    this.dashboarcard = [{ titel: `${event}`, percent: 100 }];
     this.desc = event;
 
     this.infotrie5 = this.infos.find((x) => x.Description == event);
@@ -844,6 +854,7 @@ export class FicheProjetComponent implements OnInit {
     console.log("this.infooooo", this.infofilter);
     //delete this.fiche.descrptin_id
   }
+
   CalculSUMMS(y) {
     this.somme_MS = y
       .map((x) => {
@@ -854,9 +865,10 @@ export class FicheProjetComponent implements OnInit {
       }, 0);
     return this.somme_MS;
   }
+  quantiteListen;
   listenQuantute(event) {
     console.log("305", event);
-
+    this.quantiteListen = event;
     this.infotrie5 = this.infos.find((x) => x.Description == this.desc);
     console.log("ingo5", this.infotrie5);
 
@@ -1051,6 +1063,8 @@ export class FicheProjetComponent implements OnInit {
 
     console.log("voluùe", this.volume_Nm3_CH4_an);
     //somme kwh
+    console.log("kwh*****", this.newFiche);
+
     this.somme_KWH = this.newFiche
       .filter((x) => x.KWe_h)
       .reduce(
@@ -2220,6 +2234,8 @@ export class FicheProjetComponent implements OnInit {
   position;
   updateElem;
   indexRow(a) {
+    this.tab = 1;
+    this.openTab(1);
     this.updateElem = a;
     this.editMode = true;
     console.log("aaaaa", a);
@@ -2229,6 +2245,8 @@ export class FicheProjetComponent implements OnInit {
     console.log(index);
     this.position = index;
     this.q = a.quantite;
+    this.mb_an = a.t_MB_an;
+    console.log("mb_an", this.mb_an);
 
     this.ic1 = a.IC1;
 
@@ -2239,6 +2257,8 @@ export class FicheProjetComponent implements OnInit {
     this.desc_biblio = a.Description;
     this.u = a.Unitee;
     this.mb = a.uMB_an;
+    console.log("mb%%%%%%%%", this.mb);
+
     this.ms = a.Effluent_Delevage;
     this.perc_Ms = a.MS;
     this.mo = a.MO_MS;
@@ -2248,9 +2268,8 @@ export class FicheProjetComponent implements OnInit {
     this.ms_an = a.t_MS_an;
     this.nm3_an = a.Nm3_CH4_an;
 
-    //this.newFiche.splice(index, 1);
-
-    //this.form.setValue(a);
+    this.newFiche.splice(index, 1);
+    this.form.setValue(a);
   }
 
   editDomain() {
@@ -2730,6 +2749,7 @@ export class FicheProjetComponent implements OnInit {
   close() {
     this.open = false;
   }
+  showProgressbar2 = false;
   showGreenColor = false;
   ha = false;
   hb = false;
@@ -2768,6 +2788,7 @@ export class FicheProjetComponent implements OnInit {
     this.he = false;
     this.hf = false;
     this.hg = false;
+    this.showProgressbar2 = true;
   }
   greenOpex = false;
   click3() {

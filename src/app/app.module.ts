@@ -62,7 +62,8 @@ import { MessageComponent } from "./message/message.component";
 import { TakwaComponent } from "./takwa/takwa.component";
 import { ClientcommercialComponent } from "./message/clientcommercial/clientcommercial.component";
 import { CommercialClientComponent } from "./message/commercial-client/commercial-client.component";
-import { MapComponent } from './map/map.component';
+import { MapComponent } from "./map/map.component";
+import { NgZorroAntdModule } from "ng-zorro-antd";
 
 @NgModule({
   declarations: [
@@ -129,6 +130,7 @@ import { MapComponent } from './map/map.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     ChartsModule,
+    NgZorroAntdModule,
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHundler },

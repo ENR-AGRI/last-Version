@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AppError } from '../common/app-error';
-import { AuthService } from '../services/auth.service';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+import { AppError } from "../common/app-error";
+import { AuthService } from "../services/auth.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
-
+  public showPassword: boolean;
   errMsgConfirm;
   errMsgEmail;
   errMsgPwd;
@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router,
-    private authSrv: AuthService ) {}
+    private authSrv: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.formLogin = this.fb.group({
@@ -37,30 +38,26 @@ export class LoginComponent implements OnInit {
     // }
   }
   login() {
-
     console.log("logiiiin");
-      if (this.formLogin.valid)
-    this.authSrv.login(this.formLogin.value).subscribe(
-      (data: any) => {
-        console.log(data);
-        if (data) {
-          let returnUrl = this.route.snapshot.queryParamMap.get("returnUrl");
-          this.router.navigate([returnUrl || "/profile"]);
-        } else {
-          this.invalidLogin = true;
+    if (this.formLogin.valid)
+      this.authSrv.login(this.formLogin.value).subscribe(
+        (data: any) => {
+          console.log(data);
+          if (data) {
+            let returnUrl = this.route.snapshot.queryParamMap.get("returnUrl");
+            this.router.navigate([returnUrl || "/profile"]);
+          } else {
+            this.invalidLogin = true;
+          }
+        },
+        (error) => {
+          if (error.originalError.error.msgsrv) {
+            setTimeout(() => {
+              this.msgError = error.originalError.error.msgsrv;
+            }, 500);
+          }
         }
-      },
-      (error) => {
-
-        if (error.originalError.error.msgsrv) {
-          setTimeout(() => {
-            this.msgError = error.originalError.error.msgsrv;
-          }, 500);
-
-
-        }
-      }
-    );
+      );
   }
 
   get fnEmail() {

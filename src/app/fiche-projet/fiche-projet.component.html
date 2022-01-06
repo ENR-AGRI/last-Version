@@ -38,14 +38,14 @@
                           {{current_User?.tel}}
                         </p>
                       </div>
-                      <div class="col-12 col-lg-3">
+                      <!-- <div class="col-12 col-lg-3">
                         <p>
                           Tel Domicile:
                         </p>
                         <p style="font-weight: 150; font-weight: 600;">
                           +33 00 00 00 00 00
                         </p>
-                      </div>
+                      </div> -->
                     </div>
 
                     <hr style="margin-bottom: 0px;" />
@@ -53,35 +53,26 @@
 
                   <div>
                     <div class="row client-form">
-                      <div class="mt-3 mb-3 ms-5">
+                      <!-- <div class="mt-3 mb-3 ms-5">
                         <p style="color:black">Renseigner votre profil</p>
-                      </div>
+                      </div> -->
                       <div class="col p-5">
 
                         <div class="row gy-3 mb-3">
-                          <div class="col-xs-12 col-sm-12 col-lg-6">
-                            <div class="form-floating mb-3">
-                              <input type="text" class="form-control shadow-none" formControlName="fonction"
-                                value="{{ current_User?.fonction }}" id="floatingInput" placeholder="Fonction" />
-                              <label for="floatingInput">Fonction</label>
-                            </div>
-                          </div>
-                          <div class="col-xs-12 col-sm-12 col-lg-6">
-
+                          <div class="col-xs-12 col-sm-12 col-lg-4">
                             <div class="form-floating">
                               <select formControlName="societe" value="{{ current_User?.societe }}"
                                 class="form-select shadow-none" id="floatingSelect"
                                 aria-label="Floating label select example">
-                                <option selected class="w-100">Selectionnez</option>
+                                <option selected value="selectionnez" class="w-100">Selectionnez</option>
                                 <option value="1">Oui</option>
                                 <option value="2">Non</option>
+                                <option value="3">En cours</option>
                               </select>
                               <label for="floatingSelect">Société</label>
                             </div>
                           </div>
-                        </div>
-                        <div class="row gy-3 mb-3">
-                          <div class="col-xs-12 col-sm-12 col-lg-6">
+                          <div class="col-xs-12 col-sm-12 col-lg-4">
                             <div class="form-floating mb-3">
                               <input type="text" formControlName="nom_societe" required
                                 value="{{ current_User?.nom_societe }}" class="form-control shadow-none"
@@ -89,18 +80,34 @@
                               <label for="floatingInput">Nom de la société</label>
                             </div>
                           </div>
-                          <div class="col col-sm-6 col-lg-3">
+                          <div class="col-xs-12 col-sm-12 col-lg-4">
                             <div class="form-floating mb-3">
-                              <input formControlName="ville" value="{{ current_User?.ville }}" type="text"
-                                class="form-control shadow-none" id="floatingInput" placeholder="Ville" />
-                              <label for="floatingInput">Ville</label>
+                              <input type="text" class="form-control shadow-none" formControlName="fonction"
+                                value="{{ current_User?.fonction }}" id="floatingInput" placeholder="Fonction" />
+                              <label for="floatingInput">Fonction</label>
                             </div>
                           </div>
-                          <div class="col col-sm-6 col-lg-3">
+                        </div>
+                        <div class="row gy-3 mb-3">
+                          <div class="col col-sm-6 col-lg-4">
+                            <div class="form-floating mb-3">
+                              <input formControlName="Siret" value="{{ current_User?.ville }}" type="text"
+                                class="form-control shadow-none" id="floatingInput" placeholder="Siret" />
+                              <label for="floatingInput">Siret</label>
+                            </div>
+                          </div>
+                          <div class="col col-sm-6 col-lg-4">
                             <div class="form-floating mb-3">
                               <input formControlName="codePostal" value="{{ current_User?.codePostal }}" type="text"
                                 class="form-control shadow-none" id="floatingInput" placeholder="Ville" />
                               <label for="floatingInput">Code Postale</label>
+                            </div>
+                          </div>
+                          <div class="col col-sm-6 col-lg-4">
+                            <div class="form-floating mb-3">
+                              <input formControlName="ville" value="{{ current_User?.ville }}" type="text"
+                                class="form-control shadow-none" id="floatingInput" placeholder="Ville" />
+                              <label for="floatingInput">Ville</label>
                             </div>
                           </div>
                         </div>
@@ -111,14 +118,14 @@
 
                               <span>Sauvegarder</span>
 
-                              <span class="btn-icon"><i class="fi fi-rr-download"></i></span>
+                              <span class="btn-icon"><i class="fi fi-rr-disk"></i></span>
 
                             </button>
                           </div>
                           <div class=" col-8 next-btn"></div>
                           <div class=" col-2 next-btn">
 
-                            <button class="add" (click)="showNext()">
+                            <button class="save" (click)="showNext()">
 
                               <span class="btn-txt">Suivant</span>
 
@@ -151,12 +158,12 @@
                 <div class="row line mb-3 nav nav-pills" role="tablist">
                   <div class="col-4 stepText1 active" id="home-tab" type="button" data-bs-toggle="tab"
                     data-bs-target="#categorieIntrant" role="tab" aria-controls="categorieIntrant" (click)="openTab(1)">
-                    Catégorie d'intrant
+                    Saisie d'Intrant
                   </div>
 
-                  <div class="col-4 stepText2 " id="profile-tab" type="button" data-bs-toggle="tab"
+                  <div class="col-4 stepText2" id="profile-tab" type="button" data-bs-toggle="tab"
                     data-bs-target="#total" role="tab" aria-controls="total" (click)="openTab(2)">
-                    Intrant Total
+                    Récapitulatif des Intrants
                   </div>
 
                   <div class="col-4 stepText3" id="contact-tab" type="button" data-bs-toggle="tab"
@@ -166,7 +173,7 @@
                 </div>
                 <div class="row">
                   <div class="col-4">
-                    <div class="step step1 " [ngClass]="{ activated: isActiveTab(1) }"></div>
+                    <div class="step step1" [ngClass]="{ activated: isActiveTab(1) }"></div>
                   </div>
                   <div class="col-4">
                     <div class="step step2" [ngClass]="{ activated: isActiveTab(2) }"></div>
@@ -179,127 +186,156 @@
               </div>
             </div>
             <div class="tab-content">
-
-              <div class="row d-flex justify-content-center mb-3" class="tab-pane  active" id="categorieIntrant">
-
-                <div class="col-8 " class="align-self-center p-2">
+              <div class="row d-flex justify-content-center mb-3" class="tab-pane active" id="categorieIntrant">
+                <div class="col-8" class="align-self-center p-2">
                   <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_1)">
+                    <div class="row">
+                      <div class="col-9">
+                        <label for="floatingSelect">Type d'intrant </label>
+                        <select #refIC1 class="form-select shadow-none" id="floatingSelect"
+                          aria-label="Floating label select example" [value]="ic1"
+                          (change)="listenType($event.target.value)" [(ngModel)]="infos.IC1" name="infos.IC1"
+                          type="text">
+                          <option selected class="w-100" *ngFor="let item of infotrie" [value]="item">
+                            {{ item }}
+                          </option>
+                        </select>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                          <p style="
+                              margin-left: 12px;
+                              font-weight: 600;
+                              color: #00ae81;
+                            ">
+                            <!--
+                            <span>{{ eventType }}</span>-->
+                          </p>
 
-                    <select #refIC1 class="form-select shadow-none" id="floatingSelect"
-                      aria-label="Floating label select example" [value]="ic1"
-                      (change)="listenType($event.target.value)" [(ngModel)]="infos.IC1" name="infos.IC1" type="text">
-                      <option selected class="w-100" *ngFor="let item of infotrie" [value]="item">
-                        {{ item}}
-                      </option>
-
-                    </select>
-
-                    <label for="floatingSelect">Type d'intrant </label>
-                    <div class="
-                        d-flex
-                        justify-content-between
-                        align-items-center
-                        mt-2">
-                      <p style=" margin-left: 12px; font-weight: 600;color: #00ae81; ">
-                        <span>{{eventType}}</span>
-                      </p>
-                      <button class="btn-form" (click)="setActive(Steps.STEP_2)">
-
-                        <i class="fas fa-chevron-right"></i>
-
-
-                      </button>
-
+                          <button *ngIf="dashboarcard[0].percent == 25" class="btn-form"
+                            (click)="setActive(Steps.STEP_2)">
+                            >>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <nz-card class="cards" *ngFor="let card of dashboarcard">
+                          <nz-card-meta [nzAvatar]="avatarTemplate">
+                          </nz-card-meta>
+                          <ng-template #avatarTemplate>
+                            <nz-progress [nzWidth]="30" nzType="circle" [nzPercent]="card.percent"
+                              [nzStrokeColor]="'green'">
+                            </nz-progress>
+                          </ng-template>
+                        </nz-card>
+                      </div>
                     </div>
                   </div>
 
                   <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_2)">
-                    <select class="form-select shadow-none" id="floatingSelect"
-                      aria-label="Floating label select example" (change)="listenIc1($event.target.value)"
-                      [(ngModel)]="infos.IC2" name="IC2" type="text" [value]="ic2">
-                      <option selected class="w-100" *ngFor="let item of infotrie2" [value]="item">
-                        {{ item }}
-                    </select>
-                    <label for="floatingSelect">Type d'intrant </label>
-                    <div class="
-                        d-flex
-                        justify-content-between
-                        align-items-center
-                        mt-2">
-                      <!-- <p
-                        style="
-                          margin-left: 12px;
-                          font-weight: 600;
-                          color: #00ae81;
-                        "
-                      >
-                      {{ ic2 }}
-                      </p> -->
+                    <div class="row">
+                      <div class="col-9">
+                        <label for="floatingSelect">Type d'intrant </label>
+                        <select class="form-select shadow-none" id="floatingSelect"
+                          aria-label="Floating label select example" (change)="listenIc1($event.target.value)"
+                          [(ngModel)]="infos.IC2" name="IC2" type="text" [value]="ic2">
+                          <option selected class="w-100" *ngFor="let item of infotrie2" [value]="item">
+                            {{ item }}
+                          </option>
+                        </select>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                          <!-- <p
+                      style="
+                        margin-left: 12px;
+                        font-weight: 600;
+                        color: #00ae81;
+                      "
+                    >
+                    {{ ic2 }}
+                    </p> -->
+                        </div>
+                        <button class="btn-form" (click)="setActive(Steps.STEP_1)">
+                          <i class="fas fa-chevron-left"></i>
+                        </button>
 
+                        <button class="btn-sm btn-form float-end" (click)="setActive(Steps.STEP_3)">
+                          >>
+                        </button>
+                      </div>
 
-
-
+                      <div class="col">
+                        <nz-card class="cards" *ngFor="let card of dashboarcard">
+                          <nz-card-meta [nzAvatar]="avatarTemplate">
+                          </nz-card-meta>
+                          <ng-template #avatarTemplate>
+                            <nz-progress [nzWidth]="30" nzType="circle" [nzPercent]="card.percent"
+                              [nzStrokeColor]="'green'">
+                            </nz-progress>
+                          </ng-template>
+                        </nz-card>
+                      </div>
                     </div>
-                    <button class="btn-form " (click)="setActive(Steps.STEP_1)">
-                      <i class="fas fa-chevron-left"></i>
-
-                    </button>
-
-                    <button class="btn-sm btn-form  float-end" (click)="setActive(Steps.STEP_3)">
-                      <i class="fas fa-chevron-right"></i>
-
-                    </button>
                   </div>
                   <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_3)">
-                    <select class="form-select shadow-none" id="floatingSelect"
-                      aria-label="Floating label select example" (change)="listenIc2($event.target.value)"
-                      [(ngModel)]="infos.IC3" name="IC3" [value]="ic3">
-                      <option selected class="w-100" *ngFor="let item of infotrie3" [value]="item">
-                        {{ item }}
-                    </select>
-                    <label for="floatingSelect">Type d'intrant </label>
-                    <div class="
-                        d-flex
-                        justify-content-between
-                        align-items-center
-                        mt-2">
-                      <!-- <p
-                        style="
-                          margin-left: 12px;
-                          font-weight: 600;
-                          color: #00ae81;
-                        "
-                      >
-                      {{ ic3 }}
-                      </p> -->
+                    <div class="row">
+                      <div class="col-9">
+                        <label for="floatingSelect">Type d'intrant </label>
+                        <select class="form-select shadow-none" id="floatingSelect"
+                          aria-label="Floating label select example" (change)="listenIc2($event.target.value)"
+                          [(ngModel)]="infos.IC3" name="IC3" [value]="ic3">
+                          <option selected class="w-100" *ngFor="let item of infotrie3" [value]="item">
+                            {{ item }}
+                          </option>
+                        </select>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                          <!-- <p
+                      style="
+                        margin-left: 12px;
+                        font-weight: 600;
+                        color: #00ae81;
+                      "
+                    >
+                    {{ ic3 }}
+                    </p> -->
+                        </div>
 
+                        <button class="btn-form" (click)="setActive(Steps.STEP_2)">
+                          <i class="fas fa-chevron-left"></i>
+                        </button>
 
-
+                        <button class="btn-sm btn-form float-end" (click)="setActive(Steps.STEP_4)">
+                          <i class="fas fa-chevron-right"></i>
+                        </button>
+                      </div>
+                      <div class="col">
+                        <nz-card class="cards" *ngFor="let card of dashboarcard">
+                          <nz-card-meta [nzAvatar]="avatarTemplate">
+                          </nz-card-meta>
+                          <ng-template #avatarTemplate>
+                            <nz-progress [nzWidth]="30" nzType="circle" [nzPercent]="card.percent"
+                              [nzStrokeColor]="'green'">
+                            </nz-progress>
+                          </ng-template>
+                        </nz-card>
+                      </div>
                     </div>
-                    <button class="btn-form " (click)="setActive(Steps.STEP_2)">
-                      <i class="fas fa-chevron-left"></i>
-
-                    </button>
-
-                    <button class="btn-sm btn-form  float-end" (click)="setActive(Steps.STEP_4)">
-                      <i class="fas fa-chevron-right"></i>
-
-                    </button>
                   </div>
                   <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_4)">
-                    <select class="form-select shadow-none" id="floatingSelect"
-                      aria-label="Floating label select example" (change)="listenDesc($event.target.value)"
-                      [(ngModel)]="infos.Description" name="Description" type="text" [value]="desc_biblio" required>
-                      <option selected class="w-100" *ngFor="let item of infotrie4" [value]="item">
-                        {{ item }}
-                    </select>
-                    <label for="floatingSelect">Type d'intrant </label>
-                    <div class="
+                    <div class="row">
+                      <div class="col-9">
+                        <label for="floatingSelect">Type d'intrant </label>
+                        <select class="form-select shadow-none" id="floatingSelect"
+                          aria-label="Floating label select example" (change)="listenDesc($event.target.value)"
+                          [(ngModel)]="infos.Description" name="Description" type="text" [value]="desc_biblio" required>
+                          <option selected class="w-100" *ngFor="let item of infotrie4" [value]="item">
+                            {{ item }}
+                          </option>
+                        </select>
+
+                        <!-- <div class="
                         d-flex
                         justify-content-between
                         align-items-center
                         mt-2">
-                      <!-- <p
+                      <p
                         style="
                           margin-left: 12px;
                           font-weight: 600;
@@ -307,15 +343,28 @@
                         "
                       >
                       {{ desc_biblio }}
-                      </p> -->
+                      </p>
 
 
 
+                    </div> -->
+                        <button class="btn-form" (click)="setActive(Steps.STEP_3)">
+                          <i class="fas fa-chevron-left"></i>
+                        </button>
+                      </div>
+
+                      <div class="col">
+                        <nz-card class="cards" *ngFor="let card of dashboarcard">
+                          <nz-card-meta [nzAvatar]="avatarTemplate">
+                          </nz-card-meta>
+                          <ng-template #avatarTemplate>
+                            <nz-progress [nzWidth]="30" nzType="circle" [nzPercent]="card.percent"
+                              [nzStrokeColor]="'green'">
+                            </nz-progress>
+                          </ng-template>
+                        </nz-card>
+                      </div>
                     </div>
-                    <button class="btn-form " (click)="setActive(Steps.STEP_3)">
-                      <i class="fas fa-chevron-left"></i>
-
-                    </button>
                   </div>
 
                   <div class="row">
@@ -327,46 +376,35 @@
                     </div>
 
                     <div class="col-4">
-                      <label for="floatingInput">MB</label>
+                      <label for="floatingInput">t MB/ unité</label>
 
                       <div class="input-group">
-
                         <input type="text" class="form-control" id="floatingInput" placeholder="MB" *ngIf="infos"
                           [(ngModel)]="infos.uMB_an" name="infos.uMB_an" required value="{{ infotrie5?.uMB_an }}" />
                         <span class="percent input-group-addon">
-                          <i class="fas fa-pen" style="color: red;" type="button" *ngIf="infotrie5 && infotrie5?.uMB_an"
+                          <i class="fas fa-pen" style="color: red" type="button" *ngIf="infotrie5 && infotrie5?.uMB_an"
                             data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                         </span>
                       </div>
-
 
                       <!-- <button class="btn btn-light mt-2 text-info" *ngIf="infotrie5 && infotrie5.uMB_an"
                         data-bs-toggle="modal" data-bs-target="#exampleModal">
                      Modifier MB
                       </button> -->
-
-
-
-
                     </div>
 
                     <div class="col-4">
                       <div class="form-floating mb-3">
-
-
                         <input type="text" class="form-control" placeholder="Total" [(ngModel)]="t_MB_an" name="t_MB_an"
                           [value]="mb_an" id="floatingInput" value="{{ prod }}" />
-                        <label for="floatingInput">Total</label>
-
-
+                        <label for="floatingInput">t MS/unité</label>
                       </div>
                     </div>
                   </div>
                 </div>
-
               </div>
               <div class="row d-flex justify-content-center mb-3" class="tab-pane" id="total">
-                <div class="col-8 " class="align-self-center p-2">
+                <div class="col-8" class="align-self-center p-2">
                   <table class="table">
                     <thead>
                       <tr>
@@ -378,39 +416,41 @@
                       </tr>
                     </thead>
                     <tbody>
-
-                      <tr *ngFor="let newFiche of arrayForm ; let i = index">
-
-                        <td scope="row" style=" width: 35%;"><span>{{newFiche.IC1 + ' ' + newFiche.IC2 + ' ' +
-                            newFiche.IC3 + ' ' + newFiche.Description}}
-
-                          </span> </td>
-
-                        <td class="centre-align">{{newFiche?.quantite}}</td>
-                        <td class="centre-align">{{newFiche?.t_MB_an}}</td>
-                        <td class="centre-align">
-                          <a type="button" class="settings" title="Parametre" data-toggle="tooltip"
-                            (click)="indexRow(newFiche)" style="color: #00ae81;">
-                            <i class="material-icons">&#xE8B8;</i></a>
-                          <a type="button" class="delete" title="Delete" data-toggle="tooltip"
-                            (click)="delete(newFiche)" style="color: red;">
-                            <i class="material-icons">&#xE5C9;</i>
-                          </a>
-
+                      <tr *ngFor="let newFiche of arrayForm; let i = index">
+                        <td scope="row" style="width: 35%">
+                          <span>{{
+                            newFiche.IC1 +
+                            " " +
+                            newFiche.IC2 +
+                            " " +
+                            newFiche.IC3 +
+                            " " +
+                            newFiche.Description
+                            }}
+                          </span>
                         </td>
 
+                        <td class="centre-align">{{ newFiche?.quantite }}</td>
+                        <td class="centre-align">{{ newFiche?.t_MB_an }}</td>
+                        <td class="centre-align">
+                          <a type="button" class="settings" title="Parametre" data-toggle="tooltip"
+                            (click)="indexRow(newFiche)" style="color: #00ae81">
+                            <i class="material-icons">&#xE8B8;</i></a>
+                          <a type="button" class="delete" title="Delete" data-toggle="tooltip"
+                            (click)="delete(newFiche)" style="color: red">
+                            <i class="material-icons">&#xE5C9;</i>
+                          </a>
+                        </td>
                       </tr>
-
                     </tbody>
                   </table>
-
                 </div>
               </div>
               <div class="row d-flex justify-content-center mb-3" class="tab-pane" id="Puissance">
-                <div class="col-8 " class="align-self-center p-2">
+                <div class="col-8" class="align-self-center p-2">
                   <table class="table">
                     <thead>
-                      <tr class="table-success">
+                      <tr>
                         <th scope="col">Total MS</th>
                         <th scope="col">Total MB</th>
                         <th scope="col">Total Nm3CH4/h</th>
@@ -424,56 +464,75 @@
                         <td>{{ volume_Nm3_CH4_an }}</td>
                         <td>{{ somme_KWH }}</td>
                       </tr>
-
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
 
-
-
             <div class="row d-flex justify-content">
               <div class="col-12 d-flex justify-content align-items">
-                <div class=" col-2 next-btn nav nav-pills " *ngIf="tab==2">
-                  <button class="add" (click)="openTab(1)" data-bs-toggle="tab" data-bs-target="#categorieIntrant">
+                <div class="col-2 next-btn nav nav-pills" *ngIf="tab == 2">
+                  <button class="save" (click)="openTab(1)" data-bs-toggle="tab" data-bs-target="#categorieIntrant">
                     <span class="btn-txt">Precedent</span>
                   </button>
                 </div>
-                <div class=" col-2 next-btn nav nav-pills" *ngIf="tab==3 ">
-                  <button class="add" (click)="openTab(2)" data-bs-toggle="tab" data-bs-target="#total">
+                <div class="col-2 next-btn nav nav-pills" *ngIf="tab == 3">
+                  <button class="save" (click)="openTab(2)" data-bs-toggle="tab" data-bs-target="#total">
                     <span class="btn-txt">Precedent</span>
                   </button>
                 </div>
 
-                <div class=" col-1" *ngIf="tab==2 || tab==3 ">
-                </div>
+                <div class="col-1" *ngIf="tab == 2 || tab == 3"></div>
 
-                <div class=" d-grid gap-2 col-2  next-btn" *ngIf="tab==1">
-                  <button class="add" (click)="saveContent(f.value)">Ajouter
-                    <span class="btn-txt">+</span>
-                  </button>
-                </div>
-                <div class=" col-8 next-btn" *ngIf="tab==1"></div>
-                <div class=" col-1" *ngIf="tab==2 || tab==3 ">
-                </div>
-                <div class=" col-6" *ngIf="tab==2 || tab==3 ">
-                </div>
+                <div class="col-8 next-btn" *ngIf="tab == 1"></div>
+                <div class="col-1" *ngIf="tab == 2 || tab == 3"></div>
+                <div class="col-6" *ngIf="tab == 2 || tab == 3"></div>
 
-                <div class="col-2 next-btn  nav nav-pills " *ngIf="tab==1 ">
-                  <button id="id_" (click)="openTab(2)" data-bs-toggle="tab" data-bs-target="#total"
-                    [disabled]="arrayForm.length==0">
+                <div class="col-2 next-btn nav nav-pills" *ngIf="tab == 1">
+                  <button class="save" (click)="openTab(2)" data-bs-toggle="tab" data-bs-target="#total"
+                    [disabled]="arrayForm.length == 0">
                     <span class="btn-txt">Suivant</span>
                   </button>
                 </div>
-                <div class="col-2 next-btn  nav nav-pills" *ngIf="tab==2">
-                  <button id="id_" (click)="openTab(3)" data-bs-toggle="tab" data-bs-target="#Puissance">
+                <div class="col-2 next-btn nav nav-pills" *ngIf="tab == 2">
+                  <button class="save" (click)="openTab(3)" data-bs-toggle="tab" data-bs-target="#Puissance">
                     <span class="btn-txt">Suivant</span>
                   </button>
                 </div>
               </div>
             </div>
+          </div>
+          <div class="col-12 col-lg-4 right" *ngIf="ha">
+            <div class="level text-start">
+              <h4>Saisie d'intrants</h4>
+              <hr *ngIf="dashboarcard[0].percent >= 25" />
+              <ul>
+                <li *ngIf="eventType">
+                  <i class="fi fi-rr-check"></i>
+                  {{ eventType }}
+                </li>
+                <li *ngIf="eventIC2">
+                  <i class="fi fi-rr-check"></i>
+                  {{ eventIC2 }}
+                </li>
+                <li *ngIf="eventIC3">
+                  <i class="fi fi-rr-check"></i>
+                  {{ eventIC3 }}
+                </li>
+                <li *ngIf="desc"><i class="fi fi-rr-check"></i> {{ desc }}</li>
+                <li *ngIf="quantiteListen">
+                  <i class="fi fi-rr-check"></i> {{ quantiteListen }}
+                </li>
+              </ul>
 
+              <div class="btn-txt" style="float: right" *ngIf="tab == 1">
+                <button class="add" (click)="saveContent(f.value)" *ngIf="quantiteListen">
+                  Ajouter
+                  <span class="btn-txt">+</span>
+                </button>
+              </div>
+            </div>
           </div>
           <!--CAPEX hc-->
           <div class="col-12 col-lg-8 left" *ngIf="hb">
@@ -6534,15 +6593,14 @@
 
 
 
-          <div class="col-12 col-lg-4 right" *ngIf="ha || hb || hc || hd  ">
-            <div>
-              <h5>Catégorie des intrants</h5>
+          <div class="col-12 col-lg-4 right" *ngIf=" hb || hc || hd  ">
+            <div class="level text-start">
+              <div class="row align-items-center">
+              </div>
 
-              <p>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                erat, sed diam voluptua. At.
-              </p>
+              <h4>CAPEX</h4>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore omnis explicabo dolor est distinctio,
+                nobis ut vitae nam id quisquam a officia repellendus, in aliquam magnam alias illo dolorem. Soluta.</p>
             </div>
           </div>
         </div>
@@ -6553,15 +6611,15 @@
       <div class="container" *ngIf="!hc && !hd &&!he">
         <ul class="progressbar">
           <li [ngClass]="showGreenColor ? 'active': ''" (click)="goToProfile()">
-            <img width="60px" src="assets/images/ficheClient.png" />
+            <img width="60px" src="assets/icon/icon/profil_icon.svg" />
             <p [style.color]="photoTextProfile ? 'green': 'black'">Profil</p>
           </li>
           <li [ngClass]="greenCapex ? 'active': ''" (click)="goToGisement()">
-            <img width="60px" src="assets/images/gisement.png" />
+            <img width="60px" src="assets/icon/icon/gisement_icon.svg" />
             <p [style.color]="photoTextGisement ? 'green': 'black'">Gisement</p>
           </li>
           <li (click)="goToCapex()">
-            <img width="60px" src="assets/images/capex.png" />
+            <img width="60px" src="assets/icon/icon/capex_icon.svg" />
             <p [style.color]="photoTextCapex ? 'green': 'black'">CAPEX</p>
           </li>
 
@@ -6570,15 +6628,15 @@
       <div class="container" *ngIf="hc || hd || he ">
         <ul class="progressbar">
           <li [ngClass]="greenOpex ? 'active': ''" (click)="goToOpex()">
-            <img width="60px" src="assets/icon/opex.png" />
+            <img width="60px" src="assets/icon/icon/opex_icon.svg" />
             <p>Opex</p>
           </li>
           <li [ngClass]="greenRecette ? 'active': ''" (click)="goToRecette()">
-            <img width="60px" src="assets/icon/recette.png" />
+            <img width="60px" src="assets/icon/icon/recettes_icon.svg" />
             <p>Recette</p>
           </li>
           <li (click)="goToScenario()">
-            <img width="60px" src="assets/icon/28011.png" />
+            <img width="60px" src="assets/icon/icon/scenario_icon.svg" />
             <p>Scenario</p>
           </li>
 
