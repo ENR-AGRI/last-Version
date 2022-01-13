@@ -63,7 +63,9 @@ import { TakwaComponent } from "./takwa/takwa.component";
 import { ClientcommercialComponent } from "./message/clientcommercial/clientcommercial.component";
 import { CommercialClientComponent } from "./message/commercial-client/commercial-client.component";
 import { MapComponent } from "./map/map.component";
+
 import { NgZorroAntdModule } from "ng-zorro-antd";
+import { NgCircleProgressModule } from "ng-circle-progress";
 
 @NgModule({
   declarations: [
@@ -129,8 +131,17 @@ import { NgZorroAntdModule } from "ng-zorro-antd";
 
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    ChartsModule,
     NgZorroAntdModule,
+    ChartsModule,
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 300,
+    }),
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHundler },

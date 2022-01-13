@@ -639,3 +639,17 @@ li a {
 path.ant-progress-circle-path {
   stroke: red !important;
 }
+/* .checkmark.error {
+  position: absolute;
+  left: 2em;
+  top: 2em;
+  width: 4em;
+  height: 4em;
+} */
+/* .checkmark.error:before, .checkmark.error:after {
+  position: absolute;
+  content: " ";
+  height: 4em;
+  width: 2px;
+  background-color: #f00;
+} */

@@ -152,7 +152,7 @@
           </div>
 
 
-          <div class="col-12 col-lg-8 left" *ngIf="ha">
+          <div class="col-12 col-lg-8 left container client-tab" *ngIf="ha">
             <div class="row d-flex justify-content-center mb-3">
               <div class="col-8">
                 <div class="row line mb-3 nav nav-pills" role="tablist">
@@ -191,7 +191,7 @@
                   <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_1)">
                     <div class="row">
                       <div class="col-9">
-                        <label for="floatingSelect">Type d'intrant </label>
+                        <!-- <label for="floatingSelect">Type d'intrant </label> -->
                         <select #refIC1 class="form-select shadow-none" id="floatingSelect"
                           aria-label="Floating label select example" [value]="ic1"
                           (change)="listenType($event.target.value)" [(ngModel)]="infos.IC1" name="infos.IC1"
@@ -216,24 +216,13 @@
                           </button>
                         </div>
                       </div>
-                      <div class="col">
-                        <nz-card class="cards" *ngFor="let card of dashboarcard">
-                          <nz-card-meta [nzAvatar]="avatarTemplate">
-                          </nz-card-meta>
-                          <ng-template #avatarTemplate>
-                            <nz-progress [nzWidth]="30" nzType="circle" [nzPercent]="card.percent"
-                              [nzStrokeColor]="'green'">
-                            </nz-progress>
-                          </ng-template>
-                        </nz-card>
-                      </div>
                     </div>
                   </div>
 
                   <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_2)">
                     <div class="row">
                       <div class="col-9">
-                        <label for="floatingSelect">Type d'intrant </label>
+                        <!--  <label for="floatingSelect">Type d'intrant </label>-->
                         <select class="form-select shadow-none" id="floatingSelect"
                           aria-label="Floating label select example" (change)="listenIc1($event.target.value)"
                           [(ngModel)]="infos.IC2" name="IC2" type="text" [value]="ic2">
@@ -260,24 +249,12 @@
                           >>
                         </button>
                       </div>
-
-                      <div class="col">
-                        <nz-card class="cards" *ngFor="let card of dashboarcard">
-                          <nz-card-meta [nzAvatar]="avatarTemplate">
-                          </nz-card-meta>
-                          <ng-template #avatarTemplate>
-                            <nz-progress [nzWidth]="30" nzType="circle" [nzPercent]="card.percent"
-                              [nzStrokeColor]="'green'">
-                            </nz-progress>
-                          </ng-template>
-                        </nz-card>
-                      </div>
                     </div>
                   </div>
                   <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_3)">
                     <div class="row">
                       <div class="col-9">
-                        <label for="floatingSelect">Type d'intrant </label>
+                        <!--   <label for="floatingSelect">Type d'intrant </label>-->
                         <select class="form-select shadow-none" id="floatingSelect"
                           aria-label="Floating label select example" (change)="listenIc2($event.target.value)"
                           [(ngModel)]="infos.IC3" name="IC3" [value]="ic3">
@@ -305,23 +282,12 @@
                           <i class="fas fa-chevron-right"></i>
                         </button>
                       </div>
-                      <div class="col">
-                        <nz-card class="cards" *ngFor="let card of dashboarcard">
-                          <nz-card-meta [nzAvatar]="avatarTemplate">
-                          </nz-card-meta>
-                          <ng-template #avatarTemplate>
-                            <nz-progress [nzWidth]="30" nzType="circle" [nzPercent]="card.percent"
-                              [nzStrokeColor]="'green'">
-                            </nz-progress>
-                          </ng-template>
-                        </nz-card>
-                      </div>
                     </div>
                   </div>
                   <div class="form-floating mb-3" *ngIf="isActive(Steps.STEP_4)">
                     <div class="row">
                       <div class="col-9">
-                        <label for="floatingSelect">Type d'intrant </label>
+                        <!--  <label for="floatingSelect">Type d'intrant </label>-->
                         <select class="form-select shadow-none" id="floatingSelect"
                           aria-label="Floating label select example" (change)="listenDesc($event.target.value)"
                           [(ngModel)]="infos.Description" name="Description" type="text" [value]="desc_biblio" required>
@@ -351,18 +317,6 @@
                         <button class="btn-form" (click)="setActive(Steps.STEP_3)">
                           <i class="fas fa-chevron-left"></i>
                         </button>
-                      </div>
-
-                      <div class="col">
-                        <nz-card class="cards" *ngFor="let card of dashboarcard">
-                          <nz-card-meta [nzAvatar]="avatarTemplate">
-                          </nz-card-meta>
-                          <ng-template #avatarTemplate>
-                            <nz-progress [nzWidth]="30" nzType="circle" [nzPercent]="card.percent"
-                              [nzStrokeColor]="'green'">
-                            </nz-progress>
-                          </ng-template>
-                        </nz-card>
                       </div>
                     </div>
                   </div>
@@ -418,28 +372,24 @@
                     <tbody>
                       <tr *ngFor="let newFiche of arrayForm; let i = index">
                         <td scope="row" style="width: 35%">
-                          <span>{{
-                            newFiche.IC1 +
-                            " " +
-                            newFiche.IC2 +
-                            " " +
-                            newFiche.IC3 +
-                            " " +
-                            newFiche.Description
-                            }}
-                          </span>
+                          <span>{{ newFiche.Description }} </span>
                         </td>
 
                         <td class="centre-align">{{ newFiche?.quantite }}</td>
                         <td class="centre-align">{{ newFiche?.t_MB_an }}</td>
-                        <td class="centre-align">
-                          <a type="button" class="settings" title="Parametre" data-toggle="tooltip"
-                            (click)="indexRow(newFiche)" style="color: #00ae81">
-                            <i class="material-icons">&#xE8B8;</i></a>
-                          <a type="button" class="delete" title="Delete" data-toggle="tooltip"
-                            (click)="delete(newFiche)" style="color: red">
-                            <i class="material-icons">&#xE5C9;</i>
+                        <td class="centre-align d-flex justify-content-between">
+                          <a type="button" class="settings" title="Parametre" data-bs-toggle="tab" class="nav nav-pills"
+                            role="tablist" data-bs-target="#categorieIntrant" (click)="indexRow(newFiche)"
+                            style="color: #00ae81; ">
+                            <i class="far fa-edit"></i></a>
+                          <a type="button" class="delete" title="Delete" data-toggle="tooltip" class="nav nav-pills"
+                            (click)="delete(newFiche)" style="color: red;">
+                            <i class="fas fa-trash"></i>
                           </a>
+
+
+
+
                         </td>
                       </tr>
                     </tbody>
@@ -490,8 +440,8 @@
                 <div class="col-6" *ngIf="tab == 2 || tab == 3"></div>
 
                 <div class="col-2 next-btn nav nav-pills" *ngIf="tab == 1">
-                  <button class="save" (click)="openTab(2)" data-bs-toggle="tab" data-bs-target="#total"
-                    [disabled]="arrayForm.length == 0">
+                  <button *ngIf="arrayForm.length != 0" class="save" (click)="openTab(2)" data-bs-toggle="tab"
+                    data-bs-target="#total">
                     <span class="btn-txt">Suivant</span>
                   </button>
                 </div>
@@ -503,36 +453,77 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-lg-4 right" *ngIf="ha">
-            <div class="level text-start">
-              <h4>Saisie d'intrants</h4>
-              <hr *ngIf="dashboarcard[0].percent >= 25" />
-              <ul>
-                <li *ngIf="eventType">
-                  <i class="fi fi-rr-check"></i>
-                  {{ eventType }}
-                </li>
-                <li *ngIf="eventIC2">
-                  <i class="fi fi-rr-check"></i>
-                  {{ eventIC2 }}
-                </li>
-                <li *ngIf="eventIC3">
-                  <i class="fi fi-rr-check"></i>
-                  {{ eventIC3 }}
-                </li>
-                <li *ngIf="desc"><i class="fi fi-rr-check"></i> {{ desc }}</li>
-                <li *ngIf="quantiteListen">
-                  <i class="fi fi-rr-check"></i> {{ quantiteListen }}
-                </li>
-              </ul>
+          <div class="col-12 col-lg-1 container" *ngIf="ha"></div>
 
-              <div class="btn-txt" style="float: right" *ngIf="tab == 1">
-                <button class="add" (click)="saveContent(f.value)" *ngIf="quantiteListen">
-                  Ajouter
-                  <span class="btn-txt">+</span>
-                </button>
+          <div class="col-12 col-lg-3 container client-tab" *ngIf="ha" style="border-radius: 15px; padding: 15px">
+            <div>
+              <h6 style="text-align: center">Saisie d'intrants</h6>
+              <!-- *ngIf="dashboarcard[0].percent >= 25" -->
+              <hr style="color: #00ae81" />
+
+              <div class="row">
+                <!--  <div class="col-2">-->
+                <circle-progress [percent]="dashboarcard[0]?.percent" [radius]="100" [outerStrokeWidth]="8"
+                  [innerStrokeWidth]="4" [outerStrokeColor]="' #018a65'" [innerStrokeColor]="'#00ae81'"
+                  [showUnits]="true" [showSubtitle]="false"></circle-progress>
+                <!--
+                  <ng-container>
+                    <nz-card
+                      style="margin-bottom: 15px"
+                      class="cards text-center"
+                      *ngFor="let card of dashboarcard"
+                    >
+                      <nz-card-meta [nzAvatar]="avatarTemplate"> </nz-card-meta>
+                      <ng-template #avatarTemplate>
+                        <nz-progress
+                          [nzWidth]="50"
+                          nzType="circle"
+                          [nzPercent]="card.percent"
+                          [nzStrokeColor]="'green'"
+                        >
+                        </nz-progress>
+                      </ng-template>
+                    </nz-card>
+                  </ng-container>
+                -->
+                <!-- </div> -->
               </div>
+              <div>
+                <ul>
+                  <li *ngIf="dashboarcard[0].percent < 25">
+                    <h6>
+                      Remplissez le formulaire à gauche pour voir votre choix :)
+                      ! ...
+                    </h6>
+                  </li>
+                  <li *ngIf="eventType">
+                    <i class="fi fi-rr-check" style="color: #00ae81"></i>
+                    {{ eventType }}
+                  </li>
+                  <li *ngIf="eventIC2">
+                    <i class="fi fi-rr-check" style="color: #00ae81"></i>
+                    {{ eventIC2 }}
+                  </li>
+                  <li *ngIf="eventIC3">
+                    <i class="fi fi-rr-check" style="color: #00ae81"></i>
+                    {{ eventIC3 }}
+                  </li>
+                  <li *ngIf="desc">
+                    <i class="fi fi-rr-check" style="color: #00ae81"></i>
+                    {{ desc }}
+                  </li>
+                </ul>
+              </div>
+              <hr style="color: #00ae81" />
+
+              <button class="add" (click)="saveContent(f.value)" *ngIf="tab == 1">
+                Ajouter
+                <span class="btn-txt">+</span>
+              </button>
             </div>
+            <!--
+
+          -->
           </div>
           <!--CAPEX hc-->
           <div class="col-12 col-lg-8 left" *ngIf="hb">
@@ -634,8 +625,6 @@
                           {{conceptions[0]?.Interet_porteur_projet?.Sous_Total_Prix_vente_Concep}}€
 
                         </span>
-
-
                       </button>
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
@@ -691,13 +680,7 @@
                               }}€
                             </span>
                           </li>
-                          <li class="
-                  list-item
-                  cpx-list
-                  d-flex
-                  justify-content-between
-                  mt-3
-                ">
+                          <li class=" list-item cpx-list d-flex justify-content-between mt-3">
                             <span>1.5. Après Avis favorable : Création SPV</span>
                             <span class="price">
                               {{
